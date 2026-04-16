@@ -1,55 +1,81 @@
+import {
+  Paintbrush, MessageSquare, MonitorPlay, Presentation, PenTool, Settings2, BookOpen, Lightbulb,
+  Video, Wand2, Mail, Globe, Layers, Package, Type, Megaphone, Send, Sparkles, Bot, Database,
+  Zap, Flag, Users, Star, Monitor, Brain, BarChart3, BookMarked, FileText, Calendar, Newspaper,
+  ArrowUpRight
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+export interface NavLink {
+  label: string;
+  href: string;
+  description?: string;
+  icon?: LucideIcon;
+  isNew?: boolean;
+}
+
+export interface NavGroup {
+  title: string;
+  titleHref?: string;
+  items: NavLink[];
+}
+
 export interface NavItem {
   label: string;
   href: string;
   children?: NavGroup[];
-}
-
-export interface NavGroup {
-  title?: string;
-  items: { label: string; href: string; description?: string }[];
+  megaVariant?: "services" | "resources" | "whyus";
 }
 
 export const mainNavItems: NavItem[] = [
   {
     label: "Services",
     href: "/design-services",
+    megaVariant: "services",
     children: [
       {
-        title: "Creative Services",
+        title: "Creative design services",
+        titleHref: "/design-services",
         items: [
-          { label: "Design Services", href: "/design-services", description: "End-to-end creative production" },
-          { label: "Ad Creative", href: "/ad-creative", description: "Performance-driven ad design" },
-          { label: "Video Production", href: "/video-production", description: "Motion and video at scale" },
-          { label: "AI Creative", href: "/ai-creative", description: "AI-powered creative workflows" },
-          { label: "Branding Services", href: "/branding-services", description: "Brand identity and systems" },
-          { label: "Web Design", href: "/web-design-services", description: "Websites and landing pages" },
-          { label: "Social Media Creative", href: "/social-media-creative", description: "Scroll-stopping social content" },
-          { label: "Presentation Design", href: "/presentation-design", description: "Pitch decks and presentations" },
+          { label: "Ad creative", href: "/ad-creative", description: "Eye-catching designs that perform", icon: Paintbrush },
+          { label: "Social media creative", href: "/social-media-creative", description: "Engaging assets for all platforms", icon: MessageSquare },
+          { label: "Presentation design", href: "/presentation-design", description: "Captivating slides that tell your story", icon: Presentation },
+          { label: "Illustration design", href: "/illustration-design-services", description: "Visual storytelling for your brand", icon: PenTool },
+          { label: "Branding services", href: "/branding-services", description: "Expertise & custom design services", icon: Settings2 },
+          { label: "eBooks & report design", href: "/ebook-digital-report-design", description: "Your digital content supercharged", icon: BookOpen },
+          { label: "Concept creation", href: "/concept-creation", description: "Big ideas crafted for maximum impact", icon: Lightbulb },
+          { label: "Print design", href: "/print-design", description: "Tangible designs that leave a lasting impression", icon: FileText },
+          { label: "Packaging & merchandise design", href: "/packaging-merchandise-design", description: "Bring your brand to life", icon: Package },
         ],
       },
       {
-        title: "More Services",
+        title: "Specialized production services",
+        titleHref: "/video-production",
         items: [
-          { label: "Motion Design", href: "/motion-design", description: "Animation and motion graphics" },
-          { label: "Illustration", href: "/illustration-design-services", description: "Custom illustration" },
-          { label: "Print Design", href: "/print-design", description: "Print and packaging design" },
-          { label: "Email Design", href: "/email-design-services", description: "Email templates and campaigns" },
-          { label: "Landing Pages", href: "/landing-page-design", description: "High-converting landing pages" },
-          { label: "Packaging & Merch", href: "/packaging-merchandise-design", description: "Product packaging" },
-          { label: "eBook & Report Design", href: "/ebook-digital-report-design", description: "Digital publications" },
-          { label: "Copywriting", href: "/copywriting", description: "Strategic copywriting" },
+          { label: "Video production", href: "/video-production", description: "Effortless video production at scale", icon: Video },
+          { label: "Motion design", href: "/motion-design", description: "For websites, ads, and presentations", icon: MonitorPlay },
+          { label: "Email creation", href: "/email-design-services", description: "Click-worthy emails that drive engagement", icon: Mail },
+          { label: "Web design", href: "/web-design-services", description: "Stunning websites and landing pages built to engage", icon: Globe },
+          { label: "Design Systems", href: "/design-systems", description: "Robust design systems that drive visual consistency", icon: Layers, isNew: true },
+          { label: "Product Design", href: "/product-design", description: "Engaging & intuitive experiences", icon: Settings2, isNew: true },
+          { label: "Copywriting", href: "/copywriting", description: "Persuasive words for clarity and action", icon: Type, isNew: true },
         ],
       },
       {
-        title: "Strategic",
+        title: "AI services",
+        titleHref: "/ai-creative",
         items: [
-          { label: "Marketing Strategy", href: "/marketing-strategy", description: "Full-funnel strategy" },
-          { label: "Campaign Strategy", href: "/campaign-strategy-services", description: "Campaign planning" },
-          { label: "Concept Creation", href: "/concept-creation", description: "Creative concepting" },
-          { label: "Design Systems", href: "/design-systems", description: "Scalable design systems" },
-          { label: "Product Design", href: "/product-design", description: "Product and UX design" },
-          { label: "AR & 3D Design", href: "/ar-3d-design", description: "Immersive experiences" },
-          { label: "Immersive Design", href: "/immersive-design-services", description: "Interactive design" },
+          { label: "AI-powered creative", href: "/ai-creative", description: "Human brilliance powered by AI", icon: Sparkles },
+          { label: "AI consulting", href: "/ai-excellence", description: "Transform your team with AI", icon: Bot },
+          { label: "Automation", href: "/ar-3d-design", description: "Move fast without compromising craft", icon: Zap, isNew: true },
+          { label: "Data services", href: "/immersive-design-services", description: "Train your AI with creative data", icon: Database, isNew: true },
+        ],
+      },
+      {
+        title: "Marketing services",
+        titleHref: "/marketing-strategy",
+        items: [
+          { label: "Campaign strategy", href: "/campaign-strategy-services", description: "Strategy, messaging, and concept for multi-market campaigns", icon: Flag, isNew: true },
         ],
       },
     ],
@@ -58,17 +84,17 @@ export const mainNavItems: NavItem[] = [
   {
     label: "Why us",
     href: "/about-us",
+    megaVariant: "whyus",
     children: [
       {
         title: "Company",
         items: [
-          { label: "About Us", href: "/about-us", description: "Our story and mission" },
-          { label: "Our Creative Talent", href: "/our-creative-talent", description: "Meet our global team" },
-          { label: "Our Technology", href: "/our-technology", description: "AI-powered platform" },
-          { label: "AI Excellence", href: "/ai-excellence", description: "Leading with AI" },
+          { label: "Our creative talent", href: "/our-creative-talent", description: "Meet your dedicated team" },
+          { label: "AI excellence", href: "/ai-excellence", description: "Your shortcut to AI's creative advantage" },
+          { label: "Our technology", href: "/our-technology", description: "The tech powering your creative edge" },
+          { label: "About us", href: "/about-us", description: "Our story and mission" },
           { label: "Enterprise", href: "/enterprise", description: "Enterprise-grade creative" },
           { label: "Reviews", href: "/reviews", description: "What clients say" },
-          { label: "BrandBrain", href: "/brandbrain", description: "AI brand intelligence" },
         ],
       },
       {
@@ -87,17 +113,16 @@ export const mainNavItems: NavItem[] = [
   {
     label: "Resources",
     href: "/learn",
+    megaVariant: "resources",
     children: [
       {
-        title: "Learn",
+        title: "Our resources",
         items: [
-          { label: "Blog", href: "/blog", description: "Insights and trends" },
-          { label: "Guides", href: "/guides", description: "In-depth guides" },
-          { label: "Playbooks", href: "/playbooks", description: "Tactical playbooks" },
-          { label: "Reports", href: "/reports", description: "Industry reports" },
-          { label: "Knowledge Base", href: "/knowledge", description: "Tips and tutorials" },
-          { label: "Events", href: "/events", description: "Webinars and summits" },
-          { label: "AI Content Central", href: "/ai-content-central", description: "AI resources" },
+          { label: "Events & Summits", href: "/events", description: "Our upcoming events and recordings", icon: Calendar },
+          { label: "Customer Stories", href: "/our-work", description: "Behind the successful partnerships", icon: Users },
+          { label: "Guides", href: "/guides", description: "Insights from marketing leaders", icon: BookMarked },
+          { label: "Reports", href: "/reports", description: "Data for smarter decisions", icon: BarChart3 },
+          { label: "Blog", href: "/blog", description: "Long-form you can learn from", icon: Newspaper },
         ],
       },
     ],

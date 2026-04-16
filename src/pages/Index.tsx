@@ -8,24 +8,27 @@ import CTASection from "@/components/sections/CTASection";
 import BlogGrid from "@/components/sections/BlogGrid";
 import ImageTextSplit from "@/components/sections/ImageTextSplit";
 import ServiceGrid from "@/components/sections/ServiceGrid";
+import ComparisonSection from "@/components/sections/ComparisonSection";
 import { services } from "@/data/services";
 import { blogPosts } from "@/data/blogPosts";
 
 export default function Index() {
   return (
     <Layout>
+      {/* ─── Hero ─── */}
       <HeroSection
+        variant="split"
         title={
           <>
             Your <span className="heading-italic">creative team's</span>{" "}
-            creative team™
+            creative team
           </>
         }
         description="Replace creative bottlenecks with limitless output. Top global talent and AI-powered workflows deliver enterprise-grade creative at startup speed."
         secondaryCtaText="See our work"
         secondaryCtaHref="/our-work"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4 stagger-children">
+        <div className="grid grid-cols-2 gap-3 stagger-children">
           {[
             { label: "Brand Campaigns", metric: "3x faster" },
             { label: "Performance Ads", metric: "500+ brands" },
@@ -33,19 +36,19 @@ export default function Index() {
             { label: "Web & Digital", metric: "100+ specialties" },
             { label: "Social Content", metric: "Top 1% talent" },
             { label: "Presentations", metric: "AI-powered" },
-            { label: "Brand Identity", metric: "471% ROI" },
-            { label: "Packaging", metric: "SOC 2 compliant" },
           ].map((item) => (
-            <div key={item.label} className="card-elevated-hover p-5 lg:p-6 flex flex-col justify-between aspect-square animate-fade-up cursor-pointer group">
-              <span className="text-xs lg:text-sm text-muted-foreground group-hover:text-foreground transition-colors">{item.label}</span>
-              <span className="text-xs font-semibold text-primary/70 mt-auto">{item.metric}</span>
+            <div key={item.label} className="card-elevated-hover p-5 lg:p-6 flex flex-col justify-between aspect-[4/3] animate-fade-up cursor-pointer group">
+              <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">{item.label}</span>
+              <span className="text-xs font-semibold text-primary/60 mt-auto">{item.metric}</span>
             </div>
           ))}
         </div>
       </HeroSection>
 
+      {/* ─── Logo Cloud ─── */}
       <LogoCloud />
 
+      {/* ─── Stats ─── */}
       <StatsSection
         title="The numbers speak for themselves"
         stats={[
@@ -54,9 +57,10 @@ export default function Index() {
           { value: "100+", label: "Creative specialties covered" },
           { value: "24/7", label: "Always-on global coverage" },
         ]}
-        variant="cards"
+        variant="large"
       />
 
+      {/* ─── Why Superside: Split ─── */}
       <ImageTextSplit
         tagline="Why Superside"
         title={<>Stop choosing between <span className="heading-italic">speed, quality, and cost</span></>}
@@ -69,18 +73,26 @@ export default function Index() {
         ]}
       />
 
+      {/* ─── How It Works: List variant ─── */}
       <FeatureSection
         tagline="How it works"
         title={<>From brief to brilliant <span className="heading-italic">in three steps</span></>}
-        description="A streamlined process built for speed without sacrificing quality."
+        variant="list"
         features={[
           { title: "Brief it", description: "Submit your project through our platform. AI-powered briefing tools ensure your team captures every detail upfront, reducing revision cycles by 40%." },
           { title: "Build it", description: "Your dedicated creative team gets to work immediately. Real-time collaboration, transparent timelines, and multi-layer quality reviews keep everything on track." },
           { title: "Ship it", description: "Receive polished, brand-consistent deliverables ready to deploy. Most projects land 3x faster than traditional agency timelines." },
         ]}
-        columns={3}
       />
 
+      {/* ─── Mid-page CTA banner ─── */}
+      <CTASection
+        title={<>Your brand deserves <span className="heading-italic">better creative</span></>}
+        description="See why 500+ companies trust Superside to deliver world-class creative at scale."
+        variant="banner"
+      />
+
+      {/* ─── Services ─── */}
       <ServiceGrid
         services={services.slice(0, 6)}
         title="Every creative discipline, one subscription"
@@ -89,6 +101,7 @@ export default function Index() {
         columns={3}
       />
 
+      {/* ─── AI Split (reversed) ─── */}
       <ImageTextSplit
         tagline="AI-Powered Creative"
         title={<>Human creativity <span className="heading-italic">amplified by AI</span></>}
@@ -102,19 +115,20 @@ export default function Index() {
         ]}
       />
 
+      {/* ─── Comparison ─── */}
+      <ComparisonSection />
+
+      {/* ─── Testimonials ─── */}
       <TestimonialSection variant="featured" />
 
-      <CTASection
-        title={<>Your brand deserves <span className="heading-italic">better creative</span></>}
-        description="See why 500+ companies trust Superside to deliver world-class creative at scale."
-        variant="banner"
-      />
-
+      {/* ─── Blog ─── */}
       <BlogGrid posts={blogPosts.slice(0, 3)} title="Latest thinking" description="Perspectives from the team behind 500+ enterprise creative partnerships." />
 
+      {/* ─── Final CTA ─── */}
       <CTASection
         title={<>Ready to scale your <span className="heading-italic">creative?</span></>}
         description="Book a demo to see how Superside replaces creative bottlenecks with limitless output."
+        variant="split"
       />
     </Layout>
   );
