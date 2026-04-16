@@ -220,7 +220,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 lg:h-[72px]">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src={logoText} alt="The North" className="h-5 lg:h-6 invert" />
+          <img src={logoText} alt="The North" className="h-8 lg:h-9 invert" />
         </Link>
 
         {/* Desktop Nav */}
