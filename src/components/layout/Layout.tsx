@@ -10,7 +10,7 @@ interface LayoutProps {
 }
 
 export default function Layout({ children, title, description }: LayoutProps) {
-  const pageTitle = title ? `${title} | Superside` : "Superside | Your Creative Team's Creative Team";
+  const pageTitle = title ? `${title} | The North` : "The North | Strategic Creative Partner";
   const pageDescription = description || "Scale your in-house creative team with top global talent powered by industry-leading AI workflows.";
 
   return (

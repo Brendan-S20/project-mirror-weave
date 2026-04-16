@@ -3,10 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import { mainNavItems, type NavItem, type NavGroup } from "@/data/navigation";
 import { ChevronDown, Menu, X, ArrowRight, ArrowUpRight } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
+import { useCTAModal } from "@/contexts/CTAContext";
+import logoText from "@/assets/logo-text.png";
 
 /* ─── Services Mega Menu ─── */
 const ServicesMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () => void }) => {
-  // Split into columns: creative | specialized | AI + marketing
   const creative = groups.find(g => g.title.toLowerCase().includes("creative design"));
   const specialized = groups.find(g => g.title.toLowerCase().includes("specialized"));
   const ai = groups.find(g => g.title.toLowerCase().includes("ai"));
@@ -58,7 +59,7 @@ const ServicesMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () => 
   };
 
   return (
-    <div className="absolute top-full left-0 w-full bg-background/98 backdrop-blur-2xl border-b border-border/20 shadow-[0_30px_80px_-20px_hsl(var(--dark-green)/0.7)] z-50 animate-fade-in">
+    <div className="absolute top-full left-0 w-full bg-[hsl(var(--surface-elevated))] border-b border-border/30 shadow-[0_30px_80px_-20px_hsl(var(--dark-base)/0.8)] z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-8 py-10">
         <div className="grid grid-cols-3 gap-14">
           {renderGroup(creative)}
@@ -82,18 +83,12 @@ const WhyUsMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () => voi
   ];
 
   return (
-    <div className="absolute top-full left-0 w-full bg-background/98 backdrop-blur-2xl border-b border-border/20 shadow-[0_30px_80px_-20px_hsl(var(--dark-green)/0.7)] z-50 animate-fade-in">
+    <div className="absolute top-full left-0 w-full bg-[hsl(var(--surface-elevated))] border-b border-border/30 shadow-[0_30px_80px_-20px_hsl(var(--dark-base)/0.8)] z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-8 py-10">
-        {/* Featured cards row */}
         <div className="grid grid-cols-3 gap-6 mb-10">
           {featuredCards.map((card) => (
-            <Link
-              key={card.href}
-              to={card.href}
-              onClick={onClose}
-              className="group/card block"
-            >
-              <div className="aspect-[16/9] rounded-xl bg-[hsl(var(--surface-elevated))] border border-border/30 mb-4 overflow-hidden relative group-hover/card:border-primary/30 transition-colors">
+            <Link key={card.href} to={card.href} onClick={onClose} className="group/card block">
+              <div className="aspect-[16/9] rounded-xl bg-[hsl(var(--surface-overlay))] border border-border/30 mb-4 overflow-hidden relative group-hover/card:border-primary/30 transition-colors">
                 <div className="absolute inset-0 gradient-mesh" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
@@ -102,8 +97,6 @@ const WhyUsMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () => voi
             </Link>
           ))}
         </div>
-
-        {/* Additional links */}
         <div className="grid grid-cols-2 gap-x-14 gap-y-0 border-t border-border/20 pt-6">
           {groups.flatMap(g => g.items).filter(l => !featuredCards.some(c => c.href === l.href)).map((link) => (
             <Link
@@ -128,10 +121,9 @@ const ResourcesMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () =>
   const links = groups[0]?.items || [];
 
   return (
-    <div className="absolute top-full left-0 w-full bg-background/98 backdrop-blur-2xl border-b border-border/20 shadow-[0_30px_80px_-20px_hsl(var(--dark-green)/0.7)] z-50 animate-fade-in">
+    <div className="absolute top-full left-0 w-full bg-[hsl(var(--surface-elevated))] border-b border-border/30 shadow-[0_30px_80px_-20px_hsl(var(--dark-base)/0.8)] z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-8 py-10">
         <div className="grid grid-cols-2 gap-16">
-          {/* Left: resource links */}
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/60 mb-5">Our resources</p>
             <div className="space-y-0">
@@ -155,19 +147,12 @@ const ResourcesMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () =>
               ))}
             </div>
           </div>
-
-          {/* Right: latest media */}
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/60 mb-5">Latest media</p>
             <div className="grid grid-cols-2 gap-5">
               {recentPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  to={`/blog/${post.slug}`}
-                  onClick={onClose}
-                  className="group/post block"
-                >
-                  <div className="aspect-[16/10] rounded-lg bg-[hsl(var(--surface-elevated))] border border-border/30 mb-3 overflow-hidden relative group-hover/post:border-primary/30 transition-colors">
+                <Link key={post.slug} to={`/blog/${post.slug}`} onClick={onClose} className="group/post block">
+                  <div className="aspect-[16/10] rounded-lg bg-[hsl(var(--surface-overlay))] border border-border/30 mb-3 overflow-hidden relative group-hover/post:border-primary/30 transition-colors">
                     <div className="absolute inset-0 gradient-mesh" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="text-muted-foreground/20 text-xs font-semibold">{post.category}</span>
@@ -193,6 +178,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const { openModal } = useCTAModal();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -230,13 +216,11 @@ export default function Header() {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/95 backdrop-blur-2xl border-b border-border/15 shadow-[0_1px_30px_hsl(var(--dark-green)/0.4)]' : 'bg-background/80 backdrop-blur-xl'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/95 backdrop-blur-2xl border-b border-border/20 shadow-[0_1px_30px_hsl(var(--dark-base)/0.5)]' : 'bg-background/80 backdrop-blur-xl'}`}>
       <nav className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 lg:h-[72px]">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <span className="text-[22px] font-bold tracking-tight text-foreground">
-            <span className="heading-italic text-[26px]">S</span>uperside
-          </span>
+          <img src={logoText} alt="The North" className="h-5 lg:h-6 invert" />
         </Link>
 
         {/* Desktop Nav */}
@@ -265,20 +249,17 @@ export default function Header() {
 
         {/* CTA Buttons */}
         <div className="hidden lg:flex items-center gap-2.5">
-          <Link to="/pricing" className="btn-lime text-[13px] px-6 py-2.5 group">
+          <button onClick={openModal} className="btn-lime text-[13px] px-6 py-2.5 group">
             Book a demo
             <ArrowRight className="ml-1.5 w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-          </Link>
+          </button>
           <Link to="/pricing" className="inline-flex items-center justify-center rounded-full border border-foreground/20 text-foreground/70 font-medium px-5 py-2.5 text-[13px] transition-all hover:bg-foreground/5 hover:text-foreground hover:border-foreground/40">
             Sign in
           </Link>
         </div>
 
         {/* Mobile Toggle */}
-        <button
-          className="lg:hidden p-2 text-foreground"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
+        <button className="lg:hidden p-2 text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </nav>
@@ -298,7 +279,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-2xl border-b border-border max-h-[85vh] overflow-y-auto animate-fade-in">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-[hsl(var(--surface-elevated))] border-b border-border/30 max-h-[85vh] overflow-y-auto animate-fade-in">
           <div className="px-6 py-8 space-y-5">
             {mainNavItems.map((item) => (
               <div key={item.label}>
@@ -326,10 +307,10 @@ export default function Header() {
               </div>
             ))}
             <div className="pt-6 border-t border-border/30 space-y-3">
-              <Link to="/pricing" className="btn-lime w-full text-center text-sm" onClick={() => setMobileOpen(false)}>
+              <button onClick={() => { setMobileOpen(false); openModal(); }} className="btn-lime w-full text-center text-sm justify-center">
                 Book a demo
-              </Link>
-              <Link to="/pricing" className="btn-outline-light w-full text-center text-sm" onClick={() => setMobileOpen(false)}>
+              </button>
+              <Link to="/pricing" className="btn-outline-light w-full text-center text-sm block" onClick={() => setMobileOpen(false)}>
                 Sign in
               </Link>
             </div>

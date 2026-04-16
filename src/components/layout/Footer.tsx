@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { footerLinks } from "@/data/navigation";
 import { ArrowUpRight } from "lucide-react";
+import logoStacked from "@/assets/logo-stacked.png";
 
-// Restructured footer to match Superside's layout: Services (3 sub-columns) | Navigation (Main + Learn)
 const serviceGroups = [
   {
     title: "Creative design services",
@@ -58,9 +57,8 @@ const mainLinks = [
   { label: "Pricing", href: "/pricing" },
   { label: "Reviews", href: "/reviews" },
   { label: "Trust center", href: "/trust-center" },
-  { label: "Superside vs. Alternatives", href: "/compare" },
-  { label: "Forrester TEI Report", href: "/reports" },
-  { label: "BrandBrain", href: "/brandbrain" },
+  { label: "The North vs. Alternatives", href: "/compare" },
+  { label: "ROI Report", href: "/reports" },
 ];
 
 const learnLinks = [
@@ -77,10 +75,8 @@ export default function Footer() {
   return (
     <footer className="bg-[hsl(var(--surface-subtle))] border-t border-border/30">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Main footer grid */}
         <div className="py-16 lg:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1fr] gap-12 lg:gap-0">
-
             {/* Left: Services */}
             <div className="lg:pr-14">
               <h3 className="text-lg lg:text-xl font-bold text-foreground mb-8">Services</h3>
@@ -166,13 +162,11 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="py-8 border-t border-border/20 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-foreground tracking-tight">
-              <span className="heading-italic text-[28px]">S</span>uperside
-            </span>
+          <div className="flex items-center gap-3">
+            <img src={logoStacked} alt="The North" className="h-10 invert" />
           </div>
           <p className="text-xs text-muted-foreground/60">
-            &copy; {new Date().getFullYear()} Superside. All rights reserved.
+            &copy; {new Date().getFullYear()} The North. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link to="/privacy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy policy</Link>
