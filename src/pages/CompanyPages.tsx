@@ -8,8 +8,8 @@ import heroAI from "@/assets/hero-ai.jpg";
 
 export function OurCreativeTalent() {
   return (
-    <Layout title="Our Creative Talent" description="Meet the top 1% of global creative talent that powers Superside.">
-      <HeroSection tagline="Our talent" title={<>The top 1% of <span className="heading-italic">global talent</span></>} description="Superside hires the most talented creatives from around the world. Rigorously vetted, deeply experienced, and ready to elevate your brand." variant="centered" />
+    <Layout title="Our Creative Talent" description="Meet the top 1% of global creative talent that powers The North.">
+      <HeroSection tagline="Our talent" title={<>The top 1% of <span className="heading-italic">global talent</span></>} description="The North hires the most talented creatives from around the world. Rigorously vetted, deeply experienced, and ready to elevate your brand." variant="centered" />
       <LogoCloud />
       <FeatureSection title={<>Why our talent is <span className="heading-italic">different</span></>} features={[
         { title: "Rigorous Vetting", description: "Less than 1% of applicants make it through our multi-stage selection process." },
@@ -26,7 +26,7 @@ export function OurCreativeTalent() {
 
 export function OurTechnology() {
   return (
-    <Layout title="Our Technology" description="Superside's AI-powered creative platform.">
+    <Layout title="Our Technology" description="The North's AI-powered creative platform.">
       <HeroSection tagline="Our technology" title={<>AI-powered <span className="heading-italic">creative platform</span></>} description="Purpose-built technology that combines AI with human creativity to deliver better work faster." variant="split">
         <img src={heroAI} alt="AI-powered creative platform" className="rounded-2xl w-full h-full object-cover" width={1280} height={960} loading="lazy" />
       </HeroSection>
@@ -45,8 +45,8 @@ export function OurTechnology() {
 
 export function AIExcellence() {
   return (
-    <Layout title="AI Excellence" description="How Superside leads with AI in creative production.">
-      <HeroSection tagline="AI Excellence" title={<>Leading the <span className="heading-italic">AI creative revolution</span></>} description="Superside is at the forefront of AI-powered creative production, combining human expertise with cutting-edge AI to deliver breakthrough results." variant="centered" />
+    <Layout title="AI Excellence" description="How The North leads with AI in creative production.">
+      <HeroSection tagline="AI Excellence" title={<>Leading the <span className="heading-italic">AI creative revolution</span></>} description="The North is at the forefront of AI-powered creative production, combining human expertise with cutting-edge AI to deliver breakthrough results." variant="centered" />
       <ImageTextSplit tagline="Our approach" title={<>AI that <span className="heading-italic">amplifies</span> human creativity</>} description="We don't replace creatives with AI. We give our world-class talent the most powerful AI tools available, enabling them to produce better work faster than ever before." bullets={["AI-accelerated ideation and concepting", "Automated production workflows", "Smart quality assurance", "Brand-consistent AI output"]} />
       <FeatureSection title={<>AI across every <span className="heading-italic">workflow</span></>} features={[
         { title: "AI Briefing", description: "Smart brief creation with AI-powered suggestions." },
@@ -75,7 +75,7 @@ export function BrandBrain() {
 
 export function CreativeBrief() {
   return (
-    <Layout title="Creative Brief" description="Start your creative project with Superside.">
+    <Layout title="Creative Brief" description="Start your creative project with The North.">
       <section className="section-padding py-20 lg:py-28">
         <div className="max-w-2xl mx-auto text-center">
           <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">Start your <span className="heading-italic">creative brief</span></h1>

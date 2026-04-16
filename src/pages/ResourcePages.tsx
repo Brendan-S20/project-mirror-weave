@@ -90,7 +90,7 @@ export function ReportPage() { return <ResourceDetailPage basePath="/reports" it
 
 export function EventsIndex() {
   return (
-    <Layout title="Events" description="Webinars, summits, and live events from Superside.">
+    <Layout title="Events" description="Webinars, summits, and live events from The North.">
       <section className="section-padding py-24 lg:py-32">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-2xl mb-14">
@@ -127,17 +127,17 @@ export function EventPage() {
 
 export function FAQPage() {
   return (
-    <Layout title="FAQ" description="Frequently asked questions about Superside.">
+    <Layout title="FAQ" description="Frequently asked questions about The North.">
       <section className="section-padding py-24"><div className="max-w-3xl mx-auto text-center"><span className="badge-pill mb-6">FAQ</span><h1 className="text-4xl lg:text-6xl font-bold text-foreground mt-4">Frequently asked questions</h1></div></section>
       <FAQSection items={[
-        { question: "What is Superside?", answer: "Superside is an always-on creative service that combines top global creative talent with AI-powered workflows to deliver enterprise-grade creative at scale." },
-        { question: "How does pricing work?", answer: "Superside offers subscription-based pricing with predictable monthly costs. Contact our team for a custom quote based on your needs." },
+        { question: "What is The North?", answer: "The North is an always-on creative service that combines top global creative talent with AI-powered workflows to deliver enterprise-grade creative at scale." },
+        { question: "How does pricing work?", answer: "The North offers subscription-based pricing with predictable monthly costs. Contact our team for a custom quote based on your needs." },
         { question: "What creative services do you offer?", answer: "We offer 100+ creative specialties including design, video, animation, branding, web design, presentations, and more." },
         { question: "How fast is delivery?", answer: "Most projects are delivered 3x faster than traditional agencies thanks to our AI-powered workflows and dedicated teams." },
         { question: "Do I get a dedicated team?", answer: "Yes. Every client gets a dedicated team of creatives and a project manager who learn your brand inside out." },
         { question: "Is there a minimum commitment?", answer: "We offer flexible engagement terms. Contact our team to discuss the best option for your needs." },
         { question: "How do you ensure quality?", answer: "Multi-layer review processes, brand consistency checks, and AI-powered quality assurance ensure every deliverable exceeds expectations." },
-        { question: "Can I scale up or down?", answer: "Absolutely. Superside is designed to flex with your needs. Scale creative capacity up during peak periods and back down when things quiet." },
+        { question: "Can I scale up or down?", answer: "Absolutely. The North is designed to flex with your needs. Scale creative capacity up during peak periods and back down when things quiet." },
       ]} />
       <CTASection title={<>Still have questions? <span className="heading-italic">Let's talk.</span></>} />
     </Layout>
@@ -146,12 +146,12 @@ export function FAQPage() {
 
 export function PrivacyPage() {
   return (
-    <Layout title="Privacy Policy" description="Superside privacy policy.">
+    <Layout title="Privacy Policy" description="The North privacy policy.">
       <section className="section-padding py-24 lg:py-32"><div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-foreground mb-8">Privacy Policy</h1>
         <div className="text-muted-foreground space-y-4 leading-relaxed">
           <p>Last updated: April 2026</p>
-          <p>At Superside, we take your privacy seriously. This policy describes how we collect, use, and protect your personal information when you use our services and visit our website.</p>
+          <p>At The North, we take your privacy seriously. This policy describes how we collect, use, and protect your personal information when you use our services and visit our website.</p>
           <h2 className="text-xl font-semibold text-foreground pt-4">Information We Collect</h2>
           <p>We collect information you provide directly, such as when you create an account, request a demo, or contact us. This may include your name, email address, company name, and job title.</p>
           <h2 className="text-xl font-semibold text-foreground pt-4">How We Use Your Information</h2>
@@ -166,12 +166,12 @@ export function PrivacyPage() {
 
 export function TermsPage() {
   return (
-    <Layout title="Terms of Use" description="Superside terms of use.">
+    <Layout title="Terms of Use" description="The North terms of use.">
       <section className="section-padding py-24 lg:py-32"><div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-foreground mb-8">Terms of Use</h1>
         <div className="text-muted-foreground space-y-4 leading-relaxed">
           <p>Last updated: April 2026</p>
-          <p>These Terms of Use govern your access to and use of Superside's website and services. By using our services, you agree to these terms.</p>
+          <p>These Terms of Use govern your access to and use of The North's website and services. By using our services, you agree to these terms.</p>
           <h2 className="text-xl font-semibold text-foreground pt-4">Use of Services</h2>
           <p>You may use our services only in compliance with these terms and all applicable laws and regulations.</p>
           <h2 className="text-xl font-semibold text-foreground pt-4">Intellectual Property</h2>
@@ -184,8 +184,8 @@ export function TermsPage() {
 
 export function TrustCenterPage() {
   return (
-    <Layout title="Trust Center" description="Learn about Superside's commitment to security and compliance.">
-      <HeroSection tagline="Trust Center" title={<>Security and compliance <span className="heading-italic">you can trust</span></>} description="Superside is committed to protecting your data with enterprise-grade security measures." variant="centered" />
+    <Layout title="Trust Center" description="Learn about The North's commitment to security and compliance.">
+      <HeroSection tagline="Trust Center" title={<>Security and compliance <span className="heading-italic">you can trust</span></>} description="The North is committed to protecting your data with enterprise-grade security measures." variant="centered" />
       <FeatureSection title={<>Our security <span className="heading-italic">commitments</span></>} features={[
         { title: "SOC 2 Type II", description: "We maintain SOC 2 Type II compliance, independently audited annually." },
         { title: "Data Encryption", description: "All data is encrypted at rest and in transit using industry-standard protocols." },
@@ -198,11 +198,11 @@ export function TrustCenterPage() {
 
 export function BugBountyPage() {
   return (
-    <Layout title="Bug Bounty Program" description="Superside's responsible disclosure and bug bounty program.">
+    <Layout title="Bug Bounty Program" description="The North's responsible disclosure and bug bounty program.">
       <section className="section-padding py-24 lg:py-32"><div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-foreground mb-8">Bug Bounty Program</h1>
         <div className="text-muted-foreground space-y-4 leading-relaxed">
-          <p>We value the security community's efforts in helping keep Superside and our customers safe. If you've found a security vulnerability, we want to hear from you.</p>
+          <p>We value the security community's efforts in helping keep The North and our customers safe. If you've found a security vulnerability, we want to hear from you.</p>
           <h2 className="text-xl font-semibold text-foreground pt-4">Scope</h2>
           <p>Our bug bounty program covers vulnerabilities in our web applications and APIs.</p>
           <h2 className="text-xl font-semibold text-foreground pt-4">Responsible Disclosure</h2>

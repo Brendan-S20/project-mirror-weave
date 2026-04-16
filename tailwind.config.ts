@@ -52,9 +52,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        lime: {
-          DEFAULT: "hsl(var(--lime))",
-          hover: "hsl(var(--lime-hover))",
+        aurora: {
+          green: "hsl(var(--aurora-green))",
+          teal: "hsl(var(--aurora-teal))",
+          blue: "hsl(var(--aurora-blue))",
+          violet: "hsl(var(--aurora-violet))",
         },
         surface: {
           elevated: "hsl(var(--surface-elevated))",

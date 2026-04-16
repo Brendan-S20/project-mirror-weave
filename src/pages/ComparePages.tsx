@@ -26,14 +26,13 @@ interface ComparePageProps { competitorName: string; competitorSlug: string; hea
 
 function ComparePage({ competitorName, headline, description, differentiators }: ComparePageProps) {
   return (
-    <Layout title={`Superside vs ${competitorName}`} description={description}>
+    <Layout title={`The North vs ${competitorName}`} description={description}>
       <HeroSection
-        tagline={`Superside vs ${competitorName}`}
+        tagline={`The North vs ${competitorName}`}
         title={<>{headline}</>}
         description={description}
         variant="centered"
       />
-
       <StatsSection
         stats={[
           { value: "471%", label: "Proven ROI (Forrester)" },
@@ -43,25 +42,21 @@ function ComparePage({ competitorName, headline, description, differentiators }:
         ]}
         variant="inline"
       />
-
       <ComparisonSection
-        title={<>How Superside <span className="heading-italic">compares</span></>}
+        title={<>How The North <span className="heading-italic">compares</span></>}
         competitorName={competitorName}
         items={comparisonItems}
       />
-
       <ImageTextSplit
         tagline="The difference"
-        title={<>Why teams <span className="heading-italic">switch to Superside</span></>}
-        description={`Teams switch from ${competitorName.toLowerCase()} to Superside because they need more than basic creative execution. They need a partner that scales, delivers consistently, and drives measurable results.`}
+        title={<>Why teams <span className="heading-italic">switch to The North</span></>}
+        description={`Teams switch from ${competitorName.toLowerCase()} to The North because they need more than basic creative execution. They need a partner that scales, delivers consistently, and drives measurable results.`}
         bullets={differentiators}
       />
-
       <TestimonialSection variant="single" />
-
       <CTASection
-        title={<>See why teams choose <span className="heading-italic">Superside</span></>}
-        description={`Book a demo to compare Superside vs ${competitorName.toLowerCase()} for your team.`}
+        title={<>See why teams choose <span className="heading-italic">The North</span></>}
+        description={`Book a demo to compare The North vs ${competitorName.toLowerCase()} for your team.`}
         variant="banner"
       />
     </Layout>
@@ -70,19 +65,19 @@ function ComparePage({ competitorName, headline, description, differentiators }:
 
 export function CompareIndex() {
   const comparisons = [
-    { name: "Agencies", href: "/compare-superside-vs-agency", desc: "Better quality, faster delivery, 70% lower cost. Without the overhead, the long timelines, or the guesswork." },
-    { name: "Freelancers", href: "/compare-superside-vs-freelancers", desc: "All the flexibility, none of the inconsistency. One team that scales with you." },
-    { name: "In-House Teams", href: "/compare-superside-vs-inhouse", desc: "Expand your creative capacity without expanding your headcount or HR burden." },
-    { name: "DesignPickle", href: "/compare-superside-vs-designpickle", desc: "Enterprise-grade creative production vs. basic graphic design support." },
-    { name: "Designity", href: "/compare-superside-vs-designity", desc: "A dedicated team vs. a marketplace. Consistent quality vs. variable results." },
+    { name: "Agencies", href: "/compare-thenorth-vs-agency", desc: "Better quality, faster delivery, 70% lower cost. Without the overhead, the long timelines, or the guesswork." },
+    { name: "Freelancers", href: "/compare-thenorth-vs-freelancers", desc: "All the flexibility, none of the inconsistency. One team that scales with you." },
+    { name: "In-House Teams", href: "/compare-thenorth-vs-inhouse", desc: "Expand your creative capacity without expanding your headcount or HR burden." },
+    { name: "DesignPickle", href: "/compare-thenorth-vs-designpickle", desc: "Enterprise-grade creative production vs. basic graphic design support." },
+    { name: "Designity", href: "/compare-thenorth-vs-designity", desc: "A dedicated team vs. a marketplace. Consistent quality vs. variable results." },
   ];
 
   return (
-    <Layout title="Compare Superside" description="See how Superside compares to agencies, freelancers, and other creative solutions.">
+    <Layout title="Compare The North" description="See how The North compares to agencies, freelancers, and other creative solutions.">
       <HeroSection
         tagline="Compare"
-        title={<>See how Superside <span className="heading-italic">stacks up</span></>}
-        description="Whether you're using agencies, managing freelancers, or trying to scale in-house, see why 500+ enterprise teams switched to Superside."
+        title={<>See how The North <span className="heading-italic">stacks up</span></>}
+        description="Whether you're using agencies, managing freelancers, or trying to scale in-house, see why 500+ enterprise teams switched to The North."
         variant="centered"
       />
       <section className="section-padding py-16 lg:py-24">
@@ -113,7 +108,7 @@ export function CompareVsInhouse() {
   return <ComparePage competitorName="In-House Teams" competitorSlug="inhouse" headline={<>Scale without <span className="heading-italic">hiring</span></> as any} description="Augment your team with on-demand creative capacity. No job postings, no interviews, no benefits overhead, no ramp-up time." differentiators={["Go from brief to delivery in days vs. months to hire and onboard", "Access 100+ specialties vs. limited in-house skill sets", "Scale up or down instantly vs. headcount planning cycles", "Focus your team on strategy vs. drowning in production tasks"]} />;
 }
 export function CompareVsDesignPickle() {
-  return <ComparePage competitorName="DesignPickle" competitorSlug="designpickle" headline={<>Enterprise creative vs. <span className="heading-italic">basic design</span></> as any} description="Go beyond basic graphic design. Superside delivers full-service creative production with AI-powered workflows, dedicated teams, and enterprise-grade security." differentiators={["Full creative production vs. basic graphic design only", "Dedicated senior team vs. rotational designer assignments", "AI-powered workflows for enterprise speed and scale", "SOC 2 compliance and enterprise security standards"]} />;
+  return <ComparePage competitorName="DesignPickle" competitorSlug="designpickle" headline={<>Enterprise creative vs. <span className="heading-italic">basic design</span></> as any} description="Go beyond basic graphic design. The North delivers full-service creative production with AI-powered workflows, dedicated teams, and enterprise-grade security." differentiators={["Full creative production vs. basic graphic design only", "Dedicated senior team vs. rotational designer assignments", "AI-powered workflows for enterprise speed and scale", "SOC 2 compliance and enterprise security standards"]} />;
 }
 export function CompareVsDesignity() {
   return <ComparePage competitorName="Designity" competitorSlug="designity" headline={<>Dedicated team vs. <span className="heading-italic">marketplace</span></> as any} description="Get a dedicated team that masters your brand instead of marketplace matching. Consistent quality, not variable results." differentiators={["Dedicated team that grows with your brand vs. marketplace matching", "Enterprise-grade QA processes vs. variable output quality", "AI-powered production workflows vs. manual processes", "500+ enterprise clients trust our model vs. marketplace uncertainty"]} />;

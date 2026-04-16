@@ -5,8 +5,7 @@ import LogoCloud from "@/components/sections/LogoCloud";
 import CTASection from "@/components/sections/CTASection";
 import StatsSection from "@/components/sections/StatsSection";
 import TestimonialSection from "@/components/sections/TestimonialSection";
-import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 interface WorkItem {
@@ -42,20 +41,18 @@ export default function OurWork() {
   const filtered = activeCategory === "All" ? workItems : workItems.filter(w => w.category === activeCategory);
 
   return (
-    <Layout title="Our Work" description="See how the world's most ambitious brands scale creative with Superside.">
+    <Layout title="Our Work" description="See how the world's most ambitious brands scale creative with The North.">
       <HeroSection
         tagline="Our work"
         title={<>Work that <span className="heading-italic">works</span></>}
-        description="Enterprise brands trust Superside to deliver creative that drives real business outcomes. Campaigns, brand systems, performance ads, and everything in between."
+        description="Enterprise brands trust The North to deliver creative that drives real business outcomes. Campaigns, brand systems, performance ads, and everything in between."
         variant="centered"
       />
 
       <LogoCloud />
 
-      {/* Portfolio Section */}
       <section className="section-padding py-20 lg:py-28" ref={ref}>
         <div className="max-w-7xl mx-auto">
-          {/* Category Filters */}
           <div className="flex flex-wrap gap-2.5 mb-14 pb-8 border-b border-border/20">
             {categories.map((cat) => (
               <button
@@ -63,7 +60,7 @@ export default function OurWork() {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
                   activeCategory === cat
-                    ? 'bg-primary text-primary-foreground shadow-[0_0_20px_hsl(var(--lime-glow)/0.2)]'
+                    ? 'bg-primary text-primary-foreground shadow-[0_0_20px_hsl(var(--aurora-glow)/0.2)]'
                     : 'text-muted-foreground hover:text-foreground bg-[hsl(var(--surface-elevated))] border border-border/30 hover:border-foreground/20'
                 }`}
               >
@@ -72,46 +69,29 @@ export default function OurWork() {
             ))}
           </div>
 
-          {/* Mixed Layout Grid */}
           <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 ${inView ? 'stagger-children' : ''}`}>
             {filtered.map((item, i) => {
-              // Determine grid span based on size and position
               const isLarge = item.size === "large";
               const isMedium = item.size === "medium";
-              const spanClass = isLarge
-                ? "lg:col-span-8"
-                : isMedium
-                ? "lg:col-span-6"
-                : "lg:col-span-4";
+              const spanClass = isLarge ? "lg:col-span-8" : isMedium ? "lg:col-span-6" : "lg:col-span-4";
 
               return (
-                <div
-                  key={`${item.client}-${i}`}
-                  className={`group cursor-pointer ${spanClass} ${inView ? 'animate-fade-up' : 'opacity-0'}`}
-                >
-                  {/* Card */}
+                <div key={`${item.client}-${i}`} className={`group cursor-pointer ${spanClass} ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
                   <div className="card-premium overflow-hidden h-full flex flex-col">
-                    {/* Visual Area */}
                     <div className={`relative overflow-hidden ${isLarge ? 'aspect-[16/9]' : isMedium ? 'aspect-[4/3]' : 'aspect-[3/2]'}`}>
                       <div className="absolute inset-0 bg-[hsl(var(--surface-elevated))]" />
                       <div className="absolute inset-0 gradient-mesh" />
                       <div className="absolute inset-0 grid-pattern opacity-15" />
-
-                      {/* Client watermark */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <span className={`font-black text-foreground/[0.04] tracking-tighter select-none ${isLarge ? 'text-7xl lg:text-9xl' : 'text-5xl lg:text-7xl'}`}>
                           {item.client}
                         </span>
                       </div>
-
-                      {/* Category badge */}
                       <div className="absolute top-5 left-5">
                         <span className="inline-flex items-center rounded-full bg-background/70 backdrop-blur-md text-foreground text-xs font-medium px-3 py-1.5 border border-border/20">
                           {item.category}
                         </span>
                       </div>
-
-                      {/* Results badge */}
                       {item.results && (
                         <div className="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                           <span className="inline-flex items-center rounded-full bg-primary text-primary-foreground text-xs font-bold px-3.5 py-1.5">
@@ -119,12 +99,8 @@ export default function OurWork() {
                           </span>
                         </div>
                       )}
-
-                      {/* Hover overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                     </div>
-
-                    {/* Content */}
                     <div className="p-6 lg:p-8 flex-1 flex flex-col">
                       <div className="flex items-center gap-3 mb-3">
                         <span className="text-xs font-bold text-primary uppercase tracking-wider">{item.client}</span>
@@ -132,9 +108,7 @@ export default function OurWork() {
                       <h3 className={`font-bold text-foreground group-hover:text-primary transition-colors leading-snug mb-3 ${isLarge ? 'text-xl lg:text-2xl' : 'text-base lg:text-lg'}`}>
                         {item.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                        {item.description}
-                      </p>
+                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">{item.description}</p>
                       <div className="mt-5 pt-5 border-t border-border/20">
                         <span className="text-primary text-sm font-semibold flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
                           View project <ArrowUpRight className="w-4 h-4" />
@@ -149,7 +123,6 @@ export default function OurWork() {
         </div>
       </section>
 
-      {/* Stats proof */}
       <StatsSection
         title="Creative output that moves the needle"
         stats={[
@@ -165,7 +138,7 @@ export default function OurWork() {
 
       <CTASection
         title={<>Your brand could be <span className="heading-italic">next</span></>}
-        description="Book a demo to see what Superside can create for your team."
+        description="Book a demo to see what The North can create for your team."
         variant="split"
       />
     </Layout>

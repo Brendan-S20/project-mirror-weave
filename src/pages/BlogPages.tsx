@@ -28,7 +28,7 @@ function BlogCard({ post }: { post: typeof blogPosts[0] }) {
 
 export function BlogIndex() {
   return (
-    <Layout title="Blog" description="Insights, trends, and strategies from the Superside creative team.">
+    <Layout title="Blog" description="Insights, trends, and strategies from the The North creative team.">
       <section className="section-padding py-24 lg:py-32">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-2xl mb-14">
