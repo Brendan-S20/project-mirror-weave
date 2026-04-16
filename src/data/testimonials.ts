@@ -8,39 +8,39 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    quote: "Superside has been a game-changer for our creative output. We've scaled our production 3x without adding headcount.",
+    quote: "We replaced three agencies and two full-time designers with one Superside subscription. The output is higher quality, the turnaround is 3x faster, and our team finally has time to think strategically.",
     author: "Sarah Chen",
     role: "VP of Marketing",
     company: "TechCorp",
   },
   {
-    quote: "The quality and speed are unmatched. Our campaigns launch faster and perform better since partnering with Superside.",
+    quote: "Our ROAS improved 40% after switching ad creative production to Superside. They produce more variants in a week than our previous agency did in a month.",
     author: "Marcus Johnson",
-    role: "Creative Director",
+    role: "Performance Marketing Director",
     company: "GrowthCo",
   },
   {
-    quote: "We replaced three agencies with one Superside subscription. The consistency and speed are incredible.",
+    quote: "The consistency is what sold us. Every deliverable, across every channel, looks and feels like our brand. That level of quality at this scale simply wasn't possible before.",
     author: "Elena Rodriguez",
     role: "Head of Brand",
     company: "ScaleUp Inc",
   },
   {
-    quote: "Their AI-powered workflows have cut our production time in half while improving creative quality.",
+    quote: "Their AI workflows have cut our production timeline from weeks to days. The creative quality hasn't just been maintained, it's improved. That's the part that surprised us.",
     author: "David Park",
     role: "CMO",
     company: "NextWave",
   },
   {
-    quote: "Superside feels like an extension of our team, not an outsourced vendor. That makes all the difference.",
+    quote: "Superside is the closest thing to having a world-class in-house team without the hiring, management, and overhead. They know our brand as well as we do.",
     author: "Amanda Foster",
-    role: "Director of Design",
+    role: "Director of Creative Operations",
     company: "Orbit Labs",
   },
   {
-    quote: "From ideation to execution, they handle everything. Our internal team can finally focus on strategy.",
+    quote: "We went from concept to full campaign launch in 10 days. Our internal team can finally focus on strategy instead of resizing banners at midnight.",
     author: "James Liu",
-    role: "Marketing Lead",
+    role: "Global Marketing Lead",
     company: "Pinnacle",
   },
 ];

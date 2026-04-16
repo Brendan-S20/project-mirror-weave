@@ -21,14 +21,24 @@ export default function Index() {
             creative team™
           </>
         }
-        description="Scale your in-house creative team with top global talent powered by industry-leading AI workflows, delivering anything you can imagine fast and affordably."
+        description="Replace creative bottlenecks with limitless output. Top global talent and AI-powered workflows deliver enterprise-grade creative at startup speed."
         secondaryCtaText="See our work"
         secondaryCtaHref="/our-work"
       >
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 stagger-children">
-          {["Brand Campaign", "Social Ads", "Product Launch", "Video Content", "Web Design", "Packaging", "Motion Graphics", "Presentations"].map((item) => (
-            <div key={item} className="aspect-square rounded-xl bg-[hsl(var(--surface-elevated))] flex items-center justify-center p-4 hover:border-primary/30 border border-border/30 transition-all duration-300 animate-fade-up group cursor-pointer">
-              <span className="text-xs text-muted-foreground text-center group-hover:text-foreground transition-colors">{item}</span>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4 stagger-children">
+          {[
+            { label: "Brand Campaigns", metric: "3x faster" },
+            { label: "Performance Ads", metric: "500+ brands" },
+            { label: "Video & Motion", metric: "24/7 coverage" },
+            { label: "Web & Digital", metric: "100+ specialties" },
+            { label: "Social Content", metric: "Top 1% talent" },
+            { label: "Presentations", metric: "AI-powered" },
+            { label: "Brand Identity", metric: "471% ROI" },
+            { label: "Packaging", metric: "SOC 2 compliant" },
+          ].map((item) => (
+            <div key={item.label} className="card-elevated-hover p-5 lg:p-6 flex flex-col justify-between aspect-square animate-fade-up cursor-pointer group">
+              <span className="text-xs lg:text-sm text-muted-foreground group-hover:text-foreground transition-colors">{item.label}</span>
+              <span className="text-xs font-semibold text-primary/70 mt-auto">{item.metric}</span>
             </div>
           ))}
         </div>
@@ -37,71 +47,74 @@ export default function Index() {
       <LogoCloud />
 
       <StatsSection
-        title="Built for scale"
+        title="The numbers speak for themselves"
         stats={[
-          { value: "500+", label: "Enterprise clients" },
-          { value: "3x", label: "Faster delivery" },
-          { value: "100+", label: "Creative specialties" },
-          { value: "24/7", label: "Global coverage" },
+          { value: "471%", label: "ROI over 3 years (Forrester)" },
+          { value: "3x", label: "Faster than traditional agencies" },
+          { value: "100+", label: "Creative specialties covered" },
+          { value: "24/7", label: "Always-on global coverage" },
         ]}
         variant="cards"
       />
 
       <ImageTextSplit
         tagline="Why Superside"
-        title={<>A smarter way to <span className="heading-italic">scale creative</span></>}
-        description="Superside replaces creative bottlenecks with limitless creative output, empowering you to bring bold visions to life faster. Our AI-powered workflows and top global talent deliver enterprise-quality creative at startup speed."
+        title={<>Stop choosing between <span className="heading-italic">speed, quality, and cost</span></>}
+        description="Traditional creative models force trade-offs. Superside eliminates them. Get the creative depth of a top agency, the flexibility of freelancers, and the brand consistency of an in-house team. All in one subscription."
         bullets={[
-          "Top 1% global creative talent, vetted and ready",
-          "AI-powered workflows for faster turnaround",
-          "Dedicated teams that learn your brand",
-          "Subscription model with predictable pricing",
+          "Top 1% creative talent, vetted from 120+ countries",
+          "AI-enhanced workflows that cut production time in half",
+          "Dedicated teams that master your brand guidelines",
+          "Predictable subscription pricing with proven 471% ROI",
         ]}
       />
 
       <FeatureSection
         tagline="How it works"
-        title={<>Creative that <span className="heading-italic">just clicks</span></>}
-        description="From brief to final asset, we handle everything."
+        title={<>From brief to brilliant <span className="heading-italic">in three steps</span></>}
+        description="A streamlined process built for speed without sacrificing quality."
         features={[
-          { title: "Top Global Talent", description: "Superside hires highly-skilled, deeply-vetted creatives and project managers from around the world." },
-          { title: "Your Dedicated Team", description: "Get a dedicated creative team that learns your brand and becomes an extension of your in-house team." },
-          { title: "AI-Powered Workflows", description: "Industry-leading AI tools and workflows accelerate every step from ideation to final delivery." },
-          { title: "Built-In Quality", description: "Multi-layer review processes ensure every deliverable meets your standards." },
-          { title: "Full Transparency", description: "Real-time project tracking, communication, and asset management in one platform." },
-          { title: "Enterprise Scale", description: "Handle any volume across any creative type without scaling headcount." },
+          { title: "Brief it", description: "Submit your project through our platform. AI-powered briefing tools ensure your team captures every detail upfront, reducing revision cycles by 40%." },
+          { title: "Build it", description: "Your dedicated creative team gets to work immediately. Real-time collaboration, transparent timelines, and multi-layer quality reviews keep everything on track." },
+          { title: "Ship it", description: "Receive polished, brand-consistent deliverables ready to deploy. Most projects land 3x faster than traditional agency timelines." },
         ]}
+        columns={3}
       />
 
       <ServiceGrid
         services={services.slice(0, 6)}
-        title="Creative services for every need"
-        description="From ad creative to brand systems, we cover every creative discipline your team needs."
-        variant="default"
+        title="Every creative discipline, one subscription"
+        description="From performance ads to brand systems, one team handles it all."
+        variant="featured"
         columns={3}
       />
 
       <ImageTextSplit
-        tagline="AI Excellence"
-        title={<>Human creativity, <span className="heading-italic">amplified by AI</span></>}
-        description="Our creative teams use the most advanced AI tools in the industry to deliver better work faster. From AI-assisted ideation to automated production workflows, we combine human expertise with AI power."
+        tagline="AI-Powered Creative"
+        title={<>Human creativity <span className="heading-italic">amplified by AI</span></>}
+        description="Our teams use the most advanced AI tools in the industry. Not as a replacement for human creativity, but as an accelerator. The result: better concepts, faster production, and more room for the strategic thinking that drives real business outcomes."
         imagePosition="left"
         bullets={[
-          "AI-accelerated ideation and concepting",
-          "Automated asset generation and variations",
-          "Smart quality assurance workflows",
-          "Brand-consistent AI output",
+          "AI-assisted ideation generates 10x more concepts",
+          "Automated asset generation and variant production",
+          "Intelligent quality assurance catches issues before you do",
+          "Brand-trained AI ensures consistency at scale",
         ]}
       />
 
-      <TestimonialSection />
+      <TestimonialSection variant="featured" />
 
-      <BlogGrid posts={blogPosts.slice(0, 3)} title="Latest from the blog" />
+      <CTASection
+        title={<>Your brand deserves <span className="heading-italic">better creative</span></>}
+        description="See why 500+ companies trust Superside to deliver world-class creative at scale."
+        variant="banner"
+      />
+
+      <BlogGrid posts={blogPosts.slice(0, 3)} title="Latest thinking" description="Perspectives from the team behind 500+ enterprise creative partnerships." />
 
       <CTASection
         title={<>Ready to scale your <span className="heading-italic">creative?</span></>}
-        description="Join 500+ companies that trust Superside to deliver world-class creative at scale."
-        variant="default"
+        description="Book a demo to see how Superside replaces creative bottlenecks with limitless output."
       />
     </Layout>
   );

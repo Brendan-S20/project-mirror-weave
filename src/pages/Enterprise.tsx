@@ -10,58 +10,59 @@ import CTASection from "@/components/sections/CTASection";
 
 export default function Enterprise() {
   return (
-    <Layout title="Enterprise" description="Enterprise-grade creative services with dedicated teams, AI-powered workflows, and proven ROI.">
+    <Layout title="Enterprise" description="Enterprise-grade creative operations for the world's most demanding brands.">
       <HeroSection
         tagline="Enterprise"
-        title={<>Enterprise creative, <span className="heading-italic">reimagined</span></>}
-        description="Dedicated creative teams, AI-powered workflows, and enterprise-grade security. Built for the world's most demanding brands."
+        title={<>Enterprise creative <span className="heading-italic">without the enterprise overhead</span></>}
+        description="Dedicated creative teams, AI-powered production, and SOC 2 compliance. Built for organizations that need quality at scale without adding headcount."
         variant="split"
       >
-        <img src={heroImg} alt="Enterprise creative solutions" className="rounded-2xl w-full h-full object-cover" width={1280} height={960} />
+        <img src={heroImg} alt="Enterprise creative operations at scale" className="rounded-2xl w-full h-full object-cover" width={1280} height={960} />
       </HeroSection>
 
       <LogoCloud />
 
       <StatsSection
         stats={[
-          { value: "471%", label: "ROI over 3 years" },
-          { value: "500+", label: "Enterprise clients" },
-          { value: "99.9%", label: "Uptime SLA" },
-          { value: "SOC 2", label: "Compliant" },
+          { value: "471%", label: "ROI over 3 years (Forrester)" },
+          { value: "500+", label: "Enterprise clients served" },
+          { value: "99.9%", label: "Platform uptime SLA" },
+          { value: "SOC 2", label: "Type II certified" },
         ]}
         variant="inline"
       />
 
       <FeatureSection
         tagline="Built for enterprise"
-        title={<>Scale without <span className="heading-italic">compromise</span></>}
+        title={<>Everything your creative org needs, <span className="heading-italic">nothing it doesn't</span></>}
         features={[
-          { title: "Dedicated Teams", description: "Get a team of senior creatives who learn your brand and become an extension of your organization." },
-          { title: "AI-Powered Speed", description: "Industry-leading AI workflows deliver enterprise-quality creative at startup speed." },
-          { title: "Enterprise Security", description: "SOC 2 compliant, SSO, advanced permissions, and enterprise-grade data protection." },
-          { title: "Global Coverage", description: "24/7 creative production with talent across 120+ countries." },
-          { title: "Custom Integrations", description: "Plugs into your existing tools, DAM, and workflows seamlessly." },
-          { title: "Strategic Partnership", description: "Not just execution. Strategic creative consulting to drive business outcomes." },
+          { title: "Dedicated creative teams", description: "Senior creatives who learn your brand inside out and operate as a true extension of your in-house team. No onboarding lag, no context loss between projects." },
+          { title: "AI-powered production", description: "Purpose-built AI workflows cut production time by 50% while maintaining the quality bar your brand demands. From ideation to final asset." },
+          { title: "Enterprise-grade security", description: "SOC 2 Type II certified, SSO integration, advanced permissions, and data encryption at rest and in transit. Your brand assets stay protected." },
+          { title: "Global 24/7 coverage", description: "Creative production that never stops. Talent across 120+ countries means your projects move forward across every time zone." },
+          { title: "Seamless integrations", description: "Plugs into your existing DAM, project management tools, and workflows. No migration headaches, no disruption to your processes." },
+          { title: "Strategic creative partnership", description: "Not just pixel-pushing. Strategic creative consulting that ties output directly to business outcomes and campaign performance." },
         ]}
       />
 
       <ImageTextSplit
         tagline="Proven ROI"
-        title={<>The Forrester Total Economic Impact<span className="heading-italic"> study</span></>}
-        description="An independent Forrester study found that Superside delivers 471% ROI over three years, with significant reductions in creative costs and time to market."
+        title={<>471% ROI. <span className="heading-italic">Validated by Forrester.</span></>}
+        description="An independent Forrester Total Economic Impact study found that Superside delivers 471% ROI over three years. Enterprise teams saw 70% lower design costs, 3x faster time to market, and payback in under 6 months."
         bullets={[
-          "471% return on investment",
-          "70% reduction in design costs",
-          "3x faster time to market",
-          "Payback in under 6 months",
+          "471% return on investment over three years",
+          "70% reduction in creative production costs",
+          "3x faster time to market on campaigns",
+          "Full payback achieved in under 6 months",
         ]}
       />
 
-      <TestimonialSection />
+      <TestimonialSection variant="featured" />
 
       <CTASection
         title={<>Ready for enterprise-grade <span className="heading-italic">creative?</span></>}
-        description="Talk to our enterprise team about a custom solution."
+        description="Talk to our enterprise team about building a custom creative operation."
+        variant="split"
       />
     </Layout>
   );
