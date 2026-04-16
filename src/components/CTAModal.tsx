@@ -81,12 +81,12 @@ export default function CTAModal({ open, onClose }: CTAModalProps) {
           <div>
             <label htmlFor="cta-name" className="block text-sm font-medium text-foreground mb-1.5">Name *</label>
             <input id="cta-name" type="text" value={name} onChange={(e) => setName(e.target.value)} className={inputClass("name")} placeholder="Your name" />
-            {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name}</p>}
+            {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
           </div>
           <div>
             <label htmlFor="cta-email" className="block text-sm font-medium text-foreground mb-1.5">Email *</label>
             <input id="cta-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className={inputClass("email")} placeholder="you@company.com" />
-            {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email}</p>}
+            {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
           </div>
           <div>
             <label htmlFor="cta-company" className="block text-sm font-medium text-foreground mb-1.5">Company</label>
