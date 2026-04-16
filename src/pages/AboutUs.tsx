@@ -35,7 +35,7 @@ export default function AboutUs() {
         tagline="Our mission"
         title={<>We exist to <span className="heading-italic">unlock creative potential</span></>}
         description="Every ambitious marketing team hits the same wall: too many ideas, not enough capacity to execute them. The North exists to remove that wall entirely. We combine talented creatives with purpose-built technology to deliver a faster, more reliable, and higher-quality creative experience."
-        imageSrc="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+        imageSrc="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80"
         imageAlt="Team collaborating on creative strategy"
         bullets={[
           "Not an agency. Not freelancers. A new model entirely.",
@@ -62,7 +62,7 @@ export default function AboutUs() {
         title={<>Built on trust, <span className="heading-italic">transparency, and ambition</span></>}
         description="We believe great creative partnerships require radical transparency. Our clients see real-time progress, know exactly what they are paying, and have direct access to the people doing the work. No layers of account management. No hidden costs. No surprises."
         imagePosition="left"
-        imageSrc="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80"
+        imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
         imageAlt="Transparent collaboration and trust"
       />
 

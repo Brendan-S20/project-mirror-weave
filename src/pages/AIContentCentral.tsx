@@ -33,7 +33,7 @@ export default function AIContentCentral() {
         tagline="The technology advantage"
         title={<>Technology does not replace creatives. It <span className="heading-italic">unleashes</span> them.</>}
         description="At The North, we combine advanced tools with talented human creatives. The result: better creative, faster delivery, and lower costs. Smart workflows are built into every project, from brief to final asset."
-        imageSrc="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80"
+        imageSrc="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80"
         imageAlt="Smart creative tools in action"
         bullets={[
           "Accelerated ideation generates more concepts faster",
