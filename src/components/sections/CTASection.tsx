@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 interface CTASectionProps {
@@ -7,53 +8,94 @@ interface CTASectionProps {
   description?: string;
   ctaText?: string;
   ctaHref?: string;
-  variant?: "default" | "banner" | "minimal";
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+  variant?: "default" | "banner" | "split";
 }
 
 export default function CTASection({
   title,
-  description,
+  description = "Book a demo and see how Superside can transform your creative output.",
   ctaText = "Book a demo",
   ctaHref = "/pricing",
+  secondaryCtaText,
+  secondaryCtaHref,
   variant = "default",
 }: CTASectionProps) {
   const { ref, inView } = useInView();
 
   if (variant === "banner") {
     return (
-      <section className="section-padding py-12" ref={ref}>
-        <div className={`max-w-7xl mx-auto ${inView ? "animate-fade-up" : "opacity-0"}`}>
-          <div className="bg-primary rounded-3xl px-8 lg:px-16 py-12 lg:py-16 flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(72,100%,55%,0.3)] to-transparent opacity-50" />
-            <h2 className="text-2xl lg:text-4xl font-bold text-primary-foreground leading-tight relative z-10">{title}</h2>
-            <Link to={ctaHref} className="inline-flex items-center justify-center rounded-full bg-primary-foreground text-primary font-semibold px-8 py-3.5 text-sm transition-all hover:opacity-90 shrink-0 relative z-10">
-              {ctaText}
-            </Link>
+      <section className="section-padding py-12 lg:py-16" ref={ref}>
+        <div className={`max-w-7xl mx-auto ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
+          <div className="card-premium p-10 lg:p-14 relative overflow-hidden">
+            <div className="absolute inset-0 gradient-mesh-cta" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/[0.05] rounded-full blur-[80px]" />
+            <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+              <div>
+                <h2 className="text-2xl lg:text-4xl font-bold text-foreground">{title}</h2>
+                {description && <p className="text-muted-foreground mt-3 max-w-lg">{description}</p>}
+              </div>
+              <div className="flex items-center gap-4 shrink-0">
+                <Link to={ctaHref} className="btn-lime group">
+                  {ctaText}
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                {secondaryCtaText && secondaryCtaHref && (
+                  <Link to={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</Link>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </section>
     );
   }
 
-  if (variant === "minimal") {
+  if (variant === "split") {
     return (
-      <section className="section-padding py-16 lg:py-24 text-center" ref={ref}>
-        <div className={`max-w-2xl mx-auto ${inView ? "animate-fade-up" : "opacity-0"}`}>
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">{title}</h2>
-          {description && <p className="text-muted-foreground mb-8">{description}</p>}
-          <Link to={ctaHref} className="btn-lime">{ctaText}</Link>
+      <section className="section-padding py-20 lg:py-28 relative" ref={ref}>
+        <div className="absolute inset-0 gradient-mesh-cta" />
+        <div className={`max-w-7xl mx-auto relative z-10 ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
+          <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl lg:text-6xl font-bold text-foreground leading-[1.1]">{title}</h2>
+              {description && <p className="text-lg text-muted-foreground mt-5 max-w-lg">{description}</p>}
+            </div>
+            <div className="flex items-center gap-4 shrink-0">
+              <Link to={ctaHref} className="btn-lime-lg group">
+                {ctaText}
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
         </div>
+        <div className="divider-gradient mt-20" />
       </section>
     );
   }
 
   return (
-    <section className="section-padding py-20 lg:py-28 section-medium relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 gradient-mesh opacity-50" />
-      <div className={`max-w-7xl mx-auto text-center relative z-10 ${inView ? "animate-fade-up" : "opacity-0"}`}>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">{title}</h2>
-        {description && <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">{description}</p>}
-        <Link to={ctaHref} className="btn-lime animate-pulse-glow">{ctaText}</Link>
+    <section className="relative overflow-hidden" ref={ref}>
+      <div className="absolute inset-0 gradient-mesh-cta" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[120px]" />
+
+      <div className="section-padding py-24 lg:py-36 relative z-10">
+        <div className={`max-w-4xl mx-auto text-center ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-[1.1]">{title}</h2>
+          {description && (
+            <p className="text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto mb-10">{description}</p>
+          )}
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <Link to={ctaHref} className="btn-lime-lg animate-pulse-glow group">
+              {ctaText}
+              <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            {secondaryCtaText && secondaryCtaHref && (
+              <Link to={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</Link>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

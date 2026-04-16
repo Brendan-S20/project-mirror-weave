@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { useInView } from "@/hooks/useInView";
 
 interface Stat {
@@ -6,38 +7,51 @@ interface Stat {
 }
 
 interface StatsSectionProps {
-  title?: string;
+  title?: ReactNode;
+  description?: string;
   stats: Stat[];
-  variant?: "default" | "inline" | "cards";
+  variant?: "cards" | "inline" | "large";
 }
 
-export default function StatsSection({ title, stats, variant = "default" }: StatsSectionProps) {
+export default function StatsSection({ title, description, stats, variant = "cards" }: StatsSectionProps) {
   const { ref, inView } = useInView();
 
-  if (variant === "inline") {
+  if (variant === "large") {
     return (
-      <section className="section-padding py-12 border-y border-border/30" ref={ref}>
-        <div className={`max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-12 lg:gap-20 ${inView ? "stagger-children" : ""}`}>
-          {stats.map((s, i) => (
-            <div key={i} className={`text-center ${inView ? "animate-fade-up" : "opacity-0"}`}>
-              <div className="text-3xl lg:text-4xl font-bold text-primary">{s.value}</div>
-              <div className="text-sm text-muted-foreground mt-1">{s.label}</div>
+      <section className="section-padding py-24 lg:py-32 relative" ref={ref}>
+        <div className="absolute inset-0 gradient-mesh-section" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          {title && (
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-5xl font-bold text-foreground">{title}</h2>
+              {description && <p className="text-muted-foreground mt-4 max-w-xl mx-auto">{description}</p>}
             </div>
-          ))}
+          )}
+          <div className={`grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 ${inView ? 'stagger-children' : ''}`}>
+            {stats.map((s, i) => (
+              <div key={i} className={`text-center ${inView ? 'animate-count-up' : 'opacity-0'}`}>
+                <div className="text-5xl md:text-6xl lg:text-7xl font-black text-gradient tracking-tight mb-3">
+                  {s.value}
+                </div>
+                <div className="text-sm lg:text-base text-muted-foreground font-medium">{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     );
   }
 
-  if (variant === "cards") {
+  if (variant === "inline") {
     return (
-      <section className="section-padding py-16 lg:py-24" ref={ref}>
+      <section className="section-padding py-16 lg:py-20 border-y border-border/30" ref={ref}>
         <div className="max-w-7xl mx-auto">
-          {title && <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-12 text-center">{title}</h2>}
-          <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 ${inView ? "stagger-children" : ""}`}>
+          <div className={`flex flex-wrap justify-center gap-12 lg:gap-20 ${inView ? 'stagger-children' : ''}`}>
             {stats.map((s, i) => (
-              <div key={i} className={`card-elevated p-6 text-center hover:border-primary/20 transition-all ${inView ? "animate-fade-up" : "opacity-0"}`}>
-                <div className="text-3xl lg:text-5xl font-bold text-primary mb-2">{s.value}</div>
+              <div key={i} className={`text-center ${inView ? 'animate-count-up' : 'opacity-0'}`}>
+                <div className="text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-1">
+                  {s.value}
+                </div>
                 <div className="text-sm text-muted-foreground">{s.label}</div>
               </div>
             ))}
@@ -48,14 +62,22 @@ export default function StatsSection({ title, stats, variant = "default" }: Stat
   }
 
   return (
-    <section className="section-padding py-16 lg:py-24 section-medium" ref={ref}>
-      <div className="max-w-7xl mx-auto text-center">
-        {title && <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-12">{title}</h2>}
-        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-8 ${inView ? "stagger-children" : ""}`}>
+    <section className="section-padding py-20 lg:py-28 relative" ref={ref}>
+      <div className="absolute inset-0 gradient-mesh-section" />
+      <div className="max-w-7xl mx-auto relative z-10">
+        {title && (
+          <div className="text-center mb-14">
+            <h2 className="text-3xl lg:text-5xl font-bold text-foreground">{title}</h2>
+            {description && <p className="text-muted-foreground mt-4 max-w-xl mx-auto">{description}</p>}
+          </div>
+        )}
+        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 ${inView ? 'stagger-children' : ''}`}>
           {stats.map((s, i) => (
-            <div key={i} className={inView ? "animate-fade-up" : "opacity-0"}>
-              <div className="text-4xl lg:text-6xl font-bold text-primary">{s.value}</div>
-              <div className="text-sm text-muted-foreground mt-2">{s.label}</div>
+            <div key={i} className={`card-premium p-8 lg:p-10 text-center group ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
+              <div className="text-4xl lg:text-5xl font-black text-primary tracking-tight mb-3 group-hover:scale-105 transition-transform">
+                {s.value}
+              </div>
+              <div className="text-sm text-muted-foreground font-medium">{s.label}</div>
             </div>
           ))}
         </div>

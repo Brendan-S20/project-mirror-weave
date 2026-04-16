@@ -1,28 +1,30 @@
 import { logoCloudCompanies } from "@/data/testimonials";
+import { useInView } from "@/hooks/useInView";
 
 interface LogoCloudProps {
   title?: string;
   companies?: string[];
 }
 
-export default function LogoCloud({ title = "Trusted by 500+ of the world's biggest brands", companies = logoCloudCompanies }: LogoCloudProps) {
-  // Double the list for seamless marquee
+export default function LogoCloud({ title = "Trusted by the world's most ambitious brands", companies = logoCloudCompanies }: LogoCloudProps) {
+  const { ref, inView } = useInView();
   const doubled = [...companies, ...companies];
 
   return (
-    <section className="py-12 lg:py-16 overflow-hidden">
-      <p className="text-sm text-muted-foreground text-center mb-8">{title}</p>
+    <section className="py-14 lg:py-20 overflow-hidden border-y border-border/20" ref={ref}>
+      <div className={`text-center mb-10 ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/70">{title}</p>
+      </div>
       <div className="relative">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-        <div className="flex animate-marquee whitespace-nowrap">
-          {doubled.map((company, i) => (
-            <div
-              key={`${company}-${i}`}
-              className="inline-flex items-center justify-center mx-8 lg:mx-12 text-foreground/25 font-bold text-lg tracking-wide shrink-0 hover:text-foreground/40 transition-colors"
-            >
-              {company}
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+
+        <div className="flex animate-marquee">
+          {doubled.map((name, i) => (
+            <div key={i} className="flex items-center justify-center px-10 lg:px-14 shrink-0">
+              <span className="text-lg lg:text-xl font-bold text-foreground/20 whitespace-nowrap tracking-tight select-none hover:text-foreground/40 transition-colors duration-300">
+                {name}
+              </span>
             </div>
           ))}
         </div>

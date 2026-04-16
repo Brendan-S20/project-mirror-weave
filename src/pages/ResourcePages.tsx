@@ -3,9 +3,6 @@ import HeroSection from "@/components/sections/HeroSection";
 import FeatureSection from "@/components/sections/FeatureSection";
 import CTASection from "@/components/sections/CTASection";
 import FAQSection from "@/components/sections/FAQSection";
-import ImageTextSplit from "@/components/sections/ImageTextSplit";
-import LogoCloud from "@/components/sections/LogoCloud";
-import TestimonialSection from "@/components/sections/TestimonialSection";
 import { Link, useParams } from "react-router-dom";
 import { guides, playbooks, knowledgeArticles, events, reports } from "@/data/blogPosts";
 
@@ -23,7 +20,7 @@ export function LearnIndex() {
             { title: "Knowledge Base", href: "/knowledge", desc: "Tips and tutorials" },
             { title: "Events", href: "/events", desc: "Webinars and summits" },
           ].map((r) => (
-            <Link key={r.href} to={r.href} className="card-elevated p-8 hover:border-primary/30 transition-all">
+            <Link key={r.href} to={r.href} className="card-elevated-hover p-8 block">
               <h3 className="text-lg font-semibold text-foreground mb-2">{r.title}</h3>
               <p className="text-sm text-muted-foreground">{r.desc}</p>
             </Link>
@@ -37,13 +34,16 @@ export function LearnIndex() {
 function ResourceListPage({ title, description, items, basePath }: { title: string; description: string; items: { slug: string; title: string; description: string }[]; basePath: string }) {
   return (
     <Layout title={title} description={description}>
-      <section className="section-padding py-20 lg:py-28">
+      <section className="section-padding py-24 lg:py-32">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-4">{title}</h1>
-          <p className="text-lg text-muted-foreground mb-12">{description}</p>
+          <div className="max-w-2xl mb-14">
+            <span className="badge-pill mb-6">{title}</span>
+            <h1 className="text-4xl lg:text-6xl font-bold text-foreground mt-4 mb-4">{title}</h1>
+            <p className="text-lg text-muted-foreground">{description}</p>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((item) => (
-              <Link key={item.slug} to={`${basePath}/${item.slug}`} className="card-elevated p-8 hover:border-primary/30 transition-all">
+              <Link key={item.slug} to={`${basePath}/${item.slug}`} className="card-elevated-hover p-8 block">
                 <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
               </Link>
@@ -51,7 +51,7 @@ function ResourceListPage({ title, description, items, basePath }: { title: stri
           </div>
         </div>
       </section>
-      <CTASection title={<>Want to learn more? <span className="heading-italic">Let's talk.</span></>} variant="minimal" />
+      <CTASection title={<>Want to learn more? <span className="heading-italic">Let's talk.</span></>} />
     </Layout>
   );
 }
@@ -62,16 +62,19 @@ function ResourceDetailPage({ basePath, items, category }: { basePath: string; i
   if (!item) return <Layout title="Not Found"><div className="section-padding py-32 text-center"><h1 className="text-4xl font-bold text-foreground">Not found</h1></div></Layout>;
   return (
     <Layout title={item.title} description={item.description}>
-      <section className="section-padding py-20 lg:py-28">
+      <section className="section-padding py-24 lg:py-32">
         <div className="max-w-3xl mx-auto">
-          <Link to={basePath} className="text-sm text-primary hover:underline mb-4 block">← Back to {category}</Link>
-          <h1 className="text-3xl lg:text-5xl font-bold text-foreground mb-4">{item.title}</h1>
-          <p className="text-lg text-muted-foreground mb-10">{item.description}</p>
-          <div className="aspect-[2/1] rounded-xl bg-surface-elevated mb-10" />
-          <p className="text-muted-foreground leading-relaxed">Full content for this resource would appear here in a production environment.</p>
+          <Link to={basePath} className="text-sm text-primary hover:underline mb-6 block">← Back to {category}</Link>
+          <span className="badge-pill mb-4">{category}</span>
+          <h1 className="text-3xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight">{item.title}</h1>
+          <p className="text-lg text-muted-foreground mb-12">{item.description}</p>
+          <div className="aspect-[2/1] rounded-2xl bg-[hsl(var(--surface-elevated))] mb-12 relative overflow-hidden">
+            <div className="absolute inset-0 gradient-mesh" />
+          </div>
+          <p className="text-muted-foreground leading-relaxed">Full content for this resource would appear here in production.</p>
         </div>
       </section>
-      <CTASection title={<>Put these insights into <span className="heading-italic">action</span></>} variant="minimal" />
+      <CTASection title={<>Put these insights into <span className="heading-italic">action</span></>} />
     </Layout>
   );
 }
@@ -88,15 +91,18 @@ export function ReportPage() { return <ResourceDetailPage basePath="/reports" it
 export function EventsIndex() {
   return (
     <Layout title="Events" description="Webinars, summits, and live events from Superside.">
-      <section className="section-padding py-20 lg:py-28">
+      <section className="section-padding py-24 lg:py-32">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-4">Events</h1>
-          <p className="text-lg text-muted-foreground mb-12">Webinars, summits, and live events.</p>
+          <div className="max-w-2xl mb-14">
+            <span className="badge-pill mb-6">Events</span>
+            <h1 className="text-4xl lg:text-6xl font-bold text-foreground mt-4 mb-4">Events</h1>
+            <p className="text-lg text-muted-foreground">Webinars, summits, and live conversations with creative leaders.</p>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
             {events.map((event) => (
-              <Link key={event.slug} to={`/events/${event.slug}`} className="card-elevated p-8 hover:border-primary/30 transition-all">
-                <span className="text-xs text-primary font-medium">{event.date}</span>
-                <h3 className="text-xl font-semibold text-foreground mt-2 mb-2">{event.title}</h3>
+              <Link key={event.slug} to={`/events/${event.slug}`} className="card-elevated-hover p-8 block">
+                <span className="text-xs text-primary font-semibold">{event.date}</span>
+                <h3 className="text-xl font-bold text-foreground mt-3 mb-2">{event.title}</h3>
                 <p className="text-sm text-muted-foreground">{event.description}</p>
               </Link>
             ))}
@@ -114,7 +120,7 @@ export function EventPage() {
   return (
     <Layout title={event.title} description={event.description}>
       <HeroSection tagline={event.date} title={<>{event.title}</>} description={event.description} variant="centered" />
-      <CTASection title={<>Don't miss our next <span className="heading-italic">event</span></>} variant="minimal" />
+      <CTASection title={<>Don't miss our next <span className="heading-italic">event</span></>} />
     </Layout>
   );
 }
@@ -122,7 +128,7 @@ export function EventPage() {
 export function FAQPage() {
   return (
     <Layout title="FAQ" description="Frequently asked questions about Superside.">
-      <section className="section-padding py-20"><div className="max-w-3xl mx-auto"><h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-12 text-center">FAQ</h1></div></section>
+      <section className="section-padding py-24"><div className="max-w-3xl mx-auto text-center"><span className="badge-pill mb-6">FAQ</span><h1 className="text-4xl lg:text-6xl font-bold text-foreground mt-4">Frequently asked questions</h1></div></section>
       <FAQSection items={[
         { question: "What is Superside?", answer: "Superside is an always-on creative service that combines top global creative talent with AI-powered workflows to deliver enterprise-grade creative at scale." },
         { question: "How does pricing work?", answer: "Superside offers subscription-based pricing with predictable monthly costs. Contact our team for a custom quote based on your needs." },
@@ -133,16 +139,15 @@ export function FAQPage() {
         { question: "How do you ensure quality?", answer: "Multi-layer review processes, brand consistency checks, and AI-powered quality assurance ensure every deliverable exceeds expectations." },
         { question: "Can I scale up or down?", answer: "Absolutely. Superside is designed to flex with your needs. Scale creative capacity up during peak periods and back down when things quiet." },
       ]} />
-      <CTASection title={<>Still have questions? <span className="heading-italic">Let's talk.</span></>} variant="minimal" />
+      <CTASection title={<>Still have questions? <span className="heading-italic">Let's talk.</span></>} />
     </Layout>
   );
 }
 
-// Simple static pages
 export function PrivacyPage() {
   return (
     <Layout title="Privacy Policy" description="Superside privacy policy.">
-      <section className="section-padding py-20 lg:py-28"><div className="max-w-3xl mx-auto">
+      <section className="section-padding py-24 lg:py-32"><div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-foreground mb-8">Privacy Policy</h1>
         <div className="text-muted-foreground space-y-4 leading-relaxed">
           <p>Last updated: April 2026</p>
@@ -162,7 +167,7 @@ export function PrivacyPage() {
 export function TermsPage() {
   return (
     <Layout title="Terms of Use" description="Superside terms of use.">
-      <section className="section-padding py-20 lg:py-28"><div className="max-w-3xl mx-auto">
+      <section className="section-padding py-24 lg:py-32"><div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-foreground mb-8">Terms of Use</h1>
         <div className="text-muted-foreground space-y-4 leading-relaxed">
           <p>Last updated: April 2026</p>
@@ -194,7 +199,7 @@ export function TrustCenterPage() {
 export function BugBountyPage() {
   return (
     <Layout title="Bug Bounty Program" description="Superside's responsible disclosure and bug bounty program.">
-      <section className="section-padding py-20 lg:py-28"><div className="max-w-3xl mx-auto">
+      <section className="section-padding py-24 lg:py-32"><div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-foreground mb-8">Bug Bounty Program</h1>
         <div className="text-muted-foreground space-y-4 leading-relaxed">
           <p>We value the security community's efforts in helping keep Superside and our customers safe. If you've found a security vulnerability, we want to hear from you.</p>

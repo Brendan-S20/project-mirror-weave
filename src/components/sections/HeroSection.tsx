@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 interface HeroSectionProps {
   tagline?: string;
@@ -26,60 +27,126 @@ export default function HeroSection({
 }: HeroSectionProps) {
   if (variant === "centered") {
     return (
-      <section className="section-dark section-padding py-24 lg:py-36 relative overflow-hidden gradient-mesh-hero">
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          {tagline && (
-            <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary/80 mb-6 animate-fade-up">
-              {tagline}
-            </span>
-          )}
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6 animate-fade-up" style={{ animationDelay: '100ms' }}>
-            {title}
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: '200ms' }}>
-            {description}
-          </p>
-          <div className="flex items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: '300ms' }}>
-            <Link to={ctaHref} className="btn-lime animate-pulse-glow">{ctaText}</Link>
-            {secondaryCtaText && secondaryCtaHref && (
-              <Link to={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</Link>
+      <section className="relative overflow-hidden gradient-mesh-hero">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.03] blur-[120px]" />
+        
+        <div className="section-padding py-28 lg:py-44 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            {tagline && (
+              <span className="badge-pill mb-8 animate-fade-up">
+                {tagline}
+              </span>
+            )}
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl heading-display text-foreground mb-8 animate-fade-up" style={{ animationDelay: '80ms' }}>
+              {title}
+            </h1>
+            <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-up" style={{ animationDelay: '160ms' }}>
+              {description}
+            </p>
+            <div className="flex items-center justify-center gap-4 flex-wrap animate-fade-up" style={{ animationDelay: '240ms' }}>
+              <Link to={ctaHref} className="btn-lime-lg animate-pulse-glow group">
+                {ctaText}
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              {secondaryCtaText && secondaryCtaHref && (
+                <Link to={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</Link>
+              )}
+            </div>
+            {children && (
+              <div className="mt-20 animate-fade-up" style={{ animationDelay: '320ms' }}>
+                {children}
+              </div>
             )}
           </div>
-          {children}
         </div>
+        
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
     );
   }
 
+  if (variant === "split") {
+    return (
+      <section className="relative overflow-hidden gradient-mesh-hero">
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        
+        <div className="section-padding py-24 lg:py-36 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
+              <div className="lg:w-[55%] shrink-0">
+                {tagline && (
+                  <span className="badge-pill mb-8 animate-fade-up">
+                    {tagline}
+                  </span>
+                )}
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl heading-display text-foreground mb-8 animate-fade-up" style={{ animationDelay: '80ms' }}>
+                  {title}
+                </h1>
+                <p className="text-lg lg:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed animate-fade-up" style={{ animationDelay: '160ms' }}>
+                  {description}
+                </p>
+                <div className="flex items-center gap-4 flex-wrap animate-fade-up" style={{ animationDelay: '240ms' }}>
+                  <Link to={ctaHref} className="btn-lime-lg animate-pulse-glow group">
+                    {ctaText}
+                    <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  {secondaryCtaText && secondaryCtaHref && (
+                    <Link to={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</Link>
+                  )}
+                </div>
+              </div>
+              {children && (
+                <div className="lg:w-[45%] animate-fade-up" style={{ animationDelay: '300ms' }}>
+                  {children}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+      </section>
+    );
+  }
+
+  // Default variant
   return (
-    <section className="section-dark section-padding py-20 lg:py-32 relative overflow-hidden gradient-mesh-hero">
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className={`flex flex-col ${variant === "split" ? "lg:flex-row lg:items-center gap-12 lg:gap-20" : "gap-8"}`}>
-          <div className={variant === "split" ? "lg:w-1/2" : "max-w-3xl"}>
+    <section className="relative overflow-hidden gradient-mesh-hero">
+      <div className="absolute inset-0 grid-pattern opacity-20" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/[0.04] blur-[100px]" />
+      
+      <div className="section-padding py-24 lg:py-40 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-4xl">
             {tagline && (
-              <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary/80 mb-6 animate-fade-up">
+              <span className="badge-pill mb-8 animate-fade-up">
                 {tagline}
               </span>
             )}
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6 animate-fade-up" style={{ animationDelay: '100ms' }}>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl heading-display text-foreground mb-8 animate-fade-up" style={{ animationDelay: '80ms' }}>
               {title}
             </h1>
-            <p className="text-lg text-muted-foreground max-w-xl mb-10 animate-fade-up" style={{ animationDelay: '200ms' }}>
+            <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mb-12 leading-relaxed animate-fade-up" style={{ animationDelay: '160ms' }}>
               {description}
             </p>
-            <div className="flex items-center gap-4 flex-wrap animate-fade-up" style={{ animationDelay: '300ms' }}>
-              <Link to={ctaHref} className="btn-lime animate-pulse-glow">{ctaText}</Link>
+            <div className="flex items-center gap-4 flex-wrap animate-fade-up" style={{ animationDelay: '240ms' }}>
+              <Link to={ctaHref} className="btn-lime-lg animate-pulse-glow group">
+                {ctaText}
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
               {secondaryCtaText && secondaryCtaHref && (
                 <Link to={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</Link>
               )}
             </div>
           </div>
-          {variant === "split" && children && (
-            <div className="lg:w-1/2 animate-fade-up" style={{ animationDelay: '400ms' }}>{children}</div>
-          )}
+          {children && <div className="mt-20 animate-fade-up" style={{ animationDelay: '400ms' }}>{children}</div>}
         </div>
-        {variant === "default" && children && <div className="mt-16 animate-fade-up" style={{ animationDelay: '400ms' }}>{children}</div>}
       </div>
+      
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 }
