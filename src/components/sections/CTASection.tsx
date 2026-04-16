@@ -1,13 +1,12 @@
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { useCTAModal } from "@/contexts/CTAContext";
 
 interface CTASectionProps {
   title: ReactNode;
   description?: string;
   ctaText?: string;
-  ctaHref?: string;
   secondaryCtaText?: string;
   secondaryCtaHref?: string;
   variant?: "default" | "banner" | "split";
@@ -15,14 +14,14 @@ interface CTASectionProps {
 
 export default function CTASection({
   title,
-  description = "Book a demo and see how Superside can transform your creative output.",
+  description = "Book a demo and see how The North can transform your creative output.",
   ctaText = "Book a demo",
-  ctaHref = "/pricing",
   secondaryCtaText,
   secondaryCtaHref,
   variant = "default",
 }: CTASectionProps) {
   const { ref, inView } = useInView();
+  const { openModal } = useCTAModal();
 
   if (variant === "banner") {
     return (
@@ -37,13 +36,10 @@ export default function CTASection({
                 {description && <p className="text-muted-foreground mt-3 max-w-lg">{description}</p>}
               </div>
               <div className="flex items-center gap-4 shrink-0">
-                <Link to={ctaHref} className="btn-lime group">
+                <button onClick={openModal} className="btn-lime group">
                   {ctaText}
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-                {secondaryCtaText && secondaryCtaHref && (
-                  <Link to={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</Link>
-                )}
+                </button>
               </div>
             </div>
           </div>
@@ -63,10 +59,10 @@ export default function CTASection({
               {description && <p className="text-lg text-muted-foreground mt-5 max-w-lg">{description}</p>}
             </div>
             <div className="flex items-center gap-4 shrink-0">
-              <Link to={ctaHref} className="btn-lime-lg group">
+              <button onClick={openModal} className="btn-lime-lg group">
                 {ctaText}
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -87,13 +83,10 @@ export default function CTASection({
             <p className="text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto mb-10">{description}</p>
           )}
           <div className="flex items-center justify-center gap-4 flex-wrap">
-            <Link to={ctaHref} className="btn-lime-lg animate-pulse-glow group">
+            <button onClick={openModal} className="btn-lime-lg animate-pulse-glow group">
               {ctaText}
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            {secondaryCtaText && secondaryCtaHref && (
-              <Link to={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</Link>
-            )}
+            </button>
           </div>
         </div>
       </div>
