@@ -1,55 +1,55 @@
 import { Link } from "react-router-dom";
-import { type BlogPost } from "@/data/blogPosts";
-import { useInView } from "@/hooks/useInView";
 import { ArrowRight } from "lucide-react";
-
-export function BlogCard({ post }: { post: BlogPost }) {
-  return (
-    <Link to={`/blog/${post.slug}`} className="group block">
-      <div className="aspect-[16/10] rounded-xl bg-[hsl(var(--surface-elevated))] mb-4 overflow-hidden relative">
-        <div className="w-full h-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-          <span className="text-xs text-muted-foreground">{post.category}</span>
-        </div>
-        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-      </div>
-      <div className="flex items-center gap-2 mb-2">
-        <span className="text-xs font-medium text-primary">{post.category}</span>
-        <span className="text-xs text-muted-foreground">{post.readTime}</span>
-      </div>
-      <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-2 leading-snug">
-        {post.title}
-      </h3>
-      <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
-    </Link>
-  );
-}
+import { useInView } from "@/hooks/useInView";
+import type { BlogPost } from "@/data/blogPosts";
 
 interface BlogGridProps {
   posts: BlogPost[];
   title?: string;
-  columns?: 2 | 3 | 4;
+  description?: string;
+  columns?: 2 | 3;
+  showViewAll?: boolean;
 }
 
-export default function BlogGrid({ posts, title, columns = 3 }: BlogGridProps) {
+export default function BlogGrid({ posts, title, description, columns = 3, showViewAll = true }: BlogGridProps) {
   const { ref, inView } = useInView();
-  const colsClass = columns === 2 ? "lg:grid-cols-2" : columns === 4 ? "grid-cols-2 lg:grid-cols-4" : "md:grid-cols-2 lg:grid-cols-3";
+  const colClass = columns === 2 ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-3";
 
   return (
-    <section className="section-padding py-20 lg:py-28" ref={ref}>
+    <section className="section-padding py-20 lg:py-28 relative" ref={ref}>
       <div className="max-w-7xl mx-auto">
         {title && (
-          <div className="flex items-center justify-between mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">{title}</h2>
-            <Link to="/blog" className="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-              View all <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground">{title}</h2>
+              {description && <p className="text-muted-foreground mt-3 max-w-xl">{description}</p>}
+            </div>
+            {showViewAll && (
+              <Link to="/blog" className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all shrink-0">
+                View all posts <ArrowRight className="w-4 h-4" />
+              </Link>
+            )}
           </div>
         )}
-        <div className={`grid ${colsClass} gap-8 ${inView ? "stagger-children" : ""}`}>
+        <div className={`grid ${colClass} gap-6 ${inView ? 'stagger-children' : ''}`}>
           {posts.map((post) => (
-            <div key={post.slug} className={inView ? "animate-fade-up" : "opacity-0"}>
-              <BlogCard post={post} />
-            </div>
+            <Link key={post.slug} to={`/blog/${post.slug}`} className={`group block ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
+              <div className="aspect-[16/10] rounded-xl bg-[hsl(var(--surface-elevated))] mb-5 overflow-hidden border border-border/30 group-hover:border-primary/30 transition-all relative">
+                <div className="absolute inset-0 gradient-mesh" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-muted-foreground/20 text-sm font-semibold">{post.category}</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-xs font-semibold text-primary">{post.category}</span>
+                <span className="w-1 h-1 rounded-full bg-border" />
+                <span className="text-xs text-muted-foreground">{post.readTime}</span>
+              </div>
+              <h3 className="font-bold text-foreground group-hover:text-primary transition-colors text-lg leading-snug mb-2">
+                {post.title}
+              </h3>
+              <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
+            </Link>
           ))}
         </div>
       </div>
