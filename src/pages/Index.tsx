@@ -61,7 +61,7 @@ export default function Index() {
         tagline="Why The North"
         title={<>Stop choosing between <span className="heading-italic">speed, quality, and cost</span></>}
         description="Traditional creative models force trade-offs. The North eliminates them. Get the creative depth of a top agency, the flexibility of freelancers, and the brand consistency of an in-house team. All in one subscription."
-        imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+        imageSrc="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
         imageAlt="Creative team collaborating on brand project"
         bullets={[
           "Vetted creative talent from around the world",
@@ -101,7 +101,7 @@ export default function Index() {
         title={<>Human creativity <span className="heading-italic">amplified by technology</span></>}
         description="Our teams use advanced tools to work smarter, not harder. The result: stronger concepts, faster production, and more room for the strategic thinking that drives real business outcomes."
         imagePosition="left"
-        imageSrc="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80"
+        imageSrc="https://images.unsplash.com/photo-1581291518633-83b4eef1d2fa?w=800&q=80"
         imageAlt="Modern digital workspace with creative tools"
         bullets={[
           "Smart ideation workflows for faster concepting",
