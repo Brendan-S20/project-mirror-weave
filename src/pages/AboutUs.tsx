@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import heroImg from "@/assets/hero-abstract-2.jpg";
 import HeroSection from "@/components/sections/HeroSection";
 import LogoCloud from "@/components/sections/LogoCloud";
 import ImageTextSplit from "@/components/sections/ImageTextSplit";
@@ -16,7 +17,7 @@ export default function AboutUs() {
         description="The only creative service where enterprise teams get the top 1% of global talent, powered by AI, plugged directly into their workflows."
         variant="split"
       >
-        <div className="aspect-[4/3] rounded-2xl bg-surface-elevated" />
+        <img src={heroImg} alt="About Superside creative team" className="rounded-2xl w-full h-full object-cover" width={1280} height={960} />
       </HeroSection>
 
       <LogoCloud />

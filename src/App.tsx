@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Pricing from "./pages/Pricing";
+import AIContentCentral from "./pages/AIContentCentral";
 import AboutUs from "./pages/AboutUs";
 import OurWork from "./pages/OurWork";
 import Enterprise from "./pages/Enterprise";
@@ -86,6 +87,7 @@ const App = () => (
             <Route path="/events" element={<EventsIndex />} />
             <Route path="/events/:slug" element={<EventPage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/ai-content-central" element={<AIContentCentral />} />
 
             {/* Company */}
             <Route path="/our-creative-talent" element={<OurCreativeTalent />} />

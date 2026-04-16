@@ -22,11 +22,13 @@ export default function Index() {
           </>
         }
         description="Scale your in-house creative team with top global talent powered by industry-leading AI workflows, delivering anything you can imagine fast and affordably."
+        secondaryCtaText="See our work"
+        secondaryCtaHref="/our-work"
       >
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 stagger-children">
           {["Brand Campaign", "Social Ads", "Product Launch", "Video Content", "Web Design", "Packaging", "Motion Graphics", "Presentations"].map((item) => (
-            <div key={item} className="aspect-square rounded-xl bg-surface-elevated flex items-center justify-center p-4 hover:border-primary/30 border border-border/30 transition-all">
-              <span className="text-xs text-muted-foreground text-center">{item}</span>
+            <div key={item} className="aspect-square rounded-xl bg-[hsl(var(--surface-elevated))] flex items-center justify-center p-4 hover:border-primary/30 border border-border/30 transition-all duration-300 animate-fade-up group cursor-pointer">
+              <span className="text-xs text-muted-foreground text-center group-hover:text-foreground transition-colors">{item}</span>
             </div>
           ))}
         </div>

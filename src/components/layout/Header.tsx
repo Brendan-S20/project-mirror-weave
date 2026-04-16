@@ -1,28 +1,28 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { mainNavItems, type NavItem } from "@/data/navigation";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 
 const MegaMenu = ({ item, onClose }: { item: NavItem; onClose: () => void }) => {
   if (!item.children) return null;
   return (
-    <div className="absolute top-full left-0 w-full bg-card border-b border-border/50 shadow-2xl z-50">
+    <div className="absolute top-full left-0 w-full bg-card/95 backdrop-blur-xl border-b border-border/50 shadow-2xl z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-8 py-10">
         <div className="grid grid-cols-3 gap-10">
           {item.children.map((group, i) => (
             <div key={i}>
               {group.title && (
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+                <h3 className="text-xs font-semibold uppercase tracking-widest text-primary/70 mb-4">
                   {group.title}
                 </h3>
               )}
-              <ul className="space-y-2">
+              <ul className="space-y-1.5">
                 {group.items.map((link) => (
                   <li key={link.href}>
                     <Link
                       to={link.href}
                       onClick={onClose}
-                      className="group flex flex-col py-1.5 rounded-lg transition-colors hover:text-primary"
+                      className="group flex flex-col py-1.5 px-3 -mx-3 rounded-lg transition-all hover:bg-[hsl(var(--surface-elevated))]"
                     >
                       <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                         {link.label}
@@ -45,9 +45,10 @@ const MegaMenu = ({ item, onClose }: { item: NavItem; onClose: () => void }) => 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/30">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/20">
       <nav className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
@@ -58,22 +59,25 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-1">
-          {mainNavItems.map((item) => (
-            <div
-              key={item.label}
-              className="relative"
-              onMouseEnter={() => item.children && setOpenMenu(item.label)}
-              onMouseLeave={() => setOpenMenu(null)}
-            >
-              <Link
-                to={item.href}
-                className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+          {mainNavItems.map((item) => {
+            const isActive = location.pathname === item.href || location.pathname.startsWith(item.href + "/");
+            return (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => item.children && setOpenMenu(item.label)}
+                onMouseLeave={() => setOpenMenu(null)}
               >
-                {item.label}
-                {item.children && <ChevronDown className="w-3.5 h-3.5 opacity-50" />}
-              </Link>
-            </div>
-          ))}
+                <Link
+                  to={item.href}
+                  className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${isActive ? "text-primary" : "text-foreground/70 hover:text-foreground"}`}
+                >
+                  {item.label}
+                  {item.children && <ChevronDown className={`w-3.5 h-3.5 opacity-50 transition-transform ${openMenu === item.label ? "rotate-180" : ""}`} />}
+                </Link>
+              </div>
+            );
+          })}
         </div>
 
         {/* CTA Buttons */}
@@ -113,7 +117,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border max-h-[80vh] overflow-y-auto animate-fade-in">
           <div className="px-6 py-6 space-y-4">
             {mainNavItems.map((item) => (
               <div key={item.label}>
