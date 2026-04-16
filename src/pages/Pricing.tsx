@@ -6,11 +6,11 @@ import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 import TestimonialSection from "@/components/sections/TestimonialSection";
 import StatsSection from "@/components/sections/StatsSection";
-import ImageTextSplit from "@/components/sections/ImageTextSplit";
 import ComparisonSection from "@/components/sections/ComparisonSection";
 import { Link } from "react-router-dom";
 import { Check, ArrowRight, Zap, Users, Brain, Shield, BarChart3, Layers } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { useCTAModal } from "@/contexts/CTAContext";
 
 const includedFeatures = [
   "Dedicated creative team and project manager",
@@ -38,10 +38,10 @@ const planBenefits = [
 export default function Pricing() {
   const { ref: planRef, inView: planInView } = useInView();
   const { ref: benefitsRef, inView: benefitsInView } = useInView();
+  const { openModal } = useCTAModal();
 
   return (
     <Layout title="Pricing" description="Predictable subscription pricing for enterprise creative at scale. Proven 471% ROI.">
-      {/* Hero */}
       <HeroSection
         tagline="Pricing"
         title={<>Take creative from backlog to brand-building, <span className="heading-italic">3x faster</span></>}
@@ -52,27 +52,24 @@ export default function Pricing() {
 
       <LogoCloud />
 
-      {/* Value Props */}
       <section className="section-padding py-20 lg:py-28 relative" ref={benefitsRef}>
         <div className="absolute inset-0 gradient-mesh-section" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row gap-16 lg:gap-20">
-            {/* Left: headline */}
             <div className="lg:w-2/5 shrink-0">
-              <span className="badge-pill mb-6">Why Superside</span>
+              <span className="badge-pill mb-6">Why The North</span>
               <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-4 leading-tight">
                 One strategic partner. <span className="heading-italic">Every department covered.</span>
               </h2>
               <p className="text-lg text-muted-foreground mt-6 leading-relaxed">
-                Stop juggling multiple vendors, freelancers, and hiring pipelines. One Superside subscription gives you a complete creative team that scales with your ambitions.
+                Stop juggling multiple vendors, freelancers, and hiring pipelines. One subscription gives you a complete creative team that scales with your ambitions.
               </p>
-              <Link to="/pricing" className="btn-lime mt-8 group">
+              <button onClick={openModal} className="btn-lime mt-8 group">
                 Talk to sales
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </button>
             </div>
 
-            {/* Right: benefit grid */}
             <div className={`lg:w-3/5 grid sm:grid-cols-2 gap-5 ${benefitsInView ? 'stagger-children' : ''}`}>
               {planBenefits.map((b, i) => (
                 <div key={i} className={`card-elevated-hover p-6 lg:p-7 group ${benefitsInView ? 'animate-fade-up' : 'opacity-0'}`}>
@@ -88,12 +85,10 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* Included Features Card */}
       <section className="section-padding py-20 lg:py-28 relative" ref={planRef}>
         <div className="absolute inset-0 bg-[hsl(var(--surface-subtle))]" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left: plan card */}
             <div className={`card-premium p-10 lg:p-14 ${planInView ? 'animate-fade-up' : 'opacity-0'}`}>
               <div className="inline-flex items-center rounded-full bg-primary/10 text-primary text-xs font-bold px-3 py-1 mb-6">
                 Included in plan
@@ -114,7 +109,6 @@ export default function Pricing() {
               </div>
             </div>
 
-            {/* Right: CTA block */}
             <div className={`${planInView ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground leading-tight mb-6">
                 Custom pricing built around <span className="heading-italic">your creative volume</span>
@@ -131,10 +125,10 @@ export default function Pricing() {
                 ))}
               </ul>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/pricing" className="btn-lime-lg group">
+                <button onClick={openModal} className="btn-lime-lg group">
                   Get a custom quote
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </Link>
+                </button>
                 <Link to="/enterprise" className="btn-outline-light">
                   Enterprise plans
                 </Link>
@@ -144,7 +138,6 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* Stats */}
       <StatsSection
         title="Proven results, not promises"
         stats={[
@@ -156,19 +149,16 @@ export default function Pricing() {
         variant="large"
       />
 
-      {/* Comparison */}
       <ComparisonSection />
 
-      {/* Mid-page CTA */}
       <CTASection
         title={<>Your creative budget deserves <span className="heading-italic">better ROI</span></>}
-        description="See how Superside delivers 471% ROI while cutting production costs by 70%."
+        description="See how The North delivers 471% ROI while cutting production costs by 70%."
         variant="banner"
       />
 
       <TestimonialSection variant="featured" />
 
-      {/* How it works */}
       <FeatureSection
         tagline="How it works"
         title={<>From brief to brilliant <span className="heading-italic">in three steps</span></>}
@@ -182,9 +172,9 @@ export default function Pricing() {
 
       <FAQSection
         items={[
-          { question: "How does Superside's pricing work?", answer: "Superside operates on a subscription model with predictable monthly pricing. Your subscription includes a dedicated creative team, project management, our full platform, and access to 100+ creative specialties. Pricing scales based on your volume." },
+          { question: "How does The North's pricing work?", answer: "The North operates on a subscription model with predictable monthly pricing. Your subscription includes a dedicated creative team, project management, our full platform, and access to 100+ creative specialties. Pricing scales based on your volume." },
           { question: "What's included in my subscription?", answer: "Everything you need: dedicated creatives, a project manager, unlimited users, asset storage, AI-powered briefing and QA tools, creative analytics, and the ability to roll over unused budget month to month." },
-          { question: "Can I scale up or down?", answer: "Yes. Superside is built to flex. Increase capacity during product launches or peak campaign periods, then scale back when things slow down. You can also add short-term burst capacity for one-off projects." },
+          { question: "Can I scale up or down?", answer: "Yes. The North is built to flex. Increase capacity during product launches or peak campaign periods, then scale back when things slow down. You can also add short-term burst capacity for one-off projects." },
           { question: "How fast is delivery?", answer: "Most projects deliver 3x faster than traditional agencies. Turnaround depends on complexity, but our AI-powered workflows and always-on teams ensure consistently fast execution." },
           { question: "Is there a minimum commitment?", answer: "We offer flexible engagement terms designed to fit your needs. Contact our team to discuss the best option for your organization and creative volume." },
           { question: "Do you offer a trial or pilot?", answer: "We offer pilot programs so you can experience our quality, speed, and collaboration model before committing to a longer engagement. Most teams see value within the first two weeks." },
@@ -193,7 +183,7 @@ export default function Pricing() {
 
       <CTASection
         title={<>Start scaling your <span className="heading-italic">creative today</span></>}
-        description="Get a custom quote and see why 500+ companies chose Superside over agencies, freelancers, and hiring."
+        description="Get a custom quote and see why 500+ companies chose The North over agencies, freelancers, and hiring."
         variant="split"
       />
     </Layout>

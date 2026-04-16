@@ -15,7 +15,6 @@ import { blogPosts } from "@/data/blogPosts";
 export default function Index() {
   return (
     <Layout>
-      {/* ─── Hero ─── */}
       <HeroSection
         variant="split"
         title={
@@ -45,10 +44,8 @@ export default function Index() {
         </div>
       </HeroSection>
 
-      {/* ─── Logo Cloud ─── */}
       <LogoCloud />
 
-      {/* ─── Stats ─── */}
       <StatsSection
         title="The numbers speak for themselves"
         stats={[
@@ -60,11 +57,10 @@ export default function Index() {
         variant="large"
       />
 
-      {/* ─── Why Superside: Split ─── */}
       <ImageTextSplit
-        tagline="Why Superside"
+        tagline="Why The North"
         title={<>Stop choosing between <span className="heading-italic">speed, quality, and cost</span></>}
-        description="Traditional creative models force trade-offs. Superside eliminates them. Get the creative depth of a top agency, the flexibility of freelancers, and the brand consistency of an in-house team. All in one subscription."
+        description="Traditional creative models force trade-offs. The North eliminates them. Get the creative depth of a top agency, the flexibility of freelancers, and the brand consistency of an in-house team. All in one subscription."
         bullets={[
           "Top 1% creative talent, vetted from 120+ countries",
           "AI-enhanced workflows that cut production time in half",
@@ -73,7 +69,6 @@ export default function Index() {
         ]}
       />
 
-      {/* ─── How It Works: List variant ─── */}
       <FeatureSection
         tagline="How it works"
         title={<>From brief to brilliant <span className="heading-italic">in three steps</span></>}
@@ -85,14 +80,12 @@ export default function Index() {
         ]}
       />
 
-      {/* ─── Mid-page CTA banner ─── */}
       <CTASection
         title={<>Your brand deserves <span className="heading-italic">better creative</span></>}
-        description="See why 500+ companies trust Superside to deliver world-class creative at scale."
+        description="See why 500+ companies trust The North to deliver world-class creative at scale."
         variant="banner"
       />
 
-      {/* ─── Services ─── */}
       <ServiceGrid
         services={services.slice(0, 6)}
         title="Every creative discipline, one subscription"
@@ -101,7 +94,6 @@ export default function Index() {
         columns={3}
       />
 
-      {/* ─── AI Split (reversed) ─── */}
       <ImageTextSplit
         tagline="AI-Powered Creative"
         title={<>Human creativity <span className="heading-italic">amplified by AI</span></>}
@@ -115,19 +107,15 @@ export default function Index() {
         ]}
       />
 
-      {/* ─── Comparison ─── */}
       <ComparisonSection />
 
-      {/* ─── Testimonials ─── */}
       <TestimonialSection variant="featured" />
 
-      {/* ─── Blog ─── */}
       <BlogGrid posts={blogPosts.slice(0, 3)} title="Latest thinking" description="Perspectives from the team behind 500+ enterprise creative partnerships." />
 
-      {/* ─── Final CTA ─── */}
       <CTASection
         title={<>Ready to scale your <span className="heading-italic">creative?</span></>}
-        description="Book a demo to see how Superside replaces creative bottlenecks with limitless output."
+        description="Book a demo to see how The North replaces creative bottlenecks with limitless output."
         variant="split"
       />
     </Layout>

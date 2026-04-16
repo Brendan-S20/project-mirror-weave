@@ -8,9 +8,9 @@ import TestimonialSection from "@/components/sections/TestimonialSection";
 import ImageTextSplit from "@/components/sections/ImageTextSplit";
 import CTASection from "@/components/sections/CTASection";
 import FAQSection from "@/components/sections/FAQSection";
-import { Link } from "react-router-dom";
 import { ArrowRight, Shield, Globe, Users, Brain, Zap, Lock } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { useCTAModal } from "@/contexts/CTAContext";
 
 const enterpriseCapabilities = [
   { icon: Users, title: "Dedicated creative teams", desc: "Senior creatives embedded in your brand. No onboarding lag, no context loss. They learn your guidelines, voice, and visual language and operate as your team." },
@@ -24,10 +24,10 @@ const enterpriseCapabilities = [
 export default function Enterprise() {
   const { ref: capRef, inView: capInView } = useInView();
   const { ref: proofRef, inView: proofInView } = useInView();
+  const { openModal } = useCTAModal();
 
   return (
     <Layout title="Enterprise" description="Enterprise-grade creative operations for the world's most demanding brands.">
-      {/* Hero */}
       <HeroSection
         tagline="Enterprise"
         title={<>Enterprise creative <span className="heading-italic">without the enterprise overhead</span></>}
@@ -39,7 +39,6 @@ export default function Enterprise() {
 
       <LogoCloud />
 
-      {/* Inline stats */}
       <StatsSection
         stats={[
           { value: "471%", label: "ROI over 3 years (Forrester)" },
@@ -50,7 +49,6 @@ export default function Enterprise() {
         variant="inline"
       />
 
-      {/* Enterprise capabilities - asymmetric layout */}
       <section className="section-padding py-24 lg:py-32 relative" ref={capRef}>
         <div className="absolute inset-0 gradient-mesh-section" />
         <div className="max-w-7xl mx-auto relative z-10">
@@ -63,10 +61,10 @@ export default function Enterprise() {
               <p className="text-lg text-muted-foreground mt-6 leading-relaxed">
                 Purpose-built for marketing and creative teams at scale. Not a marketplace. Not a staffing agency. A true creative partnership.
               </p>
-              <Link to="/pricing" className="btn-lime mt-8 group">
+              <button onClick={openModal} className="btn-lime mt-8 group">
                 Talk to enterprise sales
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </button>
             </div>
 
             <div className={`lg:w-3/5 grid sm:grid-cols-2 gap-5 ${capInView ? 'stagger-children' : ''}`}>
@@ -84,11 +82,10 @@ export default function Enterprise() {
         </div>
       </section>
 
-      {/* ROI Section */}
       <ImageTextSplit
         tagline="Proven ROI"
         title={<>471% ROI. <span className="heading-italic">Validated by Forrester.</span></>}
-        description="An independent Forrester Total Economic Impact study found that Superside delivers 471% ROI over three years. Enterprise teams saw 70% lower design costs, 3x faster time to market, and payback in under 6 months."
+        description="An independent Forrester Total Economic Impact study found that The North delivers 471% ROI over three years. Enterprise teams saw 70% lower design costs, 3x faster time to market, and payback in under 6 months."
         bullets={[
           "471% return on investment over three years",
           "70% reduction in creative production costs",
@@ -97,14 +94,12 @@ export default function Enterprise() {
         ]}
       />
 
-      {/* Mid CTA */}
       <CTASection
         title={<>Take your creative to new heights. <span className="heading-italic">Cut overhead faster than ever.</span></>}
         description="See how enterprise teams are scaling creative output while reducing costs."
         variant="banner"
       />
 
-      {/* Proof section */}
       <section className="section-padding py-20 lg:py-28 relative" ref={proofRef}>
         <div className="absolute inset-0 bg-[hsl(var(--surface-subtle))]" />
         <div className="max-w-7xl mx-auto relative z-10">
@@ -114,7 +109,7 @@ export default function Enterprise() {
               Creative experts or AI power? <span className="heading-italic">Both.</span>
             </h2>
             <p className="text-lg text-muted-foreground mt-5 max-w-2xl mx-auto">
-              "Either/or" is over. Enterprise teams use Superside to combine world-class human creativity with AI-powered production at a scale no internal team can match.
+              "Either/or" is over. Enterprise teams use The North to combine world-class human creativity with AI-powered production at a scale no internal team can match.
             </p>
           </div>
 
@@ -139,11 +134,11 @@ export default function Enterprise() {
       <FAQSection
         title={<>Frequently asked <span className="heading-italic">questions</span></>}
         items={[
-          { question: "What makes Superside different from a traditional agency?", answer: "Superside operates as a dedicated creative team extension, not a project-based vendor. You get consistent talent, AI-powered workflows, and subscription pricing rather than unpredictable retainers and project fees." },
+          { question: "What makes The North different from a traditional agency?", answer: "The North operates as a dedicated creative team extension, not a project-based vendor. You get consistent talent, AI-powered workflows, and subscription pricing rather than unpredictable retainers and project fees." },
           { question: "How do you handle brand consistency at scale?", answer: "Your dedicated team learns your brand guidelines, voice, and visual language. Combined with AI-powered quality assurance, every deliverable stays on-brand across channels and markets." },
-          { question: "What security certifications do you hold?", answer: "Superside is SOC 2 Type II certified. We support SSO integration, advanced role-based permissions, data encryption at rest and in transit, and maintain comprehensive audit trails." },
+          { question: "What security certifications do you hold?", answer: "The North is SOC 2 Type II certified. We support SSO integration, advanced role-based permissions, data encryption at rest and in transit, and maintain comprehensive audit trails." },
           { question: "How quickly can we get started?", answer: "Most enterprise teams are fully onboarded within 2 weeks. Your dedicated team begins learning your brand immediately, and many teams see their first deliverables within the first week." },
-          { question: "Can Superside integrate with our existing tools?", answer: "Yes. Superside integrates with popular DAM systems, project management tools, and communication platforms. We adapt to your workflows rather than forcing new ones." },
+          { question: "Can The North integrate with our existing tools?", answer: "Yes. The North integrates with popular DAM systems, project management tools, and communication platforms. We adapt to your workflows rather than forcing new ones." },
         ]}
       />
 
