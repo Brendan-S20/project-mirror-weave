@@ -8,10 +8,16 @@ function BlogCard({ post }: { post: typeof blogPosts[0] }) {
   return (
     <Link to={`/blog/${post.slug}`} className="group block">
       <div className="aspect-[16/10] rounded-xl bg-[hsl(var(--surface-elevated))] mb-5 overflow-hidden border border-border/30 group-hover:border-primary/30 transition-all relative">
-        <div className="absolute inset-0 gradient-mesh" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-muted-foreground/20 text-sm font-semibold">{post.category}</span>
-        </div>
+        {post.imageSrc ? (
+          <img src={post.imageSrc} alt={post.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+        ) : (
+          <>
+            <div className="absolute inset-0 gradient-mesh" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-muted-foreground/20 text-sm font-semibold">{post.category}</span>
+            </div>
+          </>
+        )}
       </div>
       <div className="flex items-center gap-3 mb-3">
         <span className="text-xs font-semibold text-primary">{post.category}</span>
@@ -28,7 +34,7 @@ function BlogCard({ post }: { post: typeof blogPosts[0] }) {
 
 export function BlogIndex() {
   return (
-    <Layout title="Blog" description="Insights, trends, and strategies from the The North creative team.">
+    <Layout title="Blog" description="Insights, trends, and strategies from The North creative team.">
       <section className="section-padding py-24 lg:py-32">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-2xl mb-14">
@@ -75,7 +81,7 @@ export function BlogPostPage() {
             <span className="badge-pill mb-4">{post.category}</span>
             <h1 className="text-3xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight">{post.title}</h1>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              {author && <Link to={`/authors/${author.slug}`} className="hover:text-primary font-medium">{author.name}</Link>}
+              {author && <span className="font-medium">{author.name}</span>}
               <span className="w-1 h-1 rounded-full bg-border" />
               <span>{post.date}</span>
               <span className="w-1 h-1 rounded-full bg-border" />
@@ -83,7 +89,11 @@ export function BlogPostPage() {
             </div>
           </div>
           <div className="aspect-[2/1] rounded-2xl bg-[hsl(var(--surface-elevated))] mb-12 relative overflow-hidden">
-            <div className="absolute inset-0 gradient-mesh" />
+            {post.imageSrc ? (
+              <img src={post.imageSrc} alt={post.title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            ) : (
+              <div className="absolute inset-0 gradient-mesh" />
+            )}
           </div>
           <div className="space-y-6">
             <p className="text-foreground/90 leading-relaxed text-lg">{post.excerpt}</p>
@@ -118,7 +128,9 @@ export function AuthorPage() {
       <section className="section-padding py-24 lg:py-32">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-start gap-8 mb-16">
-            <div className="w-20 h-20 rounded-full bg-[hsl(var(--surface-elevated))] border border-border/30 shrink-0" />
+            <div className="w-20 h-20 rounded-full bg-primary/10 border border-border/30 shrink-0 flex items-center justify-center">
+              <span className="text-primary text-xl font-bold">{author.name[0]}</span>
+            </div>
             <div>
               <h1 className="text-3xl font-bold text-foreground">{author.name}</h1>
               <p className="text-primary text-sm font-semibold mt-1">{author.role}</p>
