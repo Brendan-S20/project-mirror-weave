@@ -26,19 +26,21 @@ export default function HeroSection({
 }: HeroSectionProps) {
   if (variant === "centered") {
     return (
-      <section className="section-dark section-padding py-24 lg:py-36">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="section-dark section-padding py-24 lg:py-36 relative overflow-hidden gradient-mesh-hero">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           {tagline && (
-            <span className="inline-block text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
+            <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary/80 mb-6 animate-fade-up">
               {tagline}
             </span>
           )}
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6 animate-fade-up" style={{ animationDelay: '100ms' }}>
             {title}
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">{description}</p>
-          <div className="flex items-center justify-center gap-4">
-            <Link to={ctaHref} className="btn-lime">{ctaText}</Link>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: '200ms' }}>
+            {description}
+          </p>
+          <div className="flex items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: '300ms' }}>
+            <Link to={ctaHref} className="btn-lime animate-pulse-glow">{ctaText}</Link>
             {secondaryCtaText && secondaryCtaHref && (
               <Link to={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</Link>
             )}
@@ -50,31 +52,33 @@ export default function HeroSection({
   }
 
   return (
-    <section className="section-dark section-padding py-20 lg:py-32">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-dark section-padding py-20 lg:py-32 relative overflow-hidden gradient-mesh-hero">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className={`flex flex-col ${variant === "split" ? "lg:flex-row lg:items-center gap-12 lg:gap-20" : "gap-8"}`}>
           <div className={variant === "split" ? "lg:w-1/2" : "max-w-3xl"}>
             {tagline && (
-              <span className="inline-block text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
+              <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary/80 mb-6 animate-fade-up">
                 {tagline}
               </span>
             )}
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6 animate-fade-up" style={{ animationDelay: '100ms' }}>
               {title}
             </h1>
-            <p className="text-lg text-muted-foreground max-w-xl mb-10">{description}</p>
-            <div className="flex items-center gap-4 flex-wrap">
-              <Link to={ctaHref} className="btn-lime">{ctaText}</Link>
+            <p className="text-lg text-muted-foreground max-w-xl mb-10 animate-fade-up" style={{ animationDelay: '200ms' }}>
+              {description}
+            </p>
+            <div className="flex items-center gap-4 flex-wrap animate-fade-up" style={{ animationDelay: '300ms' }}>
+              <Link to={ctaHref} className="btn-lime animate-pulse-glow">{ctaText}</Link>
               {secondaryCtaText && secondaryCtaHref && (
                 <Link to={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</Link>
               )}
             </div>
           </div>
           {variant === "split" && children && (
-            <div className="lg:w-1/2">{children}</div>
+            <div className="lg:w-1/2 animate-fade-up" style={{ animationDelay: '400ms' }}>{children}</div>
           )}
         </div>
-        {variant === "default" && children && <div className="mt-16">{children}</div>}
+        {variant === "default" && children && <div className="mt-16 animate-fade-up" style={{ animationDelay: '400ms' }}>{children}</div>}
       </div>
     </section>
   );
