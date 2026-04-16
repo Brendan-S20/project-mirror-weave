@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/sections/HeroSection";
 import LogoCloud from "@/components/sections/LogoCloud";
+import heroImg from "@/assets/hero-abstract-1.jpg";
 import FeatureSection from "@/components/sections/FeatureSection";
 import StatsSection from "@/components/sections/StatsSection";
 import TestimonialSection from "@/components/sections/TestimonialSection";
@@ -16,7 +17,7 @@ export default function Enterprise() {
         description="Dedicated creative teams, AI-powered workflows, and enterprise-grade security. Built for the world's most demanding brands."
         variant="split"
       >
-        <div className="aspect-[4/3] rounded-2xl bg-surface-elevated" />
+        <img src={heroImg} alt="Enterprise creative solutions" className="rounded-2xl w-full h-full object-cover" width={1280} height={960} />
       </HeroSection>
 
       <LogoCloud />

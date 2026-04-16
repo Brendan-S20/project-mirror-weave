@@ -4,6 +4,7 @@ import FeatureSection from "@/components/sections/FeatureSection";
 import ImageTextSplit from "@/components/sections/ImageTextSplit";
 import CTASection from "@/components/sections/CTASection";
 import LogoCloud from "@/components/sections/LogoCloud";
+import heroAI from "@/assets/hero-ai.jpg";
 
 export function OurCreativeTalent() {
   return (
@@ -27,7 +28,7 @@ export function OurTechnology() {
   return (
     <Layout title="Our Technology" description="Superside's AI-powered creative platform.">
       <HeroSection tagline="Our technology" title={<>AI-powered <span className="heading-italic">creative platform</span></>} description="Purpose-built technology that combines AI with human creativity to deliver better work faster." variant="split">
-        <div className="aspect-[4/3] rounded-2xl bg-surface-elevated" />
+        <img src={heroAI} alt="AI-powered creative platform" className="rounded-2xl w-full h-full object-cover" width={1280} height={960} loading="lazy" />
       </HeroSection>
       <FeatureSection title={<>Built for <span className="heading-italic">creative teams</span></>} features={[
         { title: "AI-Powered Briefing", description: "Smart brief creation that captures requirements accurately the first time." },
