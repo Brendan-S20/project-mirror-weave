@@ -24,14 +24,14 @@ interface MultiComparisonRow {
 }
 
 const defaultRows: MultiComparisonRow[] = [
-  { feature: "Top 1% vetted creative talent", superside: true, agencies: true, freelancers: false, inHouse: false },
+  { feature: "Vetted creative talent", superside: true, agencies: true, freelancers: false, inHouse: false },
   { feature: "Dedicated team that learns your brand", superside: true, agencies: false, freelancers: false, inHouse: true },
-  { feature: "AI-powered workflows", superside: true, agencies: false, freelancers: false, inHouse: false },
+  { feature: "Streamlined production workflows", superside: true, agencies: false, freelancers: false, inHouse: false },
   { feature: "Predictable subscription pricing", superside: true, agencies: false, freelancers: false, inHouse: false },
-  { feature: "100+ creative specialties", superside: true, agencies: true, freelancers: false, inHouse: false },
-  { feature: "24/7 global coverage", superside: true, agencies: false, freelancers: false, inHouse: false },
-  { feature: "Scale up or down instantly", superside: true, agencies: false, freelancers: true, inHouse: false },
-  { feature: "Enterprise-grade security", superside: true, agencies: true, freelancers: false, inHouse: true },
+  { feature: "Multi-discipline coverage", superside: true, agencies: true, freelancers: false, inHouse: false },
+  { feature: "Global coverage across time zones", superside: true, agencies: false, freelancers: false, inHouse: false },
+  { feature: "Scale up or down flexibly", superside: true, agencies: false, freelancers: true, inHouse: false },
+  { feature: "Structured security practices", superside: true, agencies: true, freelancers: false, inHouse: true },
 ];
 
 const CellValue = ({ val }: { val: boolean | string }) => {
