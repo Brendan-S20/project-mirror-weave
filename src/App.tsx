@@ -12,6 +12,7 @@ import Pricing from "./pages/Pricing";
 import AIContentCentral from "./pages/AIContentCentral";
 import AboutUs from "./pages/AboutUs";
 import OurWork from "./pages/OurWork";
+import ProjectPage from "./pages/ProjectPage";
 import Enterprise from "./pages/Enterprise";
 import Reviews from "./pages/Reviews";
 import ServicePage from "./pages/ServicePage";
@@ -42,6 +43,7 @@ const App = () => (
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/our-work" element={<OurWork />} />
+              <Route path="/projects/:slug" element={<ProjectPage />} />
               <Route path="/enterprise" element={<Enterprise />} />
               <Route path="/reviews" element={<Reviews />} />
               <Route path="/thank-you" element={<ThankYou />} />
