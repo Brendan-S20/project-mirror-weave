@@ -11,25 +11,25 @@ import { useInView } from "@/hooks/useInView";
 interface WorkItem {
   title: string;
   category: string;
-  client: string;
+  type: string;
   description: string;
-  results?: string;
   size: "large" | "medium" | "small";
+  imageSrc: string;
 }
 
 const workItems: WorkItem[] = [
-  { title: "Global brand campaign spanning digital, OOH, and social", category: "Brand", client: "Grubhub", description: "Full-funnel brand campaign that drove 2.3x lift in brand recall across 12 markets.", results: "2.3x brand recall lift", size: "large" },
-  { title: "Surface product launch creative for global markets", category: "Ad Creative", client: "Microsoft", description: "Launch creative suite with 200+ assets optimized for 8 global markets.", results: "200+ assets delivered", size: "medium" },
-  { title: "Year-in-review campaign with personalized creative", category: "Social", client: "Reddit", description: "Personalized recap campaign reaching 52M users with dynamic creative.", results: "52M users reached", size: "medium" },
-  { title: "Partner marketing asset library and design system", category: "Design System", client: "Shopify", description: "Comprehensive partner toolkit enabling consistent brand execution across 4,000+ partners.", results: "4,000+ partners enabled", size: "small" },
-  { title: "Cross-platform performance ads with 40+ variants", category: "Performance", client: "Puma", description: "High-velocity ad creative program that reduced CPA by 35% across Meta and Google.", results: "35% CPA reduction", size: "large" },
-  { title: "Product launch creative for new instrument line", category: "Brand", client: "Roland", description: "End-to-end launch campaign for flagship product line across digital and retail.", results: "Full product launch", size: "small" },
-  { title: "Visual identity evolution for platform rebrand", category: "Branding", client: "Vimeo", description: "Brand refresh spanning identity system, marketing materials, and product UI alignment.", results: "Complete rebrand", size: "medium" },
-  { title: "Community resource library with templates", category: "Design", client: "Figma", description: "Educational content series and template library driving community engagement.", results: "10K+ downloads", size: "small" },
-  { title: "Prime seasonal campaign ad creative at scale", category: "Performance", client: "Amazon", description: "High-volume seasonal ad creative with rapid iteration across 15+ formats.", results: "15+ formats delivered", size: "medium" },
-  { title: "Long-form content series with visual assets", category: "Content", client: "HubSpot", description: "Thought leadership content program with integrated design driving 3x organic traffic.", results: "3x organic traffic", size: "small" },
-  { title: "Complete event branding for flagship conference", category: "Events", client: "Salesforce", description: "Full event identity system from signage to digital experience for 40K+ attendees.", results: "40K+ attendees", size: "large" },
-  { title: "Multi-format ad creative for platform ecosystem", category: "Ad Creative", client: "Meta", description: "Performance creative system optimized for Meta's ad formats with automated variant generation.", results: "60% faster production", size: "small" },
+  { title: "Multi-channel brand campaign spanning digital, social, and print", category: "Brand", type: "Brand Campaign", description: "Full-funnel brand campaign designed for maximum reach across digital and physical touchpoints.", size: "large", imageSrc: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80" },
+  { title: "Product launch creative suite for global markets", category: "Ad Creative", type: "Product Launch", description: "Comprehensive launch creative with assets optimized for multiple regional markets and platforms.", size: "medium", imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" },
+  { title: "Social media campaign with personalized creative variants", category: "Social", type: "Social Campaign", description: "Dynamic social campaign using personalized creative to drive engagement across platforms.", size: "medium", imageSrc: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80" },
+  { title: "Partner marketing asset library and design system", category: "Design System", type: "Design System", description: "Comprehensive partner toolkit enabling consistent brand execution across partner networks.", size: "small", imageSrc: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80" },
+  { title: "Cross-platform performance ads with rapid variant testing", category: "Performance", type: "Performance Ads", description: "High-velocity ad creative program designed to improve acquisition costs through rapid iteration.", size: "large", imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" },
+  { title: "Product launch creative for new product line", category: "Brand", type: "Product Launch", description: "End-to-end launch campaign across digital and retail touchpoints.", size: "small", imageSrc: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=800&q=80" },
+  { title: "Visual identity evolution for platform rebrand", category: "Branding", type: "Rebrand", description: "Brand refresh spanning identity system, marketing materials, and product UI alignment.", size: "medium", imageSrc: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80" },
+  { title: "Educational content series with design templates", category: "Design", type: "Content Design", description: "Educational content series and template library driving community engagement and adoption.", size: "small", imageSrc: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80" },
+  { title: "Seasonal campaign creative at scale across formats", category: "Performance", type: "Seasonal Campaign", description: "High-volume seasonal ad creative with rapid iteration across multiple formats and channels.", size: "medium", imageSrc: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&q=80" },
+  { title: "Thought leadership content program with visual assets", category: "Content", type: "Content Program", description: "Strategic content program with integrated design elements driving organic growth.", size: "small", imageSrc: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80" },
+  { title: "Complete event branding for flagship conference", category: "Events", type: "Event Branding", description: "Full event identity system from signage to digital experience for a major industry conference.", size: "large", imageSrc: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" },
+  { title: "Multi-format ad creative system with automated variants", category: "Ad Creative", type: "Ad System", description: "Performance creative system optimized across ad formats with streamlined variant generation.", size: "small", imageSrc: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80" },
 ];
 
 const categories = ["All", "Brand", "Ad Creative", "Performance", "Social", "Branding", "Design System", "Design", "Content", "Events"];
@@ -41,15 +41,15 @@ export default function OurWork() {
   const filtered = activeCategory === "All" ? workItems : workItems.filter(w => w.category === activeCategory);
 
   return (
-    <Layout title="Our Work" description="See how the world's most ambitious brands scale creative with The North.">
+    <Layout title="Our Work" description="See how ambitious brands scale creative with The North.">
       <HeroSection
         tagline="Our work"
         title={<>Work that <span className="heading-italic">works</span></>}
-        description="Enterprise brands trust The North to deliver creative that drives real business outcomes. Campaigns, brand systems, performance ads, and everything in between."
+        description="Ambitious brands trust The North to deliver creative that drives real business outcomes. Campaigns, brand systems, performance ads, and everything in between."
         variant="centered"
       />
 
-      <LogoCloud />
+      <LogoCloud title="Creative work across industries and formats" />
 
       <section className="section-padding py-20 lg:py-28" ref={ref}>
         <div className="max-w-7xl mx-auto">
@@ -76,34 +76,20 @@ export default function OurWork() {
               const spanClass = isLarge ? "lg:col-span-8" : isMedium ? "lg:col-span-6" : "lg:col-span-4";
 
               return (
-                <div key={`${item.client}-${i}`} className={`group cursor-pointer ${spanClass} ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
+                <div key={`${item.type}-${i}`} className={`group cursor-pointer ${spanClass} ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
                   <div className="card-premium overflow-hidden h-full flex flex-col">
                     <div className={`relative overflow-hidden ${isLarge ? 'aspect-[16/9]' : isMedium ? 'aspect-[4/3]' : 'aspect-[3/2]'}`}>
-                      <div className="absolute inset-0 bg-[hsl(var(--surface-elevated))]" />
-                      <div className="absolute inset-0 gradient-mesh" />
-                      <div className="absolute inset-0 grid-pattern opacity-15" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className={`font-black text-foreground/[0.04] tracking-tighter select-none ${isLarge ? 'text-7xl lg:text-9xl' : 'text-5xl lg:text-7xl'}`}>
-                          {item.client}
-                        </span>
-                      </div>
+                      <img src={item.imageSrc} alt={item.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
                       <div className="absolute top-5 left-5">
                         <span className="inline-flex items-center rounded-full bg-background/70 backdrop-blur-md text-foreground text-xs font-medium px-3 py-1.5 border border-border/20">
                           {item.category}
                         </span>
                       </div>
-                      {item.results && (
-                        <div className="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                          <span className="inline-flex items-center rounded-full bg-primary text-primary-foreground text-xs font-bold px-3.5 py-1.5">
-                            {item.results}
-                          </span>
-                        </div>
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                     </div>
                     <div className="p-6 lg:p-8 flex-1 flex flex-col">
                       <div className="flex items-center gap-3 mb-3">
-                        <span className="text-xs font-bold text-primary uppercase tracking-wider">{item.client}</span>
+                        <span className="text-xs font-bold text-primary uppercase tracking-wider">{item.type}</span>
                       </div>
                       <h3 className={`font-bold text-foreground group-hover:text-primary transition-colors leading-snug mb-3 ${isLarge ? 'text-xl lg:text-2xl' : 'text-base lg:text-lg'}`}>
                         {item.title}
@@ -126,10 +112,10 @@ export default function OurWork() {
       <StatsSection
         title="Creative output that moves the needle"
         stats={[
-          { value: "500+", label: "Enterprise brands served" },
-          { value: "3x", label: "Faster than traditional agencies" },
-          { value: "1M+", label: "Assets delivered annually" },
-          { value: "471%", label: "ROI (Forrester validated)" },
+          { value: "20+", label: "Creative disciplines" },
+          { value: "Fast", label: "Turnaround on most projects" },
+          { value: "Dedicated", label: "Teams per engagement" },
+          { value: "Scalable", label: "From startup to enterprise" },
         ]}
         variant="inline"
       />

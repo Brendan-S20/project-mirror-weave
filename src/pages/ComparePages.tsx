@@ -4,22 +4,21 @@ import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 import ComparisonSection from "@/components/sections/ComparisonSection";
 import TestimonialSection from "@/components/sections/TestimonialSection";
-import StatsSection from "@/components/sections/StatsSection";
 import ImageTextSplit from "@/components/sections/ImageTextSplit";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const comparisonItems = [
   { feature: "Dedicated creative team", superside: true, competitor: false },
-  { feature: "AI-powered workflows", superside: true, competitor: false },
+  { feature: "Streamlined production workflows", superside: true, competitor: false },
   { feature: "Enterprise-grade scalability", superside: true, competitor: false },
-  { feature: "24/7 global coverage", superside: true, competitor: false },
+  { feature: "Global coverage across time zones", superside: true, competitor: false },
   { feature: "Predictable subscription pricing", superside: true, competitor: false },
-  { feature: "100+ creative specialties", superside: true, competitor: "Limited" as string | boolean },
+  { feature: "Multi-discipline creative coverage", superside: true, competitor: "Limited" as string | boolean },
   { feature: "Project management included", superside: true, competitor: "Extra cost" as string | boolean },
-  { feature: "Quality guarantee & revisions", superside: true, competitor: "Varies" as string | boolean },
-  { feature: "SOC 2 Type II compliance", superside: true, competitor: false },
-  { feature: "Brand-trained AI output", superside: true, competitor: false },
+  { feature: "Quality guarantee and revisions", superside: true, competitor: "Varies" as string | boolean },
+  { feature: "Structured security practices", superside: true, competitor: false },
+  { feature: "Brand-trained creative output", superside: true, competitor: false },
 ];
 
 interface ComparePageProps { competitorName: string; competitorSlug: string; headline: string; description: string; differentiators: string[]; }
@@ -33,15 +32,6 @@ function ComparePage({ competitorName, headline, description, differentiators }:
         description={description}
         variant="centered"
       />
-      <StatsSection
-        stats={[
-          { value: "471%", label: "Proven ROI (Forrester)" },
-          { value: "3x", label: "Faster delivery" },
-          { value: "500+", label: "Enterprise clients" },
-          { value: "70%", label: "Lower costs" },
-        ]}
-        variant="inline"
-      />
       <ComparisonSection
         title={<>How The North <span className="heading-italic">compares</span></>}
         competitorName={competitorName}
@@ -51,6 +41,8 @@ function ComparePage({ competitorName, headline, description, differentiators }:
         tagline="The difference"
         title={<>Why teams <span className="heading-italic">switch to The North</span></>}
         description={`Teams switch from ${competitorName.toLowerCase()} to The North because they need more than basic creative execution. They need a partner that scales, delivers consistently, and drives measurable results.`}
+        imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
+        imageAlt="Team collaboration"
         bullets={differentiators}
       />
       <TestimonialSection variant="single" />
@@ -65,10 +57,10 @@ function ComparePage({ competitorName, headline, description, differentiators }:
 
 export function CompareIndex() {
   const comparisons = [
-    { name: "Agencies", href: "/compare-thenorth-vs-agency", desc: "Better quality, faster delivery, 70% lower cost. Without the overhead, the long timelines, or the guesswork." },
+    { name: "Agencies", href: "/compare-thenorth-vs-agency", desc: "Better quality, faster delivery, and more predictable costs. Without the overhead, long timelines, or guesswork." },
     { name: "Freelancers", href: "/compare-thenorth-vs-freelancers", desc: "All the flexibility, none of the inconsistency. One team that scales with you." },
     { name: "In-House Teams", href: "/compare-thenorth-vs-inhouse", desc: "Expand your creative capacity without expanding your headcount or HR burden." },
-    { name: "DesignPickle", href: "/compare-thenorth-vs-designpickle", desc: "Enterprise-grade creative production vs. basic graphic design support." },
+    { name: "DesignPickle", href: "/compare-thenorth-vs-designpickle", desc: "Full-service creative production vs. basic graphic design support." },
     { name: "Designity", href: "/compare-thenorth-vs-designity", desc: "A dedicated team vs. a marketplace. Consistent quality vs. variable results." },
   ];
 
@@ -77,7 +69,7 @@ export function CompareIndex() {
       <HeroSection
         tagline="Compare"
         title={<>See how The North <span className="heading-italic">stacks up</span></>}
-        description="Whether you're using agencies, managing freelancers, or trying to scale in-house, see why 500+ enterprise teams switched to The North."
+        description="Whether you are using agencies, managing freelancers, or trying to scale in-house, see why teams switch to The North."
         variant="centered"
       />
       <section className="section-padding py-16 lg:py-24">
@@ -99,17 +91,17 @@ export function CompareIndex() {
 }
 
 export function CompareVsAgency() {
-  return <ComparePage competitorName="Agencies" competitorSlug="agency" headline={<>Why teams are <span className="heading-italic">leaving agencies</span></> as any} description="Better creative. Faster delivery. 70% lower cost. No more bloated retainers, slow timelines, or junior talent doing senior work." differentiators={["No account management overhead eating your budget", "AI-powered workflows deliver 3x faster than agency timelines", "Top 1% global talent, not junior staff learning on your dime", "Predictable pricing instead of scope creep and surprise invoices"]} />;
+  return <ComparePage competitorName="Agencies" competitorSlug="agency" headline={<>Why teams are <span className="heading-italic">leaving agencies</span></> as any} description="Better creative. Faster delivery. More predictable costs. No more bloated retainers, slow timelines, or junior talent doing senior work." differentiators={["No account management overhead eating your budget", "Streamlined workflows deliver faster than agency timelines", "Experienced global talent, not junior staff learning on your dime", "Predictable pricing instead of scope creep and surprise invoices"]} />;
 }
 export function CompareVsFreelancers() {
-  return <ComparePage competitorName="Freelancers" competitorSlug="freelancers" headline={<>More reliable than <span className="heading-italic">freelancers</span></> as any} description="Get the flexibility you love about freelancers with the reliability, quality control, and scale of an enterprise creative team." differentiators={["Dedicated team that learns your brand vs. re-onboarding every project", "Built-in QA and review processes vs. hoping for the best", "Scale to 100+ specialties instantly vs. sourcing individual contractors", "Project management included vs. managing freelancers yourself"]} />;
+  return <ComparePage competitorName="Freelancers" competitorSlug="freelancers" headline={<>More reliable than <span className="heading-italic">freelancers</span></> as any} description="Get the flexibility you love about freelancers with the reliability, quality control, and scale of a dedicated creative team." differentiators={["Dedicated team that learns your brand vs. re-onboarding every project", "Built-in QA and review processes vs. hoping for the best", "Scale across multiple disciplines instantly vs. sourcing individual contractors", "Project management included vs. managing freelancers yourself"]} />;
 }
 export function CompareVsInhouse() {
-  return <ComparePage competitorName="In-House Teams" competitorSlug="inhouse" headline={<>Scale without <span className="heading-italic">hiring</span></> as any} description="Augment your team with on-demand creative capacity. No job postings, no interviews, no benefits overhead, no ramp-up time." differentiators={["Go from brief to delivery in days vs. months to hire and onboard", "Access 100+ specialties vs. limited in-house skill sets", "Scale up or down instantly vs. headcount planning cycles", "Focus your team on strategy vs. drowning in production tasks"]} />;
+  return <ComparePage competitorName="In-House Teams" competitorSlug="inhouse" headline={<>Scale without <span className="heading-italic">hiring</span></> as any} description="Augment your team with on-demand creative capacity. No job postings, no interviews, no benefits overhead, no ramp-up time." differentiators={["Go from brief to delivery in days vs. months to hire and onboard", "Access multiple disciplines vs. limited in-house skill sets", "Scale up or down instantly vs. headcount planning cycles", "Focus your team on strategy vs. drowning in production tasks"]} />;
 }
 export function CompareVsDesignPickle() {
-  return <ComparePage competitorName="DesignPickle" competitorSlug="designpickle" headline={<>Enterprise creative vs. <span className="heading-italic">basic design</span></> as any} description="Go beyond basic graphic design. The North delivers full-service creative production with AI-powered workflows, dedicated teams, and enterprise-grade security." differentiators={["Full creative production vs. basic graphic design only", "Dedicated senior team vs. rotational designer assignments", "AI-powered workflows for enterprise speed and scale", "SOC 2 compliance and enterprise security standards"]} />;
+  return <ComparePage competitorName="DesignPickle" competitorSlug="designpickle" headline={<>Full-service creative vs. <span className="heading-italic">basic design</span></> as any} description="Go beyond basic graphic design. The North delivers full-service creative production with streamlined workflows, dedicated teams, and structured security." differentiators={["Full creative production vs. basic graphic design only", "Dedicated senior team vs. rotational designer assignments", "Streamlined workflows for speed and scale", "Structured security practices for enterprise requirements"]} />;
 }
 export function CompareVsDesignity() {
-  return <ComparePage competitorName="Designity" competitorSlug="designity" headline={<>Dedicated team vs. <span className="heading-italic">marketplace</span></> as any} description="Get a dedicated team that masters your brand instead of marketplace matching. Consistent quality, not variable results." differentiators={["Dedicated team that grows with your brand vs. marketplace matching", "Enterprise-grade QA processes vs. variable output quality", "AI-powered production workflows vs. manual processes", "500+ enterprise clients trust our model vs. marketplace uncertainty"]} />;
+  return <ComparePage competitorName="Designity" competitorSlug="designity" headline={<>Dedicated team vs. <span className="heading-italic">marketplace</span></> as any} description="Get a dedicated team that masters your brand instead of marketplace matching. Consistent quality, not variable results." differentiators={["Dedicated team that grows with your brand vs. marketplace matching", "Structured QA processes vs. variable output quality", "Streamlined production workflows vs. manual processes", "Consistent, reliable creative output vs. marketplace uncertainty"]} />;
 }

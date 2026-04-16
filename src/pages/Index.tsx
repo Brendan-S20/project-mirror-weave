@@ -23,18 +23,18 @@ export default function Index() {
             creative team
           </>
         }
-        description="Replace creative bottlenecks with limitless output. Top global talent and AI-powered workflows deliver enterprise-grade creative at startup speed."
+        description="Replace creative bottlenecks with reliable, high-quality output. Dedicated talent and smart workflows deliver the creative your brand deserves, on time and on budget."
         secondaryCtaText="See our work"
         secondaryCtaHref="/our-work"
       >
         <div className="grid grid-cols-2 gap-3 stagger-children">
           {[
-            { label: "Brand Campaigns", metric: "3x faster" },
-            { label: "Performance Ads", metric: "500+ brands" },
-            { label: "Video & Motion", metric: "24/7 coverage" },
-            { label: "Web & Digital", metric: "100+ specialties" },
-            { label: "Social Content", metric: "Top 1% talent" },
-            { label: "Presentations", metric: "AI-powered" },
+            { label: "Brand Campaigns", metric: "Full-service" },
+            { label: "Performance Ads", metric: "Multi-platform" },
+            { label: "Video & Motion", metric: "End-to-end" },
+            { label: "Web & Digital", metric: "Responsive" },
+            { label: "Social Content", metric: "Always-on" },
+            { label: "Presentations", metric: "On-brand" },
           ].map((item) => (
             <div key={item.label} className="card-elevated-hover p-5 lg:p-6 flex flex-col justify-between aspect-[4/3] animate-fade-up cursor-pointer group">
               <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">{item.label}</span>
@@ -47,12 +47,12 @@ export default function Index() {
       <LogoCloud />
 
       <StatsSection
-        title="The numbers speak for themselves"
+        title="Built to deliver real results"
         stats={[
-          { value: "471%", label: "ROI over 3 years (Forrester)" },
-          { value: "3x", label: "Faster than traditional agencies" },
-          { value: "100+", label: "Creative specialties covered" },
+          { value: "20+", label: "Creative disciplines covered" },
+          { value: "Fast", label: "Turnaround built into every workflow" },
           { value: "24/7", label: "Always-on global coverage" },
+          { value: "Dedicated", label: "Teams that learn your brand" },
         ]}
         variant="large"
       />
@@ -61,11 +61,13 @@ export default function Index() {
         tagline="Why The North"
         title={<>Stop choosing between <span className="heading-italic">speed, quality, and cost</span></>}
         description="Traditional creative models force trade-offs. The North eliminates them. Get the creative depth of a top agency, the flexibility of freelancers, and the brand consistency of an in-house team. All in one subscription."
+        imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+        imageAlt="Creative team collaborating on brand project"
         bullets={[
-          "Top 1% creative talent, vetted from 120+ countries",
-          "AI-enhanced workflows that cut production time in half",
+          "Vetted creative talent from around the world",
+          "Smart workflows that reduce production time",
           "Dedicated teams that master your brand guidelines",
-          "Predictable subscription pricing with proven 471% ROI",
+          "Predictable subscription pricing with clear value",
         ]}
       />
 
@@ -74,15 +76,15 @@ export default function Index() {
         title={<>From brief to brilliant <span className="heading-italic">in three steps</span></>}
         variant="list"
         features={[
-          { title: "Brief it", description: "Submit your project through our platform. AI-powered briefing tools ensure your team captures every detail upfront, reducing revision cycles by 40%." },
+          { title: "Brief it", description: "Submit your project through our platform. Smart briefing tools ensure your team captures every detail upfront, reducing revision cycles." },
           { title: "Build it", description: "Your dedicated creative team gets to work immediately. Real-time collaboration, transparent timelines, and multi-layer quality reviews keep everything on track." },
-          { title: "Ship it", description: "Receive polished, brand-consistent deliverables ready to deploy. Most projects land 3x faster than traditional agency timelines." },
+          { title: "Ship it", description: "Receive polished, brand-consistent deliverables ready to deploy. Most projects are completed significantly faster than traditional agency timelines." },
         ]}
       />
 
       <CTASection
         title={<>Your brand deserves <span className="heading-italic">better creative</span></>}
-        description="See why 500+ companies trust The North to deliver world-class creative at scale."
+        description="See how The North can help your team move faster without sacrificing quality."
         variant="banner"
       />
 
@@ -95,15 +97,17 @@ export default function Index() {
       />
 
       <ImageTextSplit
-        tagline="AI-Powered Creative"
-        title={<>Human creativity <span className="heading-italic">amplified by AI</span></>}
-        description="Our teams use the most advanced AI tools in the industry. Not as a replacement for human creativity, but as an accelerator. The result: better concepts, faster production, and more room for the strategic thinking that drives real business outcomes."
+        tagline="Smart Creative Workflows"
+        title={<>Human creativity <span className="heading-italic">amplified by technology</span></>}
+        description="Our teams use advanced tools to work smarter, not harder. The result: stronger concepts, faster production, and more room for the strategic thinking that drives real business outcomes."
         imagePosition="left"
+        imageSrc="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80"
+        imageAlt="Modern digital workspace with creative tools"
         bullets={[
-          "AI-assisted ideation generates 10x more concepts",
-          "Automated asset generation and variant production",
-          "Intelligent quality assurance catches issues before you do",
-          "Brand-trained AI ensures consistency at scale",
+          "Smart ideation workflows for faster concepting",
+          "Streamlined asset generation and variant production",
+          "Built-in quality assurance before every delivery",
+          "Brand-trained processes ensure consistency at scale",
         ]}
       />
 
@@ -111,11 +115,11 @@ export default function Index() {
 
       <TestimonialSection variant="featured" />
 
-      <BlogGrid posts={blogPosts.slice(0, 3)} title="Latest thinking" description="Perspectives from the team behind 500+ enterprise creative partnerships." />
+      <BlogGrid posts={blogPosts.slice(0, 3)} title="Latest thinking" description="Perspectives from the team on creative production, branding, and marketing strategy." />
 
       <CTASection
         title={<>Ready to scale your <span className="heading-italic">creative?</span></>}
-        description="Book a demo to see how The North replaces creative bottlenecks with limitless output."
+        description="Book a demo to see how The North replaces creative bottlenecks with reliable, high-quality output."
         variant="split"
       />
     </Layout>

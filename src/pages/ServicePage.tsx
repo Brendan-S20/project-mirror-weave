@@ -20,7 +20,7 @@ export default function ServicePage() {
       <Layout title="Service Not Found">
         <div className="section-padding py-32 text-center">
           <h1 className="text-4xl font-bold text-foreground mb-4">Service not found</h1>
-          <p className="text-muted-foreground">The service you're looking for doesn't exist.</p>
+          <p className="text-muted-foreground">The service you are looking for does not exist.</p>
         </div>
       </Layout>
     );
@@ -37,27 +37,32 @@ export default function ServicePage() {
         variant="split"
       >
         <div className="aspect-[4/3] rounded-2xl bg-[hsl(var(--surface-elevated))] border border-border/30 relative overflow-hidden">
-          <div className="absolute inset-0 gradient-mesh" />
-          <div className="absolute inset-0 grid-pattern opacity-30" />
-          <div className="absolute inset-0 flex items-center justify-center">
+          <img
+            src={`https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80`}
+            alt={service.title}
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+          <div className="absolute inset-0 flex items-end justify-start p-8">
             <div className="text-center">
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary font-bold text-2xl">{service.title[0]}</span>
+              <div className="w-12 h-12 rounded-xl bg-background/70 backdrop-blur-md flex items-center justify-center mb-3">
+                <span className="text-primary font-bold text-lg">{service.title[0]}</span>
               </div>
-              <span className="text-muted-foreground/40 text-sm font-semibold">{service.title}</span>
+              <span className="text-foreground/80 text-sm font-semibold">{service.title}</span>
             </div>
           </div>
         </div>
       </HeroSection>
 
-      <LogoCloud />
+      <LogoCloud title={`Trusted for ${service.title.toLowerCase()} by ambitious brands`} />
 
       <StatsSection
         stats={[
-          { value: "3x", label: "Faster than agencies" },
-          { value: "Top 1%", label: "Global creative talent" },
-          { value: "471%", label: "Proven ROI (Forrester)" },
-          { value: "24/7", label: "Always-on production" },
+          { value: "Fast", label: "Turnaround built into every project" },
+          { value: "Dedicated", label: "Teams that learn your brand" },
+          { value: "Scalable", label: "Capacity that grows with you" },
+          { value: "24/7", label: "Always-on production support" },
         ]}
         variant="inline"
       />
@@ -72,6 +77,8 @@ export default function ServicePage() {
         tagline="What we deliver"
         title={<>Comprehensive <span className="heading-italic">{service.title.toLowerCase()}</span> coverage</>}
         description={`From initial concept to final delivery, our ${service.title.toLowerCase()} team handles every aspect of production. Your in-house team stays focused on strategy while we handle execution.`}
+        imageSrc="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80"
+        imageAlt={`${service.title} production`}
         bullets={service.features}
       />
 
