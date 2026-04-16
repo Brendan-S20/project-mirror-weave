@@ -133,7 +133,7 @@ export const events = [
 ];
 
 export const reports = [
-  { slug: "tei-report", title: "Total Economic Impact Report", description: "Forrester's analysis of the ROI of partnering with Superside." },
+  { slug: "tei-report", title: "Total Economic Impact Report", description: "Forrester's analysis of the ROI of partnering with The North." },
   { slug: "the-no-hype-ai-report", title: "The No-Hype AI Report", description: "A practical look at how AI is actually being used in creative teams." },
 ];
 
