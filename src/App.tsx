@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Pricing from "./pages/Pricing";
+import AIContentCentral from "./pages/AIContentCentral";
 import AboutUs from "./pages/AboutUs";
 import OurWork from "./pages/OurWork";
 import Enterprise from "./pages/Enterprise";

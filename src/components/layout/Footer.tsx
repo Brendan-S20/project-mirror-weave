@@ -54,6 +54,11 @@ export default function Footer() {
               <span className="heading-italic">S</span>uperside
             </span>
           </div>
+          <div className="flex items-center gap-6">
+            <Link to="/privacy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy</Link>
+            <Link to="/terms-of-use" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Terms</Link>
+            <Link to="/trust-center" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Trust Center</Link>
+          </div>
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} Superside. All rights reserved.
           </p>
