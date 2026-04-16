@@ -13,7 +13,7 @@ const aiResources = [
   { title: "Practical Guide to AI for Creative Teams", description: "Live webinar recording on AI adoption in creative workflows.", href: "/events/unfiltered-february-webinar-practical-guide-ai", category: "Webinar" },
   { title: "AI-Powered Briefing", description: "How smart brief creation captures requirements accurately the first time.", href: "/our-technology", category: "Feature" },
   { title: "BrandBrain AI", description: "AI brand intelligence that keeps every creative deliverable perfectly on-brand.", href: "/brandbrain", category: "Product" },
-  { title: "AI Excellence at Superside", description: "How Superside leads with AI in creative production.", href: "/ai-excellence", category: "Company" },
+  { title: "AI Excellence at The North", description: "How The North leads with AI in creative production.", href: "/ai-excellence", category: "Company" },
 ];
 
 export default function AIContentCentral() {
@@ -27,13 +27,12 @@ export default function AIContentCentral() {
         description="Explore guides, reports, tools, and insights on how AI is transforming creative production. From practical how-tos to strategic frameworks."
         variant="centered"
         ctaText="Explore resources"
-        ctaHref="#resources"
       />
 
       <ImageTextSplit
         tagline="The AI advantage"
         title={<>AI doesn't replace creatives. It <span className="heading-italic">unleashes</span> them.</>}
-        description="At Superside, we combine the most advanced AI tools with world-class human talent. The result: better creative, faster delivery, and lower costs. Our AI-powered workflows are built into every project, from brief to final asset."
+        description="At The North, we combine the most advanced AI tools with world-class human talent. The result: better creative, faster delivery, and lower costs. Our AI-powered workflows are built into every project, from brief to final asset."
         bullets={[
           "AI-accelerated ideation generates 10x more concepts",
           "Automated asset variations save days of production time",
@@ -83,7 +82,7 @@ export default function AIContentCentral() {
 
       <CTASection
         title={<>Ready to supercharge your creative with <span className="heading-italic">AI?</span></>}
-        description="See how Superside's AI-powered workflows can transform your creative output."
+        description="See how The North's AI-powered workflows can transform your creative output."
       />
     </Layout>
   );
