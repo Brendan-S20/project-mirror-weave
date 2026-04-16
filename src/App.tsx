@@ -87,6 +87,7 @@ const App = () => (
             <Route path="/events" element={<EventsIndex />} />
             <Route path="/events/:slug" element={<EventPage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/ai-content-central" element={<AIContentCentral />} />
 
             {/* Company */}
             <Route path="/our-creative-talent" element={<OurCreativeTalent />} />
