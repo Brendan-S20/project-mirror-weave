@@ -15,24 +15,24 @@ import { useCTAModal } from "@/contexts/CTAContext";
 const includedFeatures = [
   "Dedicated creative team and project manager",
   "Full creative, strategy, and production services",
-  "Access to 100+ creative specialties on demand",
-  "AI-expert creatives and AI-powered workflows",
+  "Access to 20+ creative specialties on demand",
+  "Smart creative workflows and tools",
   "Real-time project management platform",
   "Unlimited users and asset storage",
   "Integrated budget and project tracking",
-  "AI-powered briefing and quality assurance",
+  "Structured briefing and quality assurance",
   "Rollover of unused monthly budget",
   "Option to add short-term capacity bursts",
-  "Creative analytics and performance reporting",
+  "Creative reporting and insights",
 ];
 
 const planBenefits = [
-  { icon: Users, title: "Dedicated team", desc: "Senior creatives who learn your brand and work as an extension of your team." },
-  { icon: Brain, title: "AI-powered workflows", desc: "Cut production time by 50% with purpose-built AI tools." },
-  { icon: Zap, title: "3x faster delivery", desc: "Most projects delivered 3x faster than traditional agency timelines." },
-  { icon: Shield, title: "SOC 2 compliant", desc: "Enterprise-grade security with SSO, encryption, and access controls." },
-  { icon: BarChart3, title: "Creative analytics", desc: "Performance tracking and insights tied to business outcomes." },
-  { icon: Layers, title: "100+ specialties", desc: "One subscription covers every creative discipline you need." },
+  { icon: Users, title: "Dedicated team", desc: "Experienced creatives who learn your brand and work as an extension of your team." },
+  { icon: Brain, title: "Smart workflows", desc: "Streamlined production processes that reduce turnaround time significantly." },
+  { icon: Zap, title: "Faster delivery", desc: "Most projects delivered faster than traditional agency timelines." },
+  { icon: Shield, title: "Secure and reliable", desc: "Enterprise-grade security with structured access controls and processes." },
+  { icon: BarChart3, title: "Creative insights", desc: "Reporting and tracking tied to your creative output and goals." },
+  { icon: Layers, title: "Multi-discipline", desc: "One subscription covers every creative discipline you need." },
 ];
 
 export default function Pricing() {
@@ -41,11 +41,11 @@ export default function Pricing() {
   const { openModal } = useCTAModal();
 
   return (
-    <Layout title="Pricing" description="Predictable subscription pricing for enterprise creative at scale. Proven 471% ROI.">
+    <Layout title="Pricing" description="Predictable subscription pricing for scalable creative production.">
       <HeroSection
         tagline="Pricing"
-        title={<>Take creative from backlog to brand-building, <span className="heading-italic">3x faster</span></>}
-        description="One subscription replaces scattered freelancers, slow agencies, and hiring overhead. Predictable pricing, proven ROI, and creative that actually moves the needle."
+        title={<>Take creative from backlog to brand-building, <span className="heading-italic">faster</span></>}
+        description="One subscription replaces scattered freelancers, slow agencies, and hiring overhead. Predictable pricing and creative that actually moves the needle."
         ctaText="Get a custom quote"
         variant="centered"
       />
@@ -138,22 +138,11 @@ export default function Pricing() {
         </div>
       </section>
 
-      <StatsSection
-        title="Proven results, not promises"
-        stats={[
-          { value: "471%", label: "ROI over 3 years (Forrester)" },
-          { value: "70%", label: "Lower creative production costs" },
-          { value: "3x", label: "Faster time to market" },
-          { value: "<6mo", label: "Time to full payback" },
-        ]}
-        variant="large"
-      />
-
       <ComparisonSection />
 
       <CTASection
-        title={<>Your creative budget deserves <span className="heading-italic">better ROI</span></>}
-        description="See how The North delivers 471% ROI while cutting production costs by 70%."
+        title={<>Your creative budget deserves <span className="heading-italic">better results</span></>}
+        description="See how The North delivers consistent, high-quality creative while reducing complexity."
         variant="banner"
       />
 
@@ -165,7 +154,7 @@ export default function Pricing() {
         variant="list"
         features={[
           { title: "Scope your needs", description: "Work with our team to define your creative volume, specialties needed, and team structure. We build a plan that matches your real workload." },
-          { title: "Meet your dedicated team", description: "Get matched with senior creatives who learn your brand, guidelines, and workflows. They operate as a true extension of your in-house team." },
+          { title: "Meet your dedicated team", description: "Get matched with experienced creatives who learn your brand, guidelines, and workflows. They operate as a true extension of your in-house team." },
           { title: "Ship creative, continuously", description: "Submit projects, track progress in real-time, and receive polished deliverables. Scale up during launches, scale back when things are calm." },
         ]}
       />
@@ -189,7 +178,7 @@ export default function Pricing() {
 
       <CTASection
         title={<>Start scaling your <span className="heading-italic">creative today</span></>}
-        description="Get a custom quote and see why 500+ companies chose The North over agencies, freelancers, and hiring."
+        description="Get a custom quote and see why teams choose The North over agencies, freelancers, and hiring."
         variant="split"
       />
     </Layout>

@@ -1,7 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/sections/HeroSection";
 import LogoCloud from "@/components/sections/LogoCloud";
-import heroImg from "@/assets/hero-abstract-1.jpg";
 import FeatureSection from "@/components/sections/FeatureSection";
 import StatsSection from "@/components/sections/StatsSection";
 import TestimonialSection from "@/components/sections/TestimonialSection";
@@ -13,38 +12,37 @@ import { useInView } from "@/hooks/useInView";
 import { useCTAModal } from "@/contexts/CTAContext";
 
 const enterpriseCapabilities = [
-  { icon: Users, title: "Dedicated creative teams", desc: "Senior creatives embedded in your brand. No onboarding lag, no context loss. They learn your guidelines, voice, and visual language and operate as your team." },
-  { icon: Brain, title: "AI-powered production", desc: "Purpose-built AI workflows cut production time by 50% while maintaining the quality bar your brand demands. From ideation through final asset." },
-  { icon: Shield, title: "SOC 2 Type II certified", desc: "Enterprise-grade security with SSO, advanced permissions, data encryption at rest and in transit, and full audit trails." },
-  { icon: Globe, title: "24/7 global coverage", desc: "Creative production across 120+ countries means your projects move forward in every time zone. No downtime, no delays." },
-  { icon: Zap, title: "Seamless integrations", desc: "Plugs into your DAM, project management tools, and existing workflows. No migration, no disruption to established processes." },
+  { icon: Users, title: "Dedicated creative teams", desc: "Experienced creatives embedded in your brand. No onboarding lag, no context loss. They learn your guidelines, voice, and visual language and operate as your team." },
+  { icon: Brain, title: "Smart production workflows", desc: "Purpose-built workflows reduce production time while maintaining the quality bar your brand demands. From ideation through final asset." },
+  { icon: Shield, title: "Enterprise-grade security", desc: "Structured security practices with SSO support, role-based permissions, data encryption, and audit trails." },
+  { icon: Globe, title: "Global coverage", desc: "Creative production across multiple time zones means your projects move forward around the clock. No downtime, no delays." },
+  { icon: Zap, title: "Seamless integrations", desc: "Plugs into your project management tools and existing workflows. No migration, no disruption to established processes." },
   { icon: Lock, title: "Custom workflows", desc: "Bespoke creative processes designed around your approval chains, compliance requirements, and brand governance structure." },
 ];
 
 export default function Enterprise() {
   const { ref: capRef, inView: capInView } = useInView();
-  const { ref: proofRef, inView: proofInView } = useInView();
   const { openModal } = useCTAModal();
 
   return (
-    <Layout title="Enterprise" description="Enterprise-grade creative operations for the world's most demanding brands.">
+    <Layout title="Enterprise" description="Enterprise-grade creative operations for teams that need quality at scale.">
       <HeroSection
         tagline="Enterprise"
         title={<>Enterprise creative <span className="heading-italic">without the enterprise overhead</span></>}
-        description="Dedicated creative teams, AI-powered production, and SOC 2 compliance. Built for organizations that need quality at scale without adding headcount."
+        description="Dedicated creative teams, streamlined production, and structured security. Built for organizations that need quality at scale without adding headcount."
         variant="split"
       >
-        <img src={heroImg} alt="Enterprise creative operations at scale" className="rounded-2xl w-full h-full object-cover" width={1280} height={960} />
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Enterprise creative operations" className="rounded-2xl w-full h-full object-cover" width={800} height={600} />
       </HeroSection>
 
-      <LogoCloud />
+      <LogoCloud title="Designed for growing and enterprise-level teams" />
 
       <StatsSection
         stats={[
-          { value: "471%", label: "ROI over 3 years (Forrester)" },
-          { value: "500+", label: "Enterprise clients served" },
-          { value: "99.9%", label: "Platform uptime SLA" },
-          { value: "SOC 2", label: "Type II certified" },
+          { value: "20+", label: "Creative disciplines" },
+          { value: "Dedicated", label: "Teams per client" },
+          { value: "Reliable", label: "Platform uptime" },
+          { value: "Secure", label: "Enterprise-grade" },
         ]}
         variant="inline"
       />
@@ -83,62 +81,35 @@ export default function Enterprise() {
       </section>
 
       <ImageTextSplit
-        tagline="Proven ROI"
-        title={<>471% ROI. <span className="heading-italic">Validated by Forrester.</span></>}
-        description="An independent Forrester Total Economic Impact study found that The North delivers 471% ROI over three years. Enterprise teams saw 70% lower design costs, 3x faster time to market, and payback in under 6 months."
+        tagline="Scalable creative"
+        title={<>Creative capacity that <span className="heading-italic">grows with you</span></>}
+        description="Enterprise teams need consistent, high-quality creative output across channels and markets. The North provides dedicated teams, structured workflows, and the flexibility to scale up or down based on demand."
+        imageSrc="https://images.unsplash.com/photo-1553028826-f4804a6dba3b?w=800&q=80"
+        imageAlt="Scalable creative production"
         bullets={[
-          "471% return on investment over three years",
-          "70% reduction in creative production costs",
-          "3x faster time to market on campaigns",
-          "Full payback achieved in under 6 months",
+          "Dedicated teams that understand your brand deeply",
+          "Structured workflows designed for high-volume output",
+          "Faster time to market on campaigns and launches",
+          "Flexible capacity that adapts to your needs",
         ]}
       />
 
       <CTASection
-        title={<>Take your creative to new heights. <span className="heading-italic">Cut overhead faster than ever.</span></>}
-        description="See how enterprise teams are scaling creative output while reducing costs."
+        title={<>Take your creative to new heights. <span className="heading-italic">Reduce overhead.</span></>}
+        description="See how enterprise teams are scaling creative output while simplifying operations."
         variant="banner"
       />
-
-      <section className="section-padding py-20 lg:py-28 relative" ref={proofRef}>
-        <div className="absolute inset-0 bg-[hsl(var(--surface-subtle))]" />
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <span className="badge-pill mb-6">Enterprise proof</span>
-            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-4">
-              Creative experts or AI power? <span className="heading-italic">Both.</span>
-            </h2>
-            <p className="text-lg text-muted-foreground mt-5 max-w-2xl mx-auto">
-              "Either/or" is over. Enterprise teams use The North to combine world-class human creativity with AI-powered production at a scale no internal team can match.
-            </p>
-          </div>
-
-          <div className={`grid md:grid-cols-3 gap-6 ${proofInView ? 'stagger-children' : ''}`}>
-            {[
-              { metric: "70%", label: "Lower creative costs", detail: "vs. building equivalent in-house capacity" },
-              { metric: "3x", label: "Faster to market", detail: "from brief to deployed assets" },
-              { metric: "50%", label: "Less revision cycles", detail: "with AI-powered quality assurance" },
-            ].map((item, i) => (
-              <div key={i} className={`card-premium p-10 text-center ${proofInView ? 'animate-fade-up' : 'opacity-0'}`}>
-                <div className="text-5xl lg:text-6xl font-black text-gradient tracking-tighter mb-3">{item.metric}</div>
-                <div className="text-base font-bold text-foreground mb-1">{item.label}</div>
-                <div className="text-sm text-muted-foreground">{item.detail}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <TestimonialSection variant="featured" />
 
       <FAQSection
         title={<>Frequently asked <span className="heading-italic">questions</span></>}
         items={[
-          { question: "What makes The North different from a traditional agency?", answer: "The North operates as a dedicated creative team extension, not a project-based vendor. You get consistent talent, AI-powered workflows, and subscription pricing rather than unpredictable retainers and project fees." },
-          { question: "How do you handle brand consistency at scale?", answer: "Your dedicated team learns your brand guidelines, voice, and visual language. Combined with AI-powered quality assurance, every deliverable stays on-brand across channels and markets." },
-          { question: "What security certifications do you hold?", answer: "The North is SOC 2 Type II certified. We support SSO integration, advanced role-based permissions, data encryption at rest and in transit, and maintain comprehensive audit trails." },
-          { question: "How quickly can we get started?", answer: "Most enterprise teams are fully onboarded within 2 weeks. Your dedicated team begins learning your brand immediately, and many teams see their first deliverables within the first week." },
-          { question: "Can The North integrate with our existing tools?", answer: "Yes. The North integrates with popular DAM systems, project management tools, and communication platforms. We adapt to your workflows rather than forcing new ones." },
+          { question: "What makes The North different from a traditional agency?", answer: "The North operates as a dedicated creative team extension, not a project-based vendor. You get consistent talent, streamlined workflows, and subscription pricing rather than unpredictable retainers and project fees." },
+          { question: "How do you handle brand consistency at scale?", answer: "Your dedicated team learns your brand guidelines, voice, and visual language. Combined with structured quality assurance processes, every deliverable stays on-brand across channels and markets." },
+          { question: "What security practices do you follow?", answer: "The North follows enterprise-grade security practices. We support SSO integration, role-based permissions, data encryption at rest and in transit, and maintain comprehensive audit trails." },
+          { question: "How quickly can we get started?", answer: "Most enterprise teams are fully onboarded within a few weeks. Your dedicated team begins learning your brand immediately, and many teams see their first deliverables within the first week." },
+          { question: "Can The North integrate with our existing tools?", answer: "Yes. The North integrates with popular project management tools and communication platforms. We adapt to your workflows rather than forcing new ones." },
         ]}
       />
 

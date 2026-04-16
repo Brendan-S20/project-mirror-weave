@@ -1,5 +1,4 @@
 import Layout from "@/components/layout/Layout";
-import heroImg from "@/assets/hero-abstract-2.jpg";
 import HeroSection from "@/components/sections/HeroSection";
 import LogoCloud from "@/components/sections/LogoCloud";
 import ImageTextSplit from "@/components/sections/ImageTextSplit";
@@ -10,24 +9,24 @@ import CTASection from "@/components/sections/CTASection";
 
 export default function AboutUs() {
   return (
-    <Layout title="About Us" description="The North is the creative force behind the world's most ambitious brands.">
+    <Layout title="About Us" description="The North is the creative partner behind ambitious, growing brands.">
       <HeroSection
         tagline="About The North"
-        title={<>The creative force behind <span className="heading-italic">the world's boldest brands</span></>}
-        description="We built a new model for creative production. One where the best talent in the world, powered by AI, plugs directly into your team and delivers at the speed your business demands."
+        title={<>The creative force behind <span className="heading-italic">ambitious brands</span></>}
+        description="We built a new model for creative production. One where dedicated talent, powered by smart workflows, plugs directly into your team and delivers at the speed your business demands."
         variant="split"
       >
-        <img src={heroImg} alt="The North global creative team" className="rounded-2xl w-full h-full object-cover" width={1280} height={960} />
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="The North creative team at work" className="rounded-2xl w-full h-full object-cover" width={800} height={600} />
       </HeroSection>
 
       <LogoCloud />
 
       <StatsSection
         stats={[
-          { value: "750+", label: "Creative professionals worldwide" },
-          { value: "120+", label: "Countries represented" },
-          { value: "500+", label: "Enterprise clients served" },
-          { value: "2015", label: "Year founded" },
+          { value: "20+", label: "Creative disciplines covered" },
+          { value: "Global", label: "Talent from multiple countries" },
+          { value: "Dedicated", label: "Teams for every client" },
+          { value: "Growing", label: "Client base year over year" },
         ]}
         variant="inline"
       />
@@ -35,12 +34,14 @@ export default function AboutUs() {
       <ImageTextSplit
         tagline="Our mission"
         title={<>We exist to <span className="heading-italic">unlock creative potential</span></>}
-        description="Every ambitious marketing team hits the same wall: too many ideas, not enough capacity to execute them. The North exists to remove that wall entirely. We combine the world's best creative talent with purpose-built technology to deliver a fundamentally faster, more affordable, and higher-quality creative experience."
+        description="Every ambitious marketing team hits the same wall: too many ideas, not enough capacity to execute them. The North exists to remove that wall entirely. We combine talented creatives with purpose-built technology to deliver a faster, more reliable, and higher-quality creative experience."
+        imageSrc="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+        imageAlt="Team collaborating on creative strategy"
         bullets={[
           "Not an agency. Not freelancers. A new model entirely.",
-          "A world-class creative team that operates as your own",
+          "A creative team that operates as your own",
           "Purpose-built technology for seamless collaboration",
-          "AI-powered workflows for speed without compromise",
+          "Smart workflows for speed without compromise",
         ]}
       />
 
@@ -48,10 +49,10 @@ export default function AboutUs() {
         tagline="What makes us different"
         title={<>A creative partner that <span className="heading-italic">actually delivers</span></>}
         features={[
-          { title: "Top global talent", description: "We hire the top 1% of creative talent worldwide, then train them on the latest AI tools. Your team gets senior-level output from day one." },
+          { title: "Vetted global talent", description: "We hire talented creative professionals worldwide, then train them on the latest tools. Your team gets experienced output from day one." },
           { title: "Your dedicated team", description: "Every client gets a hand-picked team that learns your brand guidelines, tone, and preferences. They get better the longer you work together." },
-          { title: "AI-native platform", description: "Our technology platform uses AI at every step: briefing, production, quality assurance, and asset management. Faster cycles, fewer errors." },
-          { title: "Enterprise-grade delivery", description: "Multi-layer reviews, brand consistency automation, and rigorous QA ensure every deliverable meets the standards your brand requires." },
+          { title: "Smart platform", description: "Our technology platform streamlines every step: briefing, production, quality assurance, and asset management. Faster cycles, fewer errors." },
+          { title: "Consistent delivery", description: "Multi-layer reviews, brand consistency processes, and rigorous QA ensure every deliverable meets the standards your brand requires." },
         ]}
         variant="list"
       />
@@ -59,8 +60,10 @@ export default function AboutUs() {
       <ImageTextSplit
         tagline="Our values"
         title={<>Built on trust, <span className="heading-italic">transparency, and ambition</span></>}
-        description="We believe great creative partnerships require radical transparency. Our clients see real-time progress, know exactly what they're paying, and have direct access to the people doing the work. No layers of account management. No hidden costs. No surprises."
+        description="We believe great creative partnerships require radical transparency. Our clients see real-time progress, know exactly what they are paying, and have direct access to the people doing the work. No layers of account management. No hidden costs. No surprises."
         imagePosition="left"
+        imageSrc="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80"
+        imageAlt="Transparent collaboration and trust"
       />
 
       <TestimonialSection variant="featured" />
