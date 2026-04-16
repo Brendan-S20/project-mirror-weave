@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/sections/HeroSection";
 import FeatureSection from "@/components/sections/FeatureSection";
@@ -10,8 +10,9 @@ import { getServiceBySlug, services } from "@/data/services";
 import ServiceGrid from "@/components/sections/ServiceGrid";
 
 export default function ServicePage() {
-  const { slug } = useParams<{ slug: string }>();
-  const service = getServiceBySlug(slug || "");
+  const location = useLocation();
+  const slug = location.pathname.replace(/^\//, "");
+  const service = getServiceBySlug(slug);
 
   if (!service) {
     return (
