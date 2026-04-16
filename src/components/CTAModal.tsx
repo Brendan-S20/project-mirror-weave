@@ -108,7 +108,7 @@ export default function CTAModal({ open, onClose }: CTAModalProps) {
               </select>
               <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
             </div>
-            {errors.companySize && <p className="text-xs text-red-400 mt-1">{errors.companySize}</p>}
+            {errors.companySize && <p className="text-xs text-destructive mt-1">{errors.companySize}</p>}
           </div>
           <div>
             <label htmlFor="cta-message" className="block text-sm font-medium text-foreground mb-1.5">Project details</label>
