@@ -171,13 +171,19 @@ export default function Pricing() {
       />
 
       <FAQSection
+        title={<>Got questions? <span className="heading-italic">We have answers.</span></>}
+        description="Everything you need to know about working with The North."
         items={[
-          { question: "How does The North's pricing work?", answer: "The North operates on a subscription model with predictable monthly pricing. Your subscription includes a dedicated creative team, project management, our full platform, and access to 100+ creative specialties. Pricing scales based on your volume." },
-          { question: "What's included in my subscription?", answer: "Everything you need: dedicated creatives, a project manager, unlimited users, asset storage, AI-powered briefing and QA tools, creative analytics, and the ability to roll over unused budget month to month." },
-          { question: "Can I scale up or down?", answer: "Yes. The North is built to flex. Increase capacity during product launches or peak campaign periods, then scale back when things slow down. You can also add short-term burst capacity for one-off projects." },
-          { question: "How fast is delivery?", answer: "Most projects deliver 3x faster than traditional agencies. Turnaround depends on complexity, but our AI-powered workflows and always-on teams ensure consistently fast execution." },
-          { question: "Is there a minimum commitment?", answer: "We offer flexible engagement terms designed to fit your needs. Contact our team to discuss the best option for your organization and creative volume." },
-          { question: "Do you offer a trial or pilot?", answer: "We offer pilot programs so you can experience our quality, speed, and collaboration model before committing to a longer engagement. Most teams see value within the first two weeks." },
+          { question: "How do I know what budget is right for me?", answer: "We'll work with you to determine the right level of investment based on your team's needs, output expectations, and growth goals. Every engagement is tailored to ensure you're getting the most value from your creative capacity." },
+          { question: "What is the minimum commitment?", answer: "The North is built for ongoing creative partnerships. Most clients work with us on a monthly basis to maintain consistency, efficiency, and long-term performance across their creative output." },
+          { question: "How does onboarding work?", answer: "Once you get started, we guide you through a structured onboarding process to understand your brand, workflows, and priorities. This allows our team to move quickly and deliver high-quality work with minimal back-and-forth." },
+          { question: "What billing options do you offer?", answer: "We offer flexible billing options depending on your engagement, including monthly subscriptions and custom invoicing for larger or enterprise-level partnerships." },
+          { question: "What happens if I don't use all of my monthly capacity?", answer: "We understand that needs can fluctuate. Unused capacity can be managed flexibly depending on your plan, ensuring you still get full value from your partnership with The North." },
+          { question: "How much does a typical project cost?", answer: "Project scope, complexity, and turnaround time all influence pricing. Rather than fixed rates, we focus on delivering scalable creative support that adapts to your needs and grows with your business." },
+          { question: "What makes The North different from agencies or freelancers?", answer: "The North combines the flexibility of freelancers, the structure of an in-house team, and the scalability of an agency. You get consistent quality, faster turnaround, and a team that understands your brand deeply." },
+          { question: "Can you support large or enterprise teams?", answer: "Yes. The North is designed to support growing and enterprise-level teams that require consistent, high-volume creative output across multiple channels and markets." },
+          { question: "How quickly can projects be completed?", answer: "Turnaround times depend on scope, but our systems are built for speed. Most deliverables are completed significantly faster than traditional agency timelines." },
+          { question: "Do you use AI in your creative process?", answer: "We use advanced tools to improve speed, consistency, and output quality, while maintaining full creative oversight from our team. The goal is better results, not automation for its own sake." },
         ]}
       />
 
