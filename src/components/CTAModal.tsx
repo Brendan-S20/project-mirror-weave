@@ -58,7 +58,7 @@ export default function CTAModal({ open, onClose }: CTAModalProps) {
   };
 
   const inputClass = (field: string) =>
-    `w-full rounded-lg border ${errors[field] ? "border-red-500/60" : "border-border"} bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow`;
+    `w-full rounded-lg border ${errors[field] ? "border-destructive" : "border-border"} bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow`;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
