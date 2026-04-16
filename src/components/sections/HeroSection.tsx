@@ -28,17 +28,11 @@ export default function HeroSection({
   if (variant === "centered") {
     return (
       <section className="relative overflow-hidden gradient-mesh-hero">
-        {/* Decorative elements */}
-        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div className="absolute inset-0 grid-pattern opacity-20" />
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.03] blur-[120px]" />
-        
         <div className="section-padding py-28 lg:py-44 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            {tagline && (
-              <span className="badge-pill mb-8 animate-fade-up">
-                {tagline}
-              </span>
-            )}
+            {tagline && <span className="badge-pill mb-8 animate-fade-up">{tagline}</span>}
             <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl heading-display text-foreground mb-8 animate-fade-up" style={{ animationDelay: '80ms' }}>
               {title}
             </h1>
@@ -54,15 +48,9 @@ export default function HeroSection({
                 <Link to={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</Link>
               )}
             </div>
-            {children && (
-              <div className="mt-20 animate-fade-up" style={{ animationDelay: '320ms' }}>
-                {children}
-              </div>
-            )}
+            {children && <div className="mt-20 animate-fade-up" style={{ animationDelay: '320ms' }}>{children}</div>}
           </div>
         </div>
-        
-        {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
     );
@@ -70,19 +58,20 @@ export default function HeroSection({
 
   if (variant === "split") {
     return (
-      <section className="relative overflow-hidden gradient-mesh-hero">
-        <div className="absolute inset-0 grid-pattern opacity-20" />
-        
-        <div className="section-padding py-24 lg:py-36 relative z-10">
+      <section className="relative overflow-hidden">
+        {/* Layered background */}
+        <div className="absolute inset-0 gradient-mesh-hero" />
+        <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
+        <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-primary/[0.04] blur-[140px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[hsl(var(--emerald)/0.08)] blur-[100px]" />
+
+        <div className="section-padding pt-32 lg:pt-44 pb-20 lg:pb-28 relative z-10">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
-              <div className="lg:w-[55%] shrink-0">
-                {tagline && (
-                  <span className="badge-pill mb-8 animate-fade-up">
-                    {tagline}
-                  </span>
-                )}
-                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl heading-display text-foreground mb-8 animate-fade-up" style={{ animationDelay: '80ms' }}>
+            <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+              {/* Left: Content */}
+              <div className="lg:w-[55%] shrink-0 flex flex-col justify-center">
+                {tagline && <span className="badge-pill mb-8 animate-fade-up">{tagline}</span>}
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] heading-display text-foreground mb-8 animate-fade-up leading-[1.05]" style={{ animationDelay: '80ms' }}>
                   {title}
                 </h1>
                 <p className="text-lg lg:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed animate-fade-up" style={{ animationDelay: '160ms' }}>
@@ -98,6 +87,8 @@ export default function HeroSection({
                   )}
                 </div>
               </div>
+
+              {/* Right: Visual block */}
               {children && (
                 <div className="lg:w-[45%] animate-fade-up" style={{ animationDelay: '300ms' }}>
                   {children}
@@ -106,7 +97,7 @@ export default function HeroSection({
             </div>
           </div>
         </div>
-        
+
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </section>
     );
@@ -115,17 +106,12 @@ export default function HeroSection({
   // Default variant
   return (
     <section className="relative overflow-hidden gradient-mesh-hero">
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+      <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/[0.04] blur-[100px]" />
-      
-      <div className="section-padding py-24 lg:py-40 relative z-10">
+      <div className="section-padding pt-32 lg:pt-44 pb-20 lg:pb-32 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-4xl">
-            {tagline && (
-              <span className="badge-pill mb-8 animate-fade-up">
-                {tagline}
-              </span>
-            )}
+            {tagline && <span className="badge-pill mb-8 animate-fade-up">{tagline}</span>}
             <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl heading-display text-foreground mb-8 animate-fade-up" style={{ animationDelay: '80ms' }}>
               {title}
             </h1>
@@ -145,7 +131,6 @@ export default function HeroSection({
           {children && <div className="mt-20 animate-fade-up" style={{ animationDelay: '400ms' }}>{children}</div>}
         </div>
       </div>
-      
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
