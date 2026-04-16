@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/sections/HeroSection";
 import FeatureSection from "@/components/sections/FeatureSection";
@@ -9,7 +9,6 @@ import ImageTextSplit from "@/components/sections/ImageTextSplit";
 import StatsSection from "@/components/sections/StatsSection";
 import { getServiceBySlug, services } from "@/data/services";
 import ServiceGrid from "@/components/sections/ServiceGrid";
-import { ArrowRight } from "lucide-react";
 
 export default function ServicePage() {
   const location = useLocation();
@@ -64,7 +63,7 @@ export default function ServicePage() {
       />
 
       <FeatureSection
-        title={<>Why teams choose Superside for <span className="heading-italic">{service.title.toLowerCase()}</span></>}
+        title={<>Why teams choose The North for <span className="heading-italic">{service.title.toLowerCase()}</span></>}
         features={service.benefits.map((b) => ({ title: b.title, description: b.description }))}
         columns={3}
       />
@@ -84,7 +83,7 @@ export default function ServicePage() {
 
       <CTASection
         title={<>Ready to elevate your <span className="heading-italic">{service.title.toLowerCase()}?</span></>}
-        description={`See how Superside's ${service.title.toLowerCase()} team can scale your creative output.`}
+        description={`See how The North's ${service.title.toLowerCase()} team can scale your creative output.`}
         variant="banner"
       />
     </Layout>

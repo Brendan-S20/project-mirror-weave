@@ -43,7 +43,6 @@ const CellValue = ({ val }: { val: boolean | string }) => {
 export default function ComparisonSection({ title, description, competitorName, items }: ComparisonSectionProps) {
   const { ref, inView } = useInView();
 
-  // Two-column compare mode (used by ComparePages)
   if (competitorName && items) {
     return (
       <section className="section-padding py-20 lg:py-28 relative" ref={ref}>
@@ -58,7 +57,7 @@ export default function ComparisonSection({ title, description, competitorName, 
           <div className={`card-premium overflow-hidden ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
             <div className="grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_160px_160px] items-center border-b border-border/40 bg-primary/[0.03]">
               <div className="p-5 lg:p-6"><span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Feature</span></div>
-              <div className="p-5 lg:p-6 text-center border-l border-border/30"><span className="text-sm font-bold text-primary">Superside</span></div>
+              <div className="p-5 lg:p-6 text-center border-l border-border/30"><span className="text-sm font-bold text-primary">The North</span></div>
               <div className="p-5 lg:p-6 text-center border-l border-border/30"><span className="text-sm font-semibold text-muted-foreground">{competitorName}</span></div>
             </div>
             {items.map((item, i) => (
@@ -74,7 +73,6 @@ export default function ComparisonSection({ title, description, competitorName, 
     );
   }
 
-  // Multi-column default (homepage)
   return (
     <section className="section-padding py-20 lg:py-28 relative" ref={ref}>
       <div className="absolute inset-0 gradient-mesh-section" />
@@ -82,13 +80,12 @@ export default function ComparisonSection({ title, description, competitorName, 
         <div className="text-center mb-16">
           <span className="badge-pill mb-6">Compare</span>
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-4">
-            {title || <>Why teams choose <span className="heading-italic">Superside</span></>}
+            {title || <>Why teams choose <span className="heading-italic">The North</span></>}
           </h2>
           <p className="text-lg text-muted-foreground mt-5 max-w-2xl mx-auto">
-            {description || "See how Superside stacks up against the alternatives."}
+            {description || "See how The North stacks up against the alternatives."}
           </p>
         </div>
-
         <div className={`overflow-x-auto ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
           <table className="w-full min-w-[700px]">
             <thead>
@@ -96,7 +93,7 @@ export default function ComparisonSection({ title, description, competitorName, 
                 <th className="text-left py-5 pr-6 text-sm font-medium text-muted-foreground w-[35%]" />
                 <th className="py-5 px-4 text-center">
                   <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-1.5">
-                    <span className="text-sm font-bold text-primary">Superside</span>
+                    <span className="text-sm font-bold text-primary">The North</span>
                   </div>
                 </th>
                 <th className="py-5 px-4 text-sm font-medium text-muted-foreground text-center">Agencies</th>
