@@ -8,23 +8,8 @@ export default function Footer() {
   return (
     <footer className="bg-[hsl(var(--surface-subtle))] border-t border-border/30">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* CTA Banner */}
-        <div className="py-20 lg:py-28 border-b border-border/20">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
-            <div className="max-w-xl">
-              <h2 className="text-3xl lg:text-5xl font-bold text-foreground leading-tight">
-                Ready to fuel your <span className="heading-italic">creative growth?</span>
-              </h2>
-              <p className="mt-4 text-muted-foreground text-lg">
-                Join 500+ companies scaling their creative with Superside.
-              </p>
-            </div>
-            <Link to="/pricing" className="btn-lime-lg group shrink-0">
-              Book a demo
-              <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </div>
+
+
 
         {/* Link Grid */}
         <div className="py-14 lg:py-20 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
