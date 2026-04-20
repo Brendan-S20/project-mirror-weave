@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/sections/HeroSection";
 import CTASection from "@/components/sections/CTASection";
@@ -6,8 +6,12 @@ import { getServiceBySlug } from "@/data/services";
 import { ArrowRight, Check, AlertTriangle, Wrench, Sparkles, Target, Users } from "lucide-react";
 
 export default function MicroServicePage() {
-  const { serviceSlug, microSlug } = useParams<{ serviceSlug: string; microSlug: string }>();
-  const service = getServiceBySlug(serviceSlug || "");
+  const { microSlug } = useParams<{ microSlug: string }>();
+  const location = useLocation();
+  // The parent route uses a literal first segment (e.g. /managed-it-services/:microSlug),
+  // so derive the service slug from the URL rather than useParams.
+  const serviceSlug = location.pathname.replace(/^\//, "").split("/")[0];
+  const service = getServiceBySlug(serviceSlug);
   const micro = service?.microServices.find((m) => m.slug === microSlug);
 
   if (!service || !micro) {
