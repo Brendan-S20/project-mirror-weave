@@ -58,11 +58,11 @@ export default function CTASection({
               {description && <p className="text-lg text-muted-foreground mt-5 max-w-lg">{description}</p>}
             </div>
             <div className="flex items-center gap-3 shrink-0 flex-wrap">
-              <button onClick={openModal} className="btn-lime-lg group">
+              <button onClick={openProjectModal} className="btn-lime-lg group">
                 {ctaText}
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
-              <button onClick={openModal} className="btn-outline-light">Book a Strategy Call</button>
+              <button onClick={openStrategyModal} className="btn-outline-light">Book a Strategy Call</button>
             </div>
           </div>
         </div>
@@ -83,11 +83,11 @@ export default function CTASection({
             <p className="text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto mb-10">{description}</p>
           )}
           <div className="flex items-center justify-center gap-3 flex-wrap">
-            <button onClick={openModal} className="btn-lime-lg animate-pulse-glow group">
+            <button onClick={openProjectModal} className="btn-lime-lg animate-pulse-glow group">
               {ctaText}
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
-            <button onClick={openModal} className="btn-outline-light">Book a Strategy Call</button>
+            <button onClick={openStrategyModal} className="btn-outline-light">Book a Strategy Call</button>
           </div>
         </div>
       </div>
