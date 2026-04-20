@@ -8,43 +8,39 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    quote: "We consolidated three vendor relationships into one partnership with The North. The creative quality improved, turnaround times dropped significantly, and our team finally has bandwidth for strategic work.",
-    author: "Head of Marketing",
+    quote: "We stopped patching tools and started running on a real system. Marketing, sales, and ops finally see the same numbers, and the team spends time on growth instead of cleanup.",
+    author: "Head of Operations",
+    role: "Head of Operations",
+    company: "B2B SaaS Company",
+  },
+  {
+    quote: "The North rebuilt our funnel and CRM as one connected system. Pipeline reporting actually reflects reality now, and we launch new campaigns in days instead of weeks.",
+    author: "VP Marketing",
     role: "VP of Marketing",
-    company: "SaaS Company",
+    company: "Growth-Stage SaaS",
   },
   {
-    quote: "Our ad performance improved meaningfully after switching creative production to The North. They produce more variants in a week than our previous partners did in a month.",
-    author: "Performance Marketing Lead",
-    role: "Performance Marketing Director",
-    company: "Growth-Stage Startup",
+    quote: "Their automation work removed entire categories of manual operational work. We doubled order volume without adding headcount, and the team is no longer firefighting.",
+    author: "COO",
+    role: "Chief Operating Officer",
+    company: "Multi-Brand E-commerce",
   },
   {
-    quote: "The consistency is what sold us. Every deliverable, across every channel, looks and feels like our brand. That level of quality at this scale simply was not possible before.",
-    author: "Brand Director",
-    role: "Head of Brand",
-    company: "Technology Company",
+    quote: "We had outgrown spreadsheets long before we admitted it. The internal tools they built saved hours per operator per day and made onboarding new analysts genuinely fast.",
+    author: "Head of Finance Ops",
+    role: "Head of Finance Operations",
+    company: "Fintech Company",
   },
   {
-    quote: "Their workflows have cut our production timeline from weeks to days. The creative quality has not just been maintained, it has improved. That is the part that surprised us.",
-    author: "Marketing Executive",
-    role: "CMO",
-    company: "Digital Platform",
+    quote: "Working with The North feels less like hiring an agency and more like getting a senior systems team on demand. They think in architecture, not deliverables.",
+    author: "Founder & CEO",
+    role: "Founder and CEO",
+    company: "Services Business",
   },
   {
-    quote: "The North is the closest thing to having a world-class in-house team without the hiring, management, and overhead. They know our brand as well as we do.",
-    author: "Creative Operations Lead",
-    role: "Director of Creative Operations",
-    company: "Tech Company",
+    quote: "Our infrastructure was the silent constraint on every initiative. Replatforming with The North reduced cloud spend and unlocked the engineering velocity we needed.",
+    author: "CTO",
+    role: "Chief Technology Officer",
+    company: "Growth-Stage Company",
   },
-  {
-    quote: "We went from concept to full campaign launch in under two weeks. Our internal team can finally focus on strategy instead of managing production details.",
-    author: "Marketing Lead",
-    role: "Global Marketing Lead",
-    company: "Enterprise Brand",
-  },
-];
-
-export const logoCloudCompanies = [
-  "Trusted by ambitious brands worldwide",
 ];
