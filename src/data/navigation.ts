@@ -1,8 +1,9 @@
 import {
   Globe, Layers, Settings2, Workflow, Database, Zap, Megaphone, Video, Sparkles,
-  Server, Cpu, Wrench, TrendingUp, Users, Star, BookMarked, FileText, Calendar, Newspaper, BarChart3, Building2,
+  Server, Cpu, Wrench, TrendingUp, Users, BookMarked, FileText, Calendar, Newspaper, BarChart3,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { services, pillars, type Service } from "./services";
 
 export interface NavLink {
   label: string;
@@ -27,51 +28,45 @@ export interface NavItem {
 
 export const APP_LOGIN_URL = "https://app.thenorth.consulting";
 
+const serviceIcons: Record<string, LucideIcon> = {
+  "website-development": Globe,
+  "funnels-landing-pages": Layers,
+  "conversion-systems": TrendingUp,
+  "crm-setup": Database,
+  "workflow-automation": Workflow,
+  "business-process-automation": Settings2,
+  "api-integrations": Zap,
+  "ads": Megaphone,
+  "branding": Sparkles,
+  "media-production": Video,
+  "system-architecture": Cpu,
+  "infrastructure-planning": Server,
+  "internal-tools": Wrench,
+  "scaling-operations": TrendingUp,
+};
+
+const pillarToServiceLinks = (pillarSlug: Service["pillar"]): NavLink[] =>
+  services
+    .filter((s) => s.pillar === pillarSlug)
+    .map((s) => ({
+      label: s.title,
+      href: `/${s.slug}`,
+      description: s.subtitle,
+      icon: serviceIcons[s.slug],
+    }));
+
+export const servicesNavGroups: NavGroup[] = pillars.map((p) => ({
+  title: p.title,
+  titleHref: `/services/${p.slug}`,
+  items: pillarToServiceLinks(p.slug as Service["pillar"]),
+}));
+
 export const mainNavItems: NavItem[] = [
   {
     label: "Services",
     href: "/services",
     megaVariant: "services",
-    children: [
-      {
-        title: "Growth Infrastructure",
-        titleHref: "/services/growth-infrastructure",
-        items: [
-          { label: "Website development", href: "/website-development", description: "Production-grade sites engineered for growth", icon: Globe },
-          { label: "Funnels & landing pages", href: "/funnels-landing-pages", description: "High-intent funnels for paid and organic", icon: Layers },
-          { label: "Conversion systems", href: "/conversion-systems", description: "End-to-end conversion infrastructure", icon: TrendingUp },
-        ],
-      },
-      {
-        title: "Automation & Systems",
-        titleHref: "/services/automation-systems",
-        items: [
-          { label: "CRM setup", href: "/crm-setup", description: "CRM as a revenue engine", icon: Database },
-          { label: "Workflow automation", href: "/workflow-automation", description: "Automate the work between tools", icon: Workflow },
-          { label: "Business process automation", href: "/business-process-automation", description: "Reengineer the operations that matter", icon: Settings2 },
-          { label: "API integrations", href: "/api-integrations", description: "Connect every tool in your stack", icon: Zap },
-        ],
-      },
-      {
-        title: "Creative & Content",
-        titleHref: "/services/creative-content",
-        items: [
-          { label: "Ads", href: "/ads", description: "Performance creative for paid channels", icon: Megaphone },
-          { label: "Branding", href: "/branding", description: "Brand systems built to scale", icon: Sparkles },
-          { label: "Media production", href: "/media-production", description: "Video, photo, and motion at scale", icon: Video },
-        ],
-      },
-      {
-        title: "Technology & IT",
-        titleHref: "/services/technology-it",
-        items: [
-          { label: "System architecture", href: "/system-architecture", description: "Architect the stack you actually need", icon: Cpu },
-          { label: "Infrastructure planning", href: "/infrastructure-planning", description: "Cloud and infrastructure for growth-stage teams", icon: Server },
-          { label: "Internal tools", href: "/internal-tools", description: "Custom tools for ops, sales, and support", icon: Wrench },
-          { label: "Scaling operations", href: "/scaling-operations", description: "Operational readiness for the next phase", icon: TrendingUp },
-        ],
-      },
-    ],
+    children: servicesNavGroups,
   },
   { label: "Our Work", href: "/our-work" },
   {
@@ -125,22 +120,7 @@ export const mainNavItems: NavItem[] = [
 export const footerLinks = {
   services: {
     title: "Services",
-    links: [
-      { label: "Website Development", href: "/website-development" },
-      { label: "Funnels & Landing Pages", href: "/funnels-landing-pages" },
-      { label: "Conversion Systems", href: "/conversion-systems" },
-      { label: "CRM Setup", href: "/crm-setup" },
-      { label: "Workflow Automation", href: "/workflow-automation" },
-      { label: "Business Process Automation", href: "/business-process-automation" },
-      { label: "API Integrations", href: "/api-integrations" },
-      { label: "Ads", href: "/ads" },
-      { label: "Branding", href: "/branding" },
-      { label: "Media Production", href: "/media-production" },
-      { label: "System Architecture", href: "/system-architecture" },
-      { label: "Infrastructure Planning", href: "/infrastructure-planning" },
-      { label: "Internal Tools", href: "/internal-tools" },
-      { label: "Scaling Operations", href: "/scaling-operations" },
-    ],
+    links: services.map((s) => ({ label: s.title, href: `/${s.slug}` })),
   },
   company: {
     title: "Company",
@@ -174,6 +154,10 @@ export const footerLinks = {
       { label: "vs. In-House", href: "/compare-thenorth-vs-inhouse" },
       { label: "Compare All", href: "/compare" },
     ],
+  },
+  pillars: {
+    title: "Pillars",
+    links: pillars.map((p) => ({ label: p.title, href: `/services/${p.slug}` })),
   },
   legal: {
     title: "Legal",

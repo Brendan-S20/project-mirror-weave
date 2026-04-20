@@ -7,42 +7,50 @@ import TestimonialSection from "@/components/sections/TestimonialSection";
 import ImageTextSplit from "@/components/sections/ImageTextSplit";
 import CTASection from "@/components/sections/CTASection";
 import FAQSection from "@/components/sections/FAQSection";
-import { ArrowRight, Shield, Globe, Users, Brain, Zap, Lock } from "lucide-react";
+import { ArrowRight, Shield, Globe, Users, Workflow, Lock, HeadphonesIcon, Layers, Building2 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { useCTAModal } from "@/contexts/CTAContext";
 
 const enterpriseCapabilities = [
-  { icon: Users, title: "Dedicated creative teams", desc: "Experienced creatives embedded in your brand. No onboarding lag, no context loss. They learn your guidelines, voice, and visual language and operate as your team." },
-  { icon: Brain, title: "Smart production workflows", desc: "Purpose-built workflows reduce production time while maintaining the quality bar your brand demands. From ideation through final asset." },
-  { icon: Shield, title: "Enterprise-grade security", desc: "Structured security practices with SSO support, role-based permissions, data encryption, and audit trails." },
-  { icon: Globe, title: "Global coverage", desc: "Creative production across multiple time zones means your projects move forward around the clock. No downtime, no delays." },
-  { icon: Zap, title: "Seamless integrations", desc: "Plugs into your project management tools and existing workflows. No migration, no disruption to established processes." },
-  { icon: Lock, title: "Custom workflows", desc: "Bespoke creative processes designed around your approval chains, compliance requirements, and brand governance structure." },
+  { icon: Building2, title: "Multi-location and multi-brand", desc: "Architecture and operations designed for businesses running multiple locations, brands, or business units from one stack." },
+  { icon: Workflow, title: "Deep system integrations", desc: "Custom integrations across your CRM, ERP, billing, support, and warehouse so every team operates on the same data." },
+  { icon: Users, title: "Dedicated cross-functional team", desc: "A named team across strategy, engineering, automation, and creative, embedded as an extension of your in-house teams." },
+  { icon: Shield, title: "SLA and structured support", desc: "Defined response times, named escalation paths, scheduled reviews, and a clear roadmap reviewed every quarter." },
+  { icon: Globe, title: "Global delivery coverage", desc: "Distributed delivery across time zones means projects move forward across regions, with a single accountable team in the middle." },
+  { icon: Lock, title: "Security and compliance", desc: "SSO, role-based access, signed DPAs and NDAs, and security reviews built into the engagement." },
+];
+
+const enterpriseProgram = [
+  { phase: "Discovery", description: "Joint workshops with stakeholders to map systems, data, and operational constraints across the business." },
+  { phase: "Architecture", description: "Reference architecture and roadmap covering systems, automation, integrations, and operating model." },
+  { phase: "Build", description: "Phased implementation with milestones, environments, and structured QA across every workstream." },
+  { phase: "Operate", description: "Ongoing operating partner with quarterly reviews, SLA-backed support, and continuous optimization." },
 ];
 
 export default function Enterprise() {
   const { ref: capRef, inView: capInView } = useInView();
+  const { ref: progRef, inView: progInView } = useInView();
   const { openModal } = useCTAModal();
 
   return (
-    <Layout title="Enterprise" description="Enterprise-grade creative operations for teams that need quality at scale.">
+    <Layout title="Enterprise" description="Multi-location, multi-system Growth Infrastructure for enterprise teams. Dedicated team, SLAs, and structured support.">
       <HeroSection
         tagline="Enterprise"
-        title={<>Enterprise creative <span className="heading-italic">without the enterprise overhead</span></>}
-        description="Dedicated creative teams, streamlined production, and structured security. Built for organizations that need quality at scale without adding headcount."
+        title={<>Growth Infrastructure for <span className="heading-italic">multi-system, multi-location businesses</span></>}
+        description="Dedicated team. Deep integrations. Structured SLAs. Built for enterprise organizations that need systems, automation, and creative under one accountable partner."
         variant="split"
       >
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Enterprise creative operations" className="rounded-2xl w-full h-full object-cover" width={800} height={600} />
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Enterprise growth infrastructure" className="rounded-2xl w-full h-full object-cover" width={800} height={600} />
       </HeroSection>
 
-      <LogoCloud title="Designed for growing and enterprise-level teams" />
+      <LogoCloud title="Trusted by enterprise teams" />
 
       <StatsSection
         stats={[
-          { value: "20+", label: "Creative disciplines" },
-          { value: "Dedicated", label: "Teams per client" },
-          { value: "Reliable", label: "Platform uptime" },
-          { value: "Secure", label: "Enterprise-grade" },
+          { value: "1", label: "Accountable team across the engagement" },
+          { value: "4", label: "Pillars: systems, automation, creative, IT" },
+          { value: "SLA", label: "Defined response and uptime targets" },
+          { value: "Quarterly", label: "Roadmap reviews with leadership" },
         ]}
         variant="inline"
       />
@@ -54,20 +62,20 @@ export default function Enterprise() {
             <div className="lg:w-2/5 shrink-0">
               <span className="badge-pill mb-6">Built for enterprise</span>
               <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-4 leading-tight">
-                Everything your creative org needs. <span className="heading-italic">Nothing it doesn't.</span>
+                Everything an enterprise needs. <span className="heading-italic">Nothing it doesn't.</span>
               </h2>
               <p className="text-lg text-muted-foreground mt-6 leading-relaxed">
-                Purpose-built for marketing and creative teams at scale. Not a marketplace. Not a staffing agency. A true creative partnership.
+                Most enterprise problems aren't a single tool problem. They're a systems problem. The North operates as the integration layer across your stack, your teams, and your operating model.
               </p>
               <button onClick={openModal} className="btn-lime mt-8 group">
-                Talk to enterprise sales
+                Talk to enterprise
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
 
-            <div className={`lg:w-3/5 grid sm:grid-cols-2 gap-5 ${capInView ? 'stagger-children' : ''}`}>
+            <div className={`lg:w-3/5 grid sm:grid-cols-2 gap-5 ${capInView ? "stagger-children" : ""}`}>
               {enterpriseCapabilities.map((cap, i) => (
-                <div key={i} className={`card-elevated-hover p-6 lg:p-7 group ${capInView ? 'animate-fade-up' : 'opacity-0'}`}>
+                <div key={i} className={`card-elevated-hover p-6 lg:p-7 group ${capInView ? "animate-fade-up" : "opacity-0"}`}>
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <cap.icon className="w-5 h-5 text-primary" />
                   </div>
@@ -81,41 +89,74 @@ export default function Enterprise() {
       </section>
 
       <ImageTextSplit
-        tagline="Scalable creative"
-        title={<>Creative capacity that <span className="heading-italic">grows with you</span></>}
-        description="Enterprise teams need consistent, high-quality creative output across channels and markets. The North provides dedicated teams, structured workflows, and the flexibility to scale up or down based on demand."
+        tagline="Multi-location"
+        title={<>One operating system across <span className="heading-italic">every location and brand</span></>}
+        description="Whether you run multiple physical locations, regions, or sub-brands, The North centralizes the systems, data, and automation while preserving local autonomy where it matters."
         imageSrc="https://images.unsplash.com/photo-1553028826-f4804a6dba3b?w=800&q=80"
-        imageAlt="Scalable creative production"
+        imageAlt="Multi-location operations"
         bullets={[
-          "Dedicated teams that understand your brand deeply",
-          "Structured workflows designed for high-volume output",
-          "Faster time to market on campaigns and launches",
-          "Flexible capacity that adapts to your needs",
+          "Centralized CRM, reporting, and data warehouse",
+          "Local autonomy on creative, content, and offers",
+          "Standardized onboarding and operating procedures",
+          "Cross-location reporting and benchmarking",
         ]}
       />
 
+      <section className="section-padding py-24 lg:py-32 relative" ref={progRef}>
+        <div className="absolute inset-0 bg-[hsl(var(--surface-subtle))]" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-14 max-w-3xl mx-auto">
+            <span className="badge-pill mb-4">How enterprise engagements run</span>
+            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-4">From <span className="heading-italic">discovery</span> to <span className="heading-italic">ongoing operation</span></h2>
+          </div>
+          <div className={`grid md:grid-cols-2 lg:grid-cols-4 gap-5 ${progInView ? "stagger-children" : ""}`}>
+            {enterpriseProgram.map((p, i) => (
+              <div key={p.phase} className={`card-elevated-hover p-7 group ${progInView ? "animate-fade-up" : "opacity-0"}`}>
+                <span className="text-xs font-mono font-bold text-primary/70">{`0${i + 1}`}</span>
+                <h3 className="text-lg font-bold text-foreground mt-2 mb-3">{p.phase}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{p.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <FeatureSection
+        title={<>Support and <span className="heading-italic">SLA structure</span></>}
+        features={[
+          { title: "Named team and escalation", description: "A named delivery lead, technical lead, and account lead with documented escalation paths." },
+          { title: "Defined response targets", description: "Tiered response time SLAs by issue severity, with reporting against targets." },
+          { title: "Quarterly business reviews", description: "Structured QBR with leadership covering roadmap, KPIs, and capacity." },
+          { title: "On-call coverage", description: "Coverage for production-critical systems and integrations, including out-of-hours options." },
+          { title: "Documentation and runbooks", description: "Every system handed over with documentation your internal team can run from." },
+          { title: "Security and procurement", description: "SSO, RBAC, signed DPAs and security questionnaires handled as part of onboarding." },
+        ]}
+        columns={3}
+      />
+
       <CTASection
-        title={<>Take your creative to new heights. <span className="heading-italic">Reduce overhead.</span></>}
-        description="See how enterprise teams are scaling creative output while simplifying operations."
+        title={<>Build the systems your <span className="heading-italic">next phase requires</span></>}
+        description="Talk to our enterprise team about a tailored Growth Infrastructure program for your organization."
         variant="banner"
       />
 
       <TestimonialSection variant="featured" />
 
       <FAQSection
-        title={<>Frequently asked <span className="heading-italic">questions</span></>}
+        title={<>Enterprise <span className="heading-italic">questions</span></>}
         items={[
-          { question: "What makes The North different from a traditional agency?", answer: "The North operates as a dedicated creative team extension, not a project-based vendor. You get consistent talent, streamlined workflows, and subscription pricing rather than unpredictable retainers and project fees." },
-          { question: "How do you handle brand consistency at scale?", answer: "Your dedicated team learns your brand guidelines, voice, and visual language. Combined with structured quality assurance processes, every deliverable stays on-brand across channels and markets." },
-          { question: "What security practices do you follow?", answer: "The North follows enterprise-grade security practices. We support SSO integration, role-based permissions, data encryption at rest and in transit, and maintain comprehensive audit trails." },
-          { question: "How quickly can we get started?", answer: "Most enterprise teams are fully onboarded within a few weeks. Your dedicated team begins learning your brand immediately, and many teams see their first deliverables within the first week." },
-          { question: "Can The North integrate with our existing tools?", answer: "Yes. The North integrates with popular project management tools and communication platforms. We adapt to your workflows rather than forcing new ones." },
+          { question: "How is The North different from a traditional consulting firm?", answer: "Traditional consulting delivers strategy and slideware. The North delivers strategy, then builds and operates the systems. One accountable team, end to end." },
+          { question: "Do you support our existing stack?", answer: "Yes. We work natively across HubSpot, Salesforce, Pipedrive, GoHighLevel, Zapier, Make, n8n, AWS, GCP, Azure, Retool, and the major data warehouses. We rarely recommend ripping out what's working." },
+          { question: "How do you handle security and procurement?", answer: "We support SSO, role-based access, audit logs, and sign DPAs, MSAs, and NDAs as a standard part of onboarding. We complete security questionnaires for enterprise procurement." },
+          { question: "Can you embed with our internal teams?", answer: "Yes. The default model is an embedded cross-functional team that works alongside your internal teams in your tools (Slack, Teams, Jira, Linear)." },
+          { question: "What does an SLA cover?", answer: "Tiered response time targets by issue severity for production-critical systems, scheduled review cadences, and on-call coverage options for systems we operate." },
+          { question: "How quickly can we start?", answer: "Most enterprise engagements move from intro call to scoped statement of work in 2–4 weeks, with implementation starting immediately after sign-off." },
         ]}
       />
 
       <CTASection
-        title={<>Your creative team's <span className="heading-italic">creative team</span></>}
-        description="Talk to our enterprise team about building a custom creative operation that scales with your ambitions."
+        title={<>Talk to <span className="heading-italic">enterprise</span></>}
+        description="Tell us about your organization. We'll come back with a tailored Growth Infrastructure program and a clear plan."
         variant="split"
       />
     </Layout>

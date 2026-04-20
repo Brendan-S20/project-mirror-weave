@@ -15,6 +15,9 @@ import ProjectPage from "./pages/ProjectPage";
 import Enterprise from "./pages/Enterprise";
 import Reviews from "./pages/Reviews";
 import ServicePage from "./pages/ServicePage";
+import ServicesIndex from "./pages/ServicesIndex";
+import PillarPage from "./pages/PillarPage";
+import MicroServicePage from "./pages/MicroServicePage";
 import ThankYou from "./pages/ThankYou";
 import ThankYouSolo from "./pages/ThankYouSolo";
 import ThankYouSmallBusiness from "./pages/ThankYouSmallBusiness";
@@ -53,10 +56,14 @@ const App = () => (
               <Route path="/thank-you-mid-market" element={<ThankYouMidMarket />} />
               <Route path="/thank-you-enterprise" element={<ThankYouEnterprise />} />
 
-              {/* Services - dynamically generated from new pillar-based services */}
-              <Route path="/services" element={<OurWork />} />
+              {/* Services - new pillar + service + micro-service routes */}
+              <Route path="/services" element={<ServicesIndex />} />
+              <Route path="/services/:pillarSlug" element={<PillarPage />} />
               {services.map((s) => (
                 <Route key={s.slug} path={`/${s.slug}`} element={<ServicePage />} />
+              ))}
+              {services.map((s) => (
+                <Route key={`${s.slug}-micro`} path={`/${s.slug}/:microSlug`} element={<MicroServicePage />} />
               ))}
 
               {/* Blog */}

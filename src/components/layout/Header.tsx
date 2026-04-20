@@ -1,72 +1,97 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { mainNavItems, type NavItem, type NavGroup } from "@/data/navigation";
+import { mainNavItems, type NavItem, type NavGroup, APP_LOGIN_URL } from "@/data/navigation";
 import { ChevronDown, Menu, X, ArrowRight, ArrowUpRight } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
 import { useCTAModal } from "@/contexts/CTAContext";
+import { getServiceBySlug } from "@/data/services";
 import logoText from "@/assets/logo-text.png";
 
 /* ─── Services Mega Menu ─── */
 const ServicesMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () => void }) => {
-  const creative = groups.find(g => g.title.toLowerCase().includes("creative design"));
-  const specialized = groups.find(g => g.title.toLowerCase().includes("specialized"));
-  const ai = groups.find(g => g.title.toLowerCase().includes("ai"));
-  const marketing = groups.find(g => g.title.toLowerCase().includes("marketing"));
-
-  const renderGroup = (group: NavGroup | undefined) => {
-    if (!group) return null;
-    return (
-      <div>
-        <Link
-          to={group.titleHref || "#"}
-          onClick={onClose}
-          className="inline-flex items-center gap-1.5 rounded-full bg-primary/15 text-primary px-4 py-2 text-sm font-semibold mb-6 hover:bg-primary/25 transition-colors group/pill"
-        >
-          <span className="heading-italic">{group.title}</span>
-          <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover/pill:opacity-100 transition-opacity" />
-        </Link>
-        <div className="space-y-0">
-          {group.items.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              onClick={onClose}
-              className="group/item flex items-center justify-between py-3 border-b border-border/15 last:border-0 hover:border-border/30 transition-colors"
-            >
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold text-foreground group-hover/item:text-primary transition-colors">
-                    {link.label}
-                  </span>
-                  {link.isNew && (
-                    <span className="inline-flex items-center rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold text-primary-foreground leading-none">
-                      New
-                    </span>
-                  )}
-                </div>
-                {link.description && (
-                  <span className="text-xs text-muted-foreground mt-0.5 block">{link.description}</span>
-                )}
-              </div>
-              {link.icon && (
-                <link.icon className="w-5 h-5 text-muted-foreground/40 group-hover/item:text-primary/60 transition-colors shrink-0 ml-4" />
-              )}
-            </Link>
-          ))}
-        </div>
-      </div>
-    );
-  };
+  // Hover-preview a service's micro-services
+  const [activeService, setActiveService] = useState<string | null>(
+    groups[0]?.items[0]?.href.replace(/^\//, "") || null
+  );
+  const activeData = activeService ? getServiceBySlug(activeService) : undefined;
 
   return (
     <div className="absolute top-full left-0 w-full bg-[hsl(var(--surface-elevated))] border-b border-border/30 shadow-[0_30px_80px_-20px_hsl(var(--dark-base)/0.8)] z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-8 py-10">
-        <div className="grid grid-cols-3 gap-14">
-          {renderGroup(creative)}
-          {renderGroup(specialized)}
-          <div className="space-y-10">
-            {renderGroup(ai)}
-            {renderGroup(marketing)}
+        <div className="grid grid-cols-12 gap-8">
+          {/* Pillars + services */}
+          <div className="col-span-8 grid grid-cols-2 gap-x-10 gap-y-8">
+            {groups.map((group) => (
+              <div key={group.title}>
+                <Link
+                  to={group.titleHref || "#"}
+                  onClick={onClose}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-primary/15 text-primary px-3.5 py-1.5 text-xs font-semibold mb-4 hover:bg-primary/25 transition-colors group/pill"
+                >
+                  <span>{group.title}</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-60 group-hover/pill:opacity-100 transition-opacity" />
+                </Link>
+                <div className="space-y-0">
+                  {group.items.map((link) => {
+                    const slug = link.href.replace(/^\//, "");
+                    const isActive = activeService === slug;
+                    return (
+                      <Link
+                        key={link.href}
+                        to={link.href}
+                        onClick={onClose}
+                        onMouseEnter={() => setActiveService(slug)}
+                        className={`group/item flex items-center justify-between py-2.5 border-b border-border/15 last:border-0 transition-colors ${isActive ? "border-border/30" : ""}`}
+                      >
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            {link.icon && <link.icon className={`w-4 h-4 shrink-0 transition-colors ${isActive ? "text-primary" : "text-muted-foreground/40 group-hover/item:text-primary/60"}`} />}
+                            <span className={`text-sm font-semibold transition-colors ${isActive ? "text-primary" : "text-foreground group-hover/item:text-primary"}`}>
+                              {link.label}
+                            </span>
+                          </div>
+                        </div>
+                        <ArrowRight className={`w-3.5 h-3.5 transition-all ${isActive ? "text-primary translate-x-0.5" : "text-muted-foreground/30 group-hover/item:text-primary"}`} />
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Micro-services preview */}
+          <div className="col-span-4 border-l border-border/20 pl-8">
+            {activeData ? (
+              <div className="animate-fade-in">
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/60 mb-2">{activeData.title}</p>
+                <Link
+                  to={`/${activeData.slug}`}
+                  onClick={onClose}
+                  className="text-base font-bold text-foreground hover:text-primary transition-colors inline-flex items-center gap-1 mb-5"
+                >
+                  Overview <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+                </Link>
+                <div className="space-y-1">
+                  {activeData.microServices.map((m) => (
+                    <Link
+                      key={m.slug}
+                      to={`/${activeData.slug}/${m.slug}`}
+                      onClick={onClose}
+                      className="block py-2 px-3 rounded-md hover:bg-primary/5 group/m transition-colors"
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-sm font-medium text-foreground group-hover/m:text-primary transition-colors">{m.title}</span>
+                        <ArrowRight className="w-3 h-3 text-muted-foreground/30 group-hover/m:text-primary transition-colors" />
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{m.description}</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="text-sm text-muted-foreground">Hover a service to see what's inside.</div>
+            )}
           </div>
         </div>
       </div>
@@ -76,38 +101,30 @@ const ServicesMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () => 
 
 /* ─── Why Us Mega Menu ─── */
 const WhyUsMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () => void }) => {
-  const featuredCards = [
-    { title: "Our creative talent", desc: "Meet your dedicated team", href: "/our-creative-talent" },
-    { title: "AI excellence", desc: "Your shortcut to AI's creative advantage", href: "/ai-excellence" },
-    { title: "Our technology", desc: "The tech powering your creative edge", href: "/our-technology" },
-  ];
-
   return (
     <div className="absolute top-full left-0 w-full bg-[hsl(var(--surface-elevated))] border-b border-border/30 shadow-[0_30px_80px_-20px_hsl(var(--dark-base)/0.8)] z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-8 py-10">
-        <div className="grid grid-cols-3 gap-6 mb-10">
-          {featuredCards.map((card) => (
-            <Link key={card.href} to={card.href} onClick={onClose} className="group/card block">
-              <div className="aspect-[16/9] rounded-xl bg-[hsl(var(--surface-overlay))] border border-border/30 mb-4 overflow-hidden relative group-hover/card:border-primary/30 transition-colors">
-                <div className="absolute inset-0 gradient-mesh" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+        <div className="grid grid-cols-2 gap-x-14 gap-y-8">
+          {groups.map((group) => (
+            <div key={group.title}>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/60 mb-4">{group.title}</p>
+              <div className="space-y-0">
+                {group.items.map((link) => (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onClick={onClose}
+                    className="group/item flex items-center justify-between py-3 border-b border-border/15 last:border-0"
+                  >
+                    <div>
+                      <span className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">{link.label}</span>
+                      {link.description && <span className="text-xs text-muted-foreground block mt-0.5">{link.description}</span>}
+                    </div>
+                    <ArrowRight className="w-3.5 h-3.5 text-muted-foreground/30 group-hover/item:text-primary transition-colors shrink-0 ml-4" />
+                  </Link>
+                ))}
               </div>
-              <h4 className="text-sm font-bold text-foreground group-hover/card:text-primary transition-colors">{card.title}</h4>
-              <p className="text-xs text-muted-foreground mt-0.5">{card.desc}</p>
-            </Link>
-          ))}
-        </div>
-        <div className="grid grid-cols-2 gap-x-14 gap-y-0 border-t border-border/20 pt-6">
-          {groups.flatMap(g => g.items).filter(l => !featuredCards.some(c => c.href === l.href)).map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              onClick={onClose}
-              className="group/item flex items-center justify-between py-2.5 border-b border-border/10 last:border-0"
-            >
-              <span className="text-sm font-medium text-foreground/80 group-hover/item:text-primary transition-colors">{link.label}</span>
-              <ArrowRight className="w-3.5 h-3.5 text-muted-foreground/30 group-hover/item:text-primary transition-colors" />
-            </Link>
+            </div>
           ))}
         </div>
       </div>
@@ -125,7 +142,7 @@ const ResourcesMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () =>
       <div className="max-w-7xl mx-auto px-8 py-10">
         <div className="grid grid-cols-2 gap-16">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/60 mb-5">Our resources</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/60 mb-5">Operator resources</p>
             <div className="space-y-0">
               {links.map((link) => (
                 <Link
@@ -136,19 +153,15 @@ const ResourcesMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () =>
                 >
                   <div>
                     <span className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">{link.label}</span>
-                    {link.description && (
-                      <span className="text-xs text-muted-foreground block mt-0.5">{link.description}</span>
-                    )}
+                    {link.description && <span className="text-xs text-muted-foreground block mt-0.5">{link.description}</span>}
                   </div>
-                  {link.icon && (
-                    <link.icon className="w-5 h-5 text-muted-foreground/30 group-hover/item:text-primary/60 transition-colors shrink-0" />
-                  )}
+                  {link.icon && <link.icon className="w-5 h-5 text-muted-foreground/30 group-hover/item:text-primary/60 transition-colors shrink-0" />}
                 </Link>
               ))}
             </div>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/60 mb-5">Latest media</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/60 mb-5">Latest writing</p>
             <div className="grid grid-cols-2 gap-5">
               {recentPosts.map((post) => (
                 <Link key={post.slug} to={`/blog/${post.slug}`} onClick={onClose} className="group/post block">
@@ -250,12 +263,15 @@ export default function Header() {
         {/* CTA Buttons */}
         <div className="hidden lg:flex items-center gap-2.5">
           <button onClick={openModal} className="btn-lime text-[13px] px-6 py-2.5 group">
-            Book a demo
+            Start a Project
             <ArrowRight className="ml-1.5 w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
           </button>
-          <Link to="/pricing" className="inline-flex items-center justify-center rounded-full border border-foreground/20 text-foreground/70 font-medium px-5 py-2.5 text-[13px] transition-all hover:bg-foreground/5 hover:text-foreground hover:border-foreground/40">
-            Sign in
-          </Link>
+          <a
+            href={APP_LOGIN_URL}
+            className="inline-flex items-center justify-center rounded-full border border-foreground/25 text-foreground/80 font-medium px-5 py-2.5 text-[13px] transition-all hover:bg-foreground/5 hover:text-foreground hover:border-foreground/50"
+          >
+            Log in
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -292,7 +308,7 @@ export default function Header() {
                 </Link>
                 {item.children && (
                   <div className="ml-4 space-y-1 mt-1">
-                    {item.children.flatMap((g) => g.items).slice(0, 6).map((link) => (
+                    {item.children.flatMap((g) => g.items).slice(0, 8).map((link) => (
                       <Link
                         key={link.href}
                         to={link.href}
@@ -308,11 +324,11 @@ export default function Header() {
             ))}
             <div className="pt-6 border-t border-border/30 space-y-3">
               <button onClick={() => { setMobileOpen(false); openModal(); }} className="btn-lime w-full text-center text-sm justify-center">
-                Book a demo
+                Start a Project
               </button>
-              <Link to="/pricing" className="btn-outline-light w-full text-center text-sm block" onClick={() => setMobileOpen(false)}>
-                Sign in
-              </Link>
+              <a href={APP_LOGIN_URL} className="btn-outline-light w-full text-center text-sm block" onClick={() => setMobileOpen(false)}>
+                Log in
+              </a>
             </div>
           </div>
         </div>

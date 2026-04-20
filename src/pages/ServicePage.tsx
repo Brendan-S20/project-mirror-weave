@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/sections/HeroSection";
 import FeatureSection from "@/components/sections/FeatureSection";
@@ -9,6 +9,7 @@ import ImageTextSplit from "@/components/sections/ImageTextSplit";
 import StatsSection from "@/components/sections/StatsSection";
 import { getServiceBySlug, services } from "@/data/services";
 import ServiceGrid from "@/components/sections/ServiceGrid";
+import { ArrowRight, Check } from "lucide-react";
 
 const serviceImages: Record<string, { hero: string; split: string }> = {
   "design-services": {
