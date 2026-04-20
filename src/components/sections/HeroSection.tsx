@@ -23,11 +23,11 @@ export default function HeroSection({
   children,
   variant = "default",
 }: HeroSectionProps) {
-  const { openModal } = useCTAModal();
+  const { openProjectModal, openStrategyModal } = useCTAModal();
 
   const renderCTA = (large = false, additionalClasses = "") => (
     <div className={`flex items-center gap-4 flex-wrap ${additionalClasses}`}>
-      <button onClick={openModal} className={`${large ? 'btn-lime-lg' : 'btn-lime'} animate-pulse-glow group`}>
+      <button onClick={openProjectModal} className={`${large ? 'btn-lime-lg' : 'btn-lime'} animate-pulse-glow group`}>
         {ctaText}
         <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
       </button>
@@ -35,7 +35,7 @@ export default function HeroSection({
         secondaryCtaHref ? (
           <a href={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</a>
         ) : (
-          <button onClick={openModal} className="btn-outline-light">{secondaryCtaText}</button>
+          <button onClick={openStrategyModal} className="btn-outline-light">{secondaryCtaText}</button>
         )
       )}
     </div>

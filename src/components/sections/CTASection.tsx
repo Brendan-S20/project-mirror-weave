@@ -19,7 +19,7 @@ export default function CTASection({
   variant = "default",
 }: CTASectionProps) {
   const { ref, inView } = useInView();
-  const { openModal } = useCTAModal();
+  const { openProjectModal, openStrategyModal } = useCTAModal();
 
   if (variant === "banner") {
     return (
@@ -34,11 +34,11 @@ export default function CTASection({
                 {description && <p className="text-muted-foreground mt-3 max-w-lg">{description}</p>}
               </div>
               <div className="flex items-center gap-3 shrink-0 flex-wrap">
-                <button onClick={openModal} className="btn-lime group">
+                <button onClick={openProjectModal} className="btn-lime group">
                   {ctaText}
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </button>
-                <button onClick={openModal} className="btn-outline-light">Book a Strategy Call</button>
+                <button onClick={openStrategyModal} className="btn-outline-light">Book a Strategy Call</button>
               </div>
             </div>
           </div>
