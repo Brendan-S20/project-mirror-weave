@@ -24,14 +24,14 @@ interface MultiComparisonRow {
 }
 
 const defaultRows: MultiComparisonRow[] = [
-  { feature: "Vetted creative talent", superside: true, agencies: true, freelancers: false, inHouse: false },
-  { feature: "Dedicated team that learns your brand", superside: true, agencies: false, freelancers: false, inHouse: true },
-  { feature: "Streamlined production workflows", superside: true, agencies: false, freelancers: false, inHouse: false },
-  { feature: "Predictable subscription pricing", superside: true, agencies: false, freelancers: false, inHouse: false },
-  { feature: "Multi-discipline coverage", superside: true, agencies: true, freelancers: false, inHouse: false },
-  { feature: "Global coverage across time zones", superside: true, agencies: false, freelancers: false, inHouse: false },
-  { feature: "Scale up or down flexibly", superside: true, agencies: false, freelancers: true, inHouse: false },
-  { feature: "Structured security practices", superside: true, agencies: true, freelancers: false, inHouse: true },
+  { feature: "Systems integration across stack", superside: true, agencies: false, freelancers: false, inHouse: "Limited" },
+  { feature: "Automation built into every engagement", superside: true, agencies: false, freelancers: false, inHouse: false },
+  { feature: "Scalability without adding headcount", superside: true, agencies: "Costly", freelancers: false, inHouse: false },
+  { feature: "Speed of execution", superside: true, agencies: false, freelancers: "Variable", inHouse: false },
+  { feature: "Cost efficiency at growth stage", superside: true, agencies: false, freelancers: true, inHouse: false },
+  { feature: "Senior operators on the work", superside: true, agencies: "Often junior", freelancers: "Variable", inHouse: true },
+  { feature: "Single accountable partner", superside: true, agencies: true, freelancers: false, inHouse: true },
+  { feature: "Creative + IT + ops under one roof", superside: true, agencies: false, freelancers: false, inHouse: false },
 ];
 
 const CellValue = ({ val }: { val: boolean | string }) => {
@@ -56,7 +56,7 @@ export default function ComparisonSection({ title, description, competitorName, 
           )}
           <div className={`card-premium overflow-hidden ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
             <div className="grid grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_160px_160px] items-center border-b border-border/40 bg-primary/[0.03]">
-              <div className="p-5 lg:p-6"><span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Feature</span></div>
+              <div className="p-5 lg:p-6"><span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Capability</span></div>
               <div className="p-5 lg:p-6 text-center border-l border-border/30"><span className="text-sm font-bold text-primary">The North</span></div>
               <div className="p-5 lg:p-6 text-center border-l border-border/30"><span className="text-sm font-semibold text-muted-foreground">{competitorName}</span></div>
             </div>
@@ -80,10 +80,10 @@ export default function ComparisonSection({ title, description, competitorName, 
         <div className="text-center mb-16">
           <span className="badge-pill mb-6">Compare</span>
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-4">
-            {title || <>Why teams choose <span className="heading-italic">The North</span></>}
+            {title || <>The North vs <span className="heading-italic">the alternatives</span></>}
           </h2>
           <p className="text-lg text-muted-foreground mt-5 max-w-2xl mx-auto">
-            {description || "See how The North stacks up against the alternatives."}
+            {description || "How a unified systems partner compares to agencies, freelancers, and internal teams."}
           </p>
         </div>
         <div className={`overflow-x-auto ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
@@ -98,7 +98,7 @@ export default function ComparisonSection({ title, description, competitorName, 
                 </th>
                 <th className="py-5 px-4 text-sm font-medium text-muted-foreground text-center">Agencies</th>
                 <th className="py-5 px-4 text-sm font-medium text-muted-foreground text-center">Freelancers</th>
-                <th className="py-5 px-4 text-sm font-medium text-muted-foreground text-center">In-House</th>
+                <th className="py-5 px-4 text-sm font-medium text-muted-foreground text-center">Internal</th>
               </tr>
             </thead>
             <tbody>

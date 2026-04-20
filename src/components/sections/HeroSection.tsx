@@ -17,8 +17,8 @@ export default function HeroSection({
   tagline,
   title,
   description,
-  ctaText = "Book a demo",
-  secondaryCtaText,
+  ctaText = "Start a Project",
+  secondaryCtaText = "Book a Strategy Call",
   secondaryCtaHref,
   children,
   variant = "default",
@@ -31,8 +31,12 @@ export default function HeroSection({
         {ctaText}
         <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
       </button>
-      {secondaryCtaText && secondaryCtaHref && (
-        <a href={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</a>
+      {secondaryCtaText && (
+        secondaryCtaHref ? (
+          <a href={secondaryCtaHref} className="btn-outline-light">{secondaryCtaText}</a>
+        ) : (
+          <button onClick={openModal} className="btn-outline-light">{secondaryCtaText}</button>
+        )
       )}
     </div>
   );
@@ -51,7 +55,7 @@ export default function HeroSection({
             <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-up" style={{ animationDelay: '160ms' }}>
               {description}
             </p>
-            <div className="animate-fade-up" style={{ animationDelay: '240ms' }}>
+            <div className="animate-fade-up flex justify-center" style={{ animationDelay: '240ms' }}>
               {renderCTA(true, "justify-center")}
             </div>
             {children && <div className="mt-20 animate-fade-up" style={{ animationDelay: '320ms' }}>{children}</div>}
@@ -97,7 +101,6 @@ export default function HeroSection({
     );
   }
 
-  // Default variant
   return (
     <section className="relative overflow-hidden gradient-mesh-hero">
       <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
