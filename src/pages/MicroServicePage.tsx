@@ -27,15 +27,16 @@ export default function MicroServicePage() {
   return (
     <Layout title={`${micro.title} | The North`} description={micro.description}>
       <HeroSection
-        tagline={
-          <Link to={`/${service.slug}`} className="hover:text-primary transition-colors">
-            ← {service.title}
-          </Link>
-        }
+        tagline={service.title}
         title={<>{micro.title}</>}
         description={micro.description}
         variant="centered"
       />
+      <div className="-mt-10 mb-2 text-center">
+        <Link to={`/${service.slug}`} className="text-sm text-primary hover:underline">
+          ← Back to {service.title}
+        </Link>
+      </div>
 
       <FeatureSection
         title={<>What's <span className="heading-italic">included</span></>}
