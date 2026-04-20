@@ -59,6 +59,12 @@ const App = () => (
               {/* Services - new pillar + service + micro-service routes */}
               <Route path="/services" element={<ServicesIndex />} />
               <Route path="/services/:pillarSlug" element={<PillarPage />} />
+              {/* Direct pillar aliases (SEO-friendly) */}
+              <Route path="/growth-infrastructure" element={<PillarPage />} />
+              <Route path="/automation-systems" element={<PillarPage />} />
+              <Route path="/creative-content" element={<PillarPage />} />
+              <Route path="/technology-it" element={<PillarPage />} />
+              <Route path="/technology-it-services" element={<PillarPage />} />
               {services.map((s) => (
                 <Route key={s.slug} path={`/${s.slug}`} element={<ServicePage />} />
               ))}

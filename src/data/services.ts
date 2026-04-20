@@ -684,7 +684,7 @@ export const services: Service[] = [
         ["Founders, COOs, and operating leaders", "Mid-market companies past 50 employees", "Teams replacing weekly slide decks"],
       ),
     ],
-    relatedServices: ["workflow-automation", "internal-tools", "operational-scaling-systems"],
+    relatedServices: ["workflow-automation", "internal-tools", "scaling-operations"],
   },
   {
     slug: "api-integrations",
@@ -1178,7 +1178,7 @@ export const services: Service[] = [
         ["CTOs, CIOs, and CEOs", "Companies entering a new growth phase", "Businesses with multiple competing technical priorities"],
       ),
     ],
-    relatedServices: ["infrastructure-cloud", "managed-it-services", "internal-tools-automation"],
+    relatedServices: ["infrastructure-cloud", "managed-it-services", "internal-tools"],
   },
   {
     slug: "infrastructure-cloud",
@@ -1276,7 +1276,7 @@ export const services: Service[] = [
         ["Companies with regulated or revenue-critical workloads", "Teams pursuing SOC 2, ISO, or HIPAA", "Businesses past Series A handling customer data"],
       ),
     ],
-    relatedServices: ["managed-it-services", "system-architecture", "operational-scaling-systems"],
+    relatedServices: ["managed-it-services", "system-architecture", "scaling-operations"],
   },
   {
     slug: "managed-it-services",
@@ -1374,10 +1374,10 @@ export const services: Service[] = [
         ["Companies past 25 employees", "Businesses pursuing SOC 2 or ISO", "Teams replacing in-house IT or another MSP"],
       ),
     ],
-    relatedServices: ["infrastructure-cloud", "system-architecture", "operational-scaling-systems"],
+    relatedServices: ["infrastructure-cloud", "system-architecture", "scaling-operations"],
   },
   {
-    slug: "internal-tools-automation",
+    slug: "internal-tools",
     title: "Internal Tools & Automation",
     subtitle: "Custom tools that replace 20 spreadsheets",
     description: "Internal apps, dashboards, and admin panels built on Retool, custom React, and serverless. Replace spreadsheets and one-off scripts with real software.",
@@ -1472,10 +1472,10 @@ export const services: Service[] = [
         ["Security, IT, and engineering leaders", "Companies pursuing SOC 2 or ISO", "Businesses with regulated data or workflows"],
       ),
     ],
-    relatedServices: ["business-process-automation", "api-integrations", "operational-scaling-systems"],
+    relatedServices: ["business-process-automation", "api-integrations", "scaling-operations"],
   },
   {
-    slug: "operational-scaling-systems",
+    slug: "scaling-operations",
     title: "Operational Scaling Systems",
     subtitle: "Operational readiness for the next phase",
     description: "Advisory and hands-on work to prepare ops, systems, and tooling for the next stage of growth. New markets, new product lines, more volume.",
