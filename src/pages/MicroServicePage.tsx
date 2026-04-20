@@ -24,7 +24,7 @@ export default function MicroServicePage() {
   const otherMicros = service.microServices.filter((m) => m.slug !== micro.slug);
 
   return (
-    <Layout title={`${micro.title} | The North`} description={micro.description}>
+    <Layout title={micro.title} description={`${micro.description} ${micro.solves}`.slice(0, 158)}>
       <HeroSection
         tagline={service.title}
         title={<>{micro.title}</>}
