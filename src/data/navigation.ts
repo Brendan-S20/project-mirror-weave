@@ -1,8 +1,6 @@
 import {
-  Paintbrush, MessageSquare, MonitorPlay, Presentation, PenTool, Settings2, BookOpen, Lightbulb,
-  Video, Wand2, Mail, Globe, Layers, Package, Type, Megaphone, Send, Sparkles, Bot, Database,
-  Zap, Flag, Users, Star, Monitor, Brain, BarChart3, BookMarked, FileText, Calendar, Newspaper,
-  ArrowUpRight
+  Globe, Layers, Settings2, Workflow, Database, Zap, Megaphone, Video, Sparkles,
+  Server, Cpu, Wrench, TrendingUp, Users, Star, BookMarked, FileText, Calendar, Newspaper, BarChart3, Building2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -27,85 +25,77 @@ export interface NavItem {
   megaVariant?: "services" | "resources" | "whyus";
 }
 
+export const APP_LOGIN_URL = "https://app.thenorth.consulting";
+
 export const mainNavItems: NavItem[] = [
   {
     label: "Services",
-    href: "/design-services",
+    href: "/services",
     megaVariant: "services",
     children: [
       {
-        title: "Creative design services",
-        titleHref: "/design-services",
+        title: "Growth Infrastructure",
+        titleHref: "/services/growth-infrastructure",
         items: [
-          { label: "Ad creative", href: "/ad-creative", description: "Eye-catching designs that perform", icon: Paintbrush },
-          { label: "Social media creative", href: "/social-media-creative", description: "Engaging assets for all platforms", icon: MessageSquare },
-          { label: "Presentation design", href: "/presentation-design", description: "Captivating slides that tell your story", icon: Presentation },
-          { label: "Illustration design", href: "/illustration-design-services", description: "Visual storytelling for your brand", icon: PenTool },
-          { label: "Branding services", href: "/branding-services", description: "Expertise and custom design services", icon: Settings2 },
-          { label: "eBooks & report design", href: "/ebook-digital-report-design", description: "Your digital content supercharged", icon: BookOpen },
-          { label: "Concept creation", href: "/concept-creation", description: "Big ideas crafted for maximum impact", icon: Lightbulb },
-          { label: "Print design", href: "/print-design", description: "Tangible designs that leave a lasting impression", icon: FileText },
-          { label: "Packaging & merchandise design", href: "/packaging-merchandise-design", description: "Bring your brand to life", icon: Package },
+          { label: "Website development", href: "/website-development", description: "Production-grade sites engineered for growth", icon: Globe },
+          { label: "Funnels & landing pages", href: "/funnels-landing-pages", description: "High-intent funnels for paid and organic", icon: Layers },
+          { label: "Conversion systems", href: "/conversion-systems", description: "End-to-end conversion infrastructure", icon: TrendingUp },
         ],
       },
       {
-        title: "Specialized production services",
-        titleHref: "/video-production",
+        title: "Automation & Systems",
+        titleHref: "/services/automation-systems",
         items: [
-          { label: "Video production", href: "/video-production", description: "Effortless video production at scale", icon: Video },
-          { label: "Motion design", href: "/motion-design", description: "For websites, ads, and presentations", icon: MonitorPlay },
-          { label: "Email creation", href: "/email-design-services", description: "Click-worthy emails that drive engagement", icon: Mail },
-          { label: "Web design", href: "/web-design-services", description: "Stunning websites and landing pages built to engage", icon: Globe },
-          { label: "Design Systems", href: "/design-systems", description: "Robust design systems that drive visual consistency", icon: Layers, isNew: true },
-          { label: "Product Design", href: "/product-design", description: "Engaging and intuitive experiences", icon: Settings2, isNew: true },
-          { label: "Copywriting", href: "/copywriting", description: "Persuasive words for clarity and action", icon: Type, isNew: true },
+          { label: "CRM setup", href: "/crm-setup", description: "CRM as a revenue engine", icon: Database },
+          { label: "Workflow automation", href: "/workflow-automation", description: "Automate the work between tools", icon: Workflow },
+          { label: "Business process automation", href: "/business-process-automation", description: "Reengineer the operations that matter", icon: Settings2 },
+          { label: "API integrations", href: "/api-integrations", description: "Connect every tool in your stack", icon: Zap },
         ],
       },
       {
-        title: "AI services",
-        titleHref: "/ai-creative",
+        title: "Creative & Content",
+        titleHref: "/services/creative-content",
         items: [
-          { label: "AI-powered creative", href: "/ai-creative", description: "Human brilliance powered by technology", icon: Sparkles },
-          { label: "AI consulting", href: "/ai-excellence", description: "Transform your team with smart tools", icon: Bot },
-          { label: "Automation", href: "/ar-3d-design", description: "Move fast without compromising craft", icon: Zap, isNew: true },
-          { label: "Immersive design", href: "/immersive-design-services", description: "Next-generation creative experiences", icon: Database, isNew: true },
+          { label: "Ads", href: "/ads", description: "Performance creative for paid channels", icon: Megaphone },
+          { label: "Branding", href: "/branding", description: "Brand systems built to scale", icon: Sparkles },
+          { label: "Media production", href: "/media-production", description: "Video, photo, and motion at scale", icon: Video },
         ],
       },
       {
-        title: "Marketing services",
-        titleHref: "/marketing-strategy",
+        title: "Technology & IT",
+        titleHref: "/services/technology-it",
         items: [
-          { label: "Campaign strategy", href: "/campaign-strategy-services", description: "Strategy, messaging, and concept for multi-market campaigns", icon: Flag, isNew: true },
+          { label: "System architecture", href: "/system-architecture", description: "Architect the stack you actually need", icon: Cpu },
+          { label: "Infrastructure planning", href: "/infrastructure-planning", description: "Cloud and infrastructure for growth-stage teams", icon: Server },
+          { label: "Internal tools", href: "/internal-tools", description: "Custom tools for ops, sales, and support", icon: Wrench },
+          { label: "Scaling operations", href: "/scaling-operations", description: "Operational readiness for the next phase", icon: TrendingUp },
         ],
       },
     ],
   },
-  { label: "Our work", href: "/our-work" },
+  { label: "Our Work", href: "/our-work" },
   {
-    label: "Why us",
+    label: "Why The North",
     href: "/about-us",
     megaVariant: "whyus",
     children: [
       {
         title: "Company",
         items: [
-          { label: "Our creative talent", href: "/our-creative-talent", description: "Meet your dedicated team" },
-          { label: "AI excellence", href: "/ai-excellence", description: "Your shortcut to smarter creative" },
-          { label: "Our technology", href: "/our-technology", description: "The tech powering your creative edge" },
-          { label: "About us", href: "/about-us", description: "Our story and mission" },
-          { label: "Enterprise", href: "/enterprise", description: "Enterprise-grade creative" },
+          { label: "About us", href: "/about-us", description: "Our story and approach" },
+          { label: "Our team", href: "/our-creative-talent", description: "The systems and creative team behind The North" },
+          { label: "Our technology", href: "/our-technology", description: "How we build and operate" },
+          { label: "Enterprise", href: "/enterprise", description: "Multi-location, integrations, dedicated teams" },
           { label: "Reviews", href: "/reviews", description: "What clients say" },
         ],
       },
       {
         title: "Compare",
         items: [
-          { label: "vs. Agencies", href: "/compare-thenorth-vs-agency", description: "Why teams switch" },
-          { label: "vs. Freelancers", href: "/compare-thenorth-vs-freelancers", description: "More reliable" },
-          { label: "vs. In-House", href: "/compare-thenorth-vs-inhouse", description: "Scale without hiring" },
-          { label: "vs. DesignPickle", href: "/compare-thenorth-vs-designpickle" },
-          { label: "vs. Designity", href: "/compare-thenorth-vs-designity" },
-          { label: "Compare All", href: "/compare" },
+          { label: "vs. Agencies", href: "/compare-thenorth-vs-agency", description: "Systems, not slideware" },
+          { label: "vs. Freelancers", href: "/compare-thenorth-vs-freelancers", description: "One team, one accountability" },
+          { label: "vs. In-house", href: "/compare-thenorth-vs-inhouse", description: "Scale without hiring" },
+          { label: "Compare all", href: "/compare" },
         ],
       },
     ],
@@ -116,13 +106,14 @@ export const mainNavItems: NavItem[] = [
     megaVariant: "resources",
     children: [
       {
-        title: "Our resources",
+        title: "Resources",
         items: [
-          { label: "Events & Summits", href: "/events", description: "Our upcoming events and recordings", icon: Calendar },
-          { label: "Customer Stories", href: "/our-work", description: "Behind the successful partnerships", icon: Users },
-          { label: "Guides", href: "/guides", description: "Insights from marketing leaders", icon: BookMarked },
-          { label: "Reports", href: "/reports", description: "Data for smarter decisions", icon: BarChart3 },
-          { label: "Blog", href: "/blog", description: "Long-form you can learn from", icon: Newspaper },
+          { label: "Blog", href: "/blog", description: "Perspectives on systems, automation, and growth", icon: Newspaper },
+          { label: "Guides", href: "/guides", description: "In-depth guides for operators and founders", icon: BookMarked },
+          { label: "Playbooks", href: "/playbooks", description: "Tactical playbooks you can run with", icon: FileText },
+          { label: "Reports", href: "/reports", description: "Data and benchmarks", icon: BarChart3 },
+          { label: "Events", href: "/events", description: "Sessions and summits", icon: Calendar },
+          { label: "Customer stories", href: "/our-work", description: "How teams scale with The North", icon: Users },
         ],
       },
     ],
@@ -135,22 +126,20 @@ export const footerLinks = {
   services: {
     title: "Services",
     links: [
-      { label: "Design Services", href: "/design-services" },
-      { label: "Ad Creative", href: "/ad-creative" },
-      { label: "Video Production", href: "/video-production" },
-      { label: "AI Creative", href: "/ai-creative" },
-      { label: "Branding", href: "/branding-services" },
-      { label: "Web Design", href: "/web-design-services" },
-      { label: "Social Media", href: "/social-media-creative" },
-      { label: "Presentation Design", href: "/presentation-design" },
-      { label: "Motion Design", href: "/motion-design" },
-      { label: "Illustration", href: "/illustration-design-services" },
-      { label: "Print Design", href: "/print-design" },
-      { label: "Email Design", href: "/email-design-services" },
-      { label: "Packaging & Merch", href: "/packaging-merchandise-design" },
-      { label: "Copywriting", href: "/copywriting" },
-      { label: "Marketing Strategy", href: "/marketing-strategy" },
-      { label: "Campaign Strategy", href: "/campaign-strategy-services" },
+      { label: "Website Development", href: "/website-development" },
+      { label: "Funnels & Landing Pages", href: "/funnels-landing-pages" },
+      { label: "Conversion Systems", href: "/conversion-systems" },
+      { label: "CRM Setup", href: "/crm-setup" },
+      { label: "Workflow Automation", href: "/workflow-automation" },
+      { label: "Business Process Automation", href: "/business-process-automation" },
+      { label: "API Integrations", href: "/api-integrations" },
+      { label: "Ads", href: "/ads" },
+      { label: "Branding", href: "/branding" },
+      { label: "Media Production", href: "/media-production" },
+      { label: "System Architecture", href: "/system-architecture" },
+      { label: "Infrastructure Planning", href: "/infrastructure-planning" },
+      { label: "Internal Tools", href: "/internal-tools" },
+      { label: "Scaling Operations", href: "/scaling-operations" },
     ],
   },
   company: {
@@ -158,7 +147,7 @@ export const footerLinks = {
     links: [
       { label: "About Us", href: "/about-us" },
       { label: "Our Work", href: "/our-work" },
-      { label: "Our Talent", href: "/our-creative-talent" },
+      { label: "Our Team", href: "/our-creative-talent" },
       { label: "Our Technology", href: "/our-technology" },
       { label: "Enterprise", href: "/enterprise" },
       { label: "Reviews", href: "/reviews" },
@@ -175,7 +164,6 @@ export const footerLinks = {
       { label: "Reports", href: "/reports" },
       { label: "Knowledge Base", href: "/knowledge" },
       { label: "Events", href: "/events" },
-      { label: "Creative Brief", href: "/creative-brief" },
     ],
   },
   compare: {
@@ -184,8 +172,7 @@ export const footerLinks = {
       { label: "vs. Agencies", href: "/compare-thenorth-vs-agency" },
       { label: "vs. Freelancers", href: "/compare-thenorth-vs-freelancers" },
       { label: "vs. In-House", href: "/compare-thenorth-vs-inhouse" },
-      { label: "vs. DesignPickle", href: "/compare-thenorth-vs-designpickle" },
-      { label: "vs. Designity", href: "/compare-thenorth-vs-designity" },
+      { label: "Compare All", href: "/compare" },
     ],
   },
   legal: {
@@ -194,7 +181,6 @@ export const footerLinks = {
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Use", href: "/terms-of-use" },
       { label: "Trust Center", href: "/trust-center" },
-      { label: "Bug Bounty", href: "/bug-bounty-program-policy" },
     ],
   },
 };
