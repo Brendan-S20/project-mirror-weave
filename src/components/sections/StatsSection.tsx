@@ -31,7 +31,7 @@ export default function StatsSection({ title, description, stats, variant = "car
           <div className={`grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 ${inView ? 'stagger-children' : ''}`}>
             {stats.map((s, i) => (
               <div key={i} className={`text-center relative ${inView ? 'animate-count-up' : 'opacity-0'}`}>
-                <div className="text-6xl md:text-7xl font-black text-gradient tracking-tighter mb-4 leading-none lg:text-2xl">
+                <div className="md:text-7xl font-black text-gradient tracking-tighter mb-4 leading-none lg:text-2xl text-xl">
                   {s.value}
                 </div>
                 <div className="text-sm lg:text-base text-muted-foreground font-medium max-w-[200px] mx-auto">{s.label}</div>
