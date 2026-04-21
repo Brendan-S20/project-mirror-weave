@@ -1,29 +1,9 @@
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { blogPosts, authors } from "@/data/blogPosts";
+import { blogArticles } from "@/data/blogArticles";
 import BlogGrid from "@/components/sections/BlogGrid";
 import CTASection from "@/components/sections/CTASection";
-
-const blogContent: Record<string, string[]> = {
-  "scaling-creative-output-without-hiring": [
-    "Every growing company hits the same inflection point: creative demand outpaces the team's capacity to deliver. The instinct is to hire, but adding headcount introduces new challenges. Recruiting takes months, onboarding takes weeks, and managing a larger team requires additional overhead.",
-    "The alternative is to build a scalable creative model that grows with your needs without the fixed costs and management complexity of full-time hires. Subscription creative services provide dedicated teams that operate as an extension of your organization, with the flexibility to scale up during launches and scale back during quieter periods.",
-    "The key is finding the right partner. Look for teams that invest in learning your brand, maintain consistent quality through structured processes, and offer transparent communication throughout every project. The best creative partnerships feel indistinguishable from an in-house team, but with the flexibility and breadth that internal hiring alone cannot achieve.",
-    "Companies that adopt this model often find they can increase creative output significantly while reducing the overhead and complexity associated with growing internal teams. The economics are straightforward: predictable monthly costs, no recruiting fees, no benefits overhead, and no gaps in coverage when team members leave.",
-  ],
-  "building-brand-consistency-across-channels": [
-    "Brand consistency is one of the most underappreciated competitive advantages in marketing. When your brand shows up the same way across every touchpoint, from social media to sales presentations to product packaging, it builds recognition and trust that compounds over time.",
-    "Yet maintaining consistency gets harder as organizations grow. More people create content, more channels need attention, and more agencies or freelancers produce work. Without the right systems, brand drift is inevitable.",
-    "The solution starts with robust brand guidelines that go beyond logo placement. Effective guidelines cover tone of voice, photography style, illustration principles, color application, typography hierarchy, and layout patterns. They should be specific enough to guide decisions but flexible enough to allow creative expression.",
-    "The real challenge is governance. Who ensures brand standards are maintained? How are exceptions handled? The most successful organizations invest in brand stewardship, whether through dedicated roles, systematic review processes, or creative partners who internalize the brand deeply enough to self-govern.",
-  ],
-  "creative-workflows-for-growing-teams": [
-    "As creative teams scale, the informal processes that worked with three people break down with thirty. What used to be a quick conversation becomes a bottleneck. What used to be obvious becomes ambiguous. The solution is intentional workflow design.",
-    "Start with the brief. A well-structured brief reduces revision cycles dramatically. It captures objectives, audience, deliverables, brand requirements, and success criteria before any creative work begins. The time invested upfront saves multiples in downstream corrections.",
-    "Next, standardize your review process. Define who reviews what, at which stage, and with what authority. Creative reviews without clear ownership become subjective debates that slow everything down. Establish clear approval chains and empower reviewers to make final decisions.",
-    "Finally, invest in your feedback culture. The quality of feedback directly impacts the quality of creative output. Train stakeholders to provide specific, actionable feedback tied to the brief and brand guidelines rather than subjective preferences. Teams that master this skill see faster turnaround and higher-quality work.",
-  ],
-};
 
 function BlogCard({ post }: { post: typeof blogPosts[0] }) {
   return (
@@ -93,12 +73,7 @@ export function BlogPostPage() {
   const author = authors.find((a) => a.slug === post.authorSlug);
   const related = blogPosts.filter((p) => p.slug !== post.slug && p.category === post.category).slice(0, 3);
 
-  const content = blogContent[post.slug] || [
-    post.excerpt,
-    "Strong creative operations require a balance of process and flexibility. Teams that invest in scalable systems early on find themselves better equipped to handle increased demand without sacrificing quality or consistency across channels.",
-    "The most effective creative teams share several characteristics: clear communication channels, well-defined approval workflows, consistent brand governance, and a culture that values both speed and craft. Building these foundations takes intention, but the payoff is significant.",
-    "Whether you are building creative operations from scratch or optimizing an existing workflow, the principles covered here will help you make informed decisions that drive better creative outcomes and support sustainable growth.",
-  ];
+  const article = blogArticles[post.slug];
 
   return (
     <Layout title={post.title} description={post.excerpt}>
@@ -123,11 +98,48 @@ export function BlogPostPage() {
               <div className="w-full h-full gradient-mesh" />
             )}
           </div>
-          <div className="space-y-6">
-            {content.map((p, i) => (
-              <p key={i} className="text-foreground/90 leading-relaxed text-lg">{p}</p>
-            ))}
-          </div>
+          {article ? (
+            <div className="space-y-10">
+              {article.intro.map((p, i) => (
+                <p key={`intro-${i}`} className="text-foreground/90 leading-relaxed text-lg">{p}</p>
+              ))}
+              {article.sections.map((section, i) => (
+                <div key={`sec-${i}`} className="space-y-5">
+                  {section.heading && (
+                    <h2 className="text-2xl lg:text-3xl font-bold text-foreground mt-4">{section.heading}</h2>
+                  )}
+                  {section.paragraphs.map((p, j) => (
+                    <p key={j} className="text-foreground/90 leading-relaxed text-lg">{p}</p>
+                  ))}
+                </div>
+              ))}
+              <div className="rounded-2xl border border-border/40 bg-[hsl(var(--surface-elevated))] p-6 lg:p-8">
+                <h3 className="text-xl font-bold text-foreground mb-4">Key takeaways</h3>
+                <ul className="space-y-2.5">
+                  {article.takeaways.map((t, i) => (
+                    <li key={i} className="flex gap-3 text-foreground/85 leading-relaxed">
+                      <span className="text-primary shrink-0">→</span>
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {article.relatedServices.length > 0 && (
+                <div className="pt-2">
+                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/70 mb-4">Related services</p>
+                  <div className="flex flex-wrap gap-2.5">
+                    {article.relatedServices.map((s) => (
+                      <Link key={s.href} to={s.href} className="inline-flex items-center gap-1.5 rounded-full border border-border/60 px-4 py-2 text-sm font-medium text-foreground/80 hover:border-primary/50 hover:text-primary transition-colors">
+                        {s.label} <span aria-hidden>→</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <p className="text-foreground/80 leading-relaxed text-lg">{post.excerpt}</p>
+          )}
         </div>
       </article>
       {related.length > 0 && (
