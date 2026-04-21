@@ -92,17 +92,19 @@ export default function StrategyCallModal({ open, onClose }: Props) {
         </button>
 
         <div className="relative p-7 lg:p-9">
-          {step < 3 && (
+          {!submitted && (
             <div className="mb-6">
               <div className="flex items-center justify-between mb-2 text-xs">
-                <span className="font-semibold text-foreground/80">Step {step} of 2</span>
-                <span className="text-muted-foreground">{step === 1 ? "Contact info" : "Context"}</span>
+                <span className="font-semibold text-foreground/80">Step {step} of {TOTAL_STEPS}</span>
+                <span className="text-muted-foreground">
+                  {step === 1 ? "Contact info" : step === 2 ? "Context" : "Scheduling"}
+                </span>
               </div>
               <div className="h-1 w-full rounded-full bg-muted/40 overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-500"
                   style={{
-                    width: `${(step / 2) * 100}%`,
+                    width: `${(step / TOTAL_STEPS) * 100}%`,
                     background: "linear-gradient(90deg, hsl(var(--aurora-blue)), hsl(var(--aurora-teal)))",
                   }}
                 />
@@ -110,19 +112,21 @@ export default function StrategyCallModal({ open, onClose }: Props) {
             </div>
           )}
 
-          {step < 3 && (
+          {!submitted && (
             <div className="mb-6">
               <div className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-widest mb-3"
                 style={{ background: "hsl(var(--aurora-blue) / 0.12)", color: "hsl(var(--aurora-blue))" }}>
                 <CalendarCheck className="w-3 h-3" strokeWidth={2} /> Strategy Call
               </div>
               <h2 className="text-2xl lg:text-3xl font-bold text-foreground leading-tight">
-                {step === 1 ? "Book a strategy call" : "What should we focus on?"}
+                {step === 1 ? "Book a strategy call" : step === 2 ? "What should we focus on?" : "Pick a time that works"}
               </h2>
               <p className="text-sm text-muted-foreground mt-1.5">
                 {step === 1
                   ? "A 30-minute call to map your current bottlenecks and next moves. No pitch."
-                  : "Optional, but it helps us prep the right questions."}
+                  : step === 2
+                  ? "Optional, but it helps us prep the right questions."
+                  : "Choose a slot below — we'll confirm by email within one business day."}
               </p>
             </div>
           )}
