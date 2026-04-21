@@ -53,6 +53,9 @@ export default function StrategyCallModal({ open, onClose }: Props) {
       if (!email.trim()) e.email = "Required";
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Invalid email";
     }
+    if (step === 3 && !slot) {
+      e.slot = "Choose a time to continue";
+    }
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -65,7 +68,7 @@ export default function StrategyCallModal({ open, onClose }: Props) {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (step !== TOTAL_STEPS) return;
+    if (step !== TOTAL_STEPS || !validate()) return;
     setSubmitting(true);
     setTimeout(() => {
       setSubmitting(false);
@@ -196,7 +199,13 @@ export default function StrategyCallModal({ open, onClose }: Props) {
                       <button
                         key={id}
                         type="button"
-                        onClick={() => setSlot(id)}
+                        onClick={() => {
+                          setSlot(id);
+                          setErrors((current) => {
+                            const { slot: _slot, ...rest } = current;
+                            return rest;
+                          });
+                        }}
                         className={`w-full flex items-center justify-between rounded-lg border px-4 py-3 text-sm font-medium transition-all ${
                           active
                             ? "border-accent/60 bg-accent/[0.1] text-foreground"
@@ -212,6 +221,7 @@ export default function StrategyCallModal({ open, onClose }: Props) {
                     );
                   })}
                 </div>
+                {errors.slot && <p className="text-xs text-destructive mt-2">{errors.slot}</p>}
               </div>
             )}
 
@@ -246,7 +256,7 @@ export default function StrategyCallModal({ open, onClose }: Props) {
                     Continue <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={1.75} />
                   </button>
                 ) : (
-                  <button type="submit" disabled={submitting} className="btn-lime group ml-auto disabled:opacity-60">
+                  <button type="submit" disabled={submitting || !slot} className="btn-lime group ml-auto disabled:opacity-60">
                     {submitting ? "Booking..." : "Request call"}
                     {!submitting && <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={1.75} />}
                   </button>
