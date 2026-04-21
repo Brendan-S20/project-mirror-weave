@@ -100,6 +100,14 @@ export const blogArticles: Record<string, BlogArticle> = {
           "Teams that skip these feel productive at first and then pay for it later, when a silently broken zap has been misrouting leads for six weeks and nobody noticed. Teams that build these in from the start compound their automation investment instead of rebuilding it every year.",
         ],
       },
+      {
+        heading: "Measuring whether it actually works",
+        paragraphs: [
+          "Automation programs get defended internally with stories, and killed externally with numbers. Every project should have a baseline measurement before the automation ships and a follow-up measurement thirty and ninety days after. The metrics that matter are cycle time, error rate, and hours reclaimed, not how many automations the team shipped.",
+          "The teams that track this rigorously build credibility for the next project. The teams that don't watch each quarter's automation work get questioned as a cost center, no matter how much invisible friction it's removing.",
+          "A good dashboard shows three things: how many automations are running, which ones are healthy, and what business metric each one is attached to. Without that third column, the program drifts into busy work.",
+        ],
+      },
     ],
     takeaways: [
       "Automation backfires when the underlying process is broken, the tooling is fragile, or the scope is too ambitious.",
@@ -145,6 +153,14 @@ export const blogArticles: Record<string, BlogArticle> = {
         paragraphs: [
           "This is not an argument against hiring. It is an argument for sequencing. Automate and systematize the repeatable work first, then hire into the judgement work that the systems surface. The people you bring on step into a higher-leverage job from day one, because they are not inheriting a pile of coordination tasks that could have been handled by a workflow.",
           "The result is a team that looks smaller on the org chart but produces more per head than peers of the same revenue stage.",
+        ],
+      },
+      {
+        heading: "The compounding effect of small wins",
+        paragraphs: [
+          "Operational leverage compounds quietly. One cleaned-up workflow saves an hour a week. Ten cleaned-up workflows save a day. Fifty cleaned-up workflows mean the company runs on meaningfully fewer people than a peer at the same revenue, which shows up directly in margin.",
+          "The teams that build this leverage tend to make a deliberate investment each quarter: one or two operational projects alongside the revenue work. After two years, the gap between a team that did this and a team that didn't is measured in seven-figure differences in cost structure.",
+          "What makes this hard is that each individual project looks small. The case for any single automation or tool is rarely urgent. The case for the cumulative program is overwhelming, but only visible in retrospect.",
         ],
       },
     ],
@@ -194,6 +210,14 @@ export const blogArticles: Record<string, BlogArticle> = {
           "The governance layer is what separates a CRM you trust in a board meeting from one you reconcile against a spreadsheet before every pipeline review.",
         ],
       },
+      {
+        heading: "Reporting is the feedback loop",
+        paragraphs: [
+          "A CRM that drives revenue has a tight feedback loop between the work the team does and the reporting the team sees. Every rep can see their own pipeline health, their own activity cadence, and their own forecast in one view. Leaders can see the same data rolled up without asking for a custom report.",
+          "When this loop is broken, the CRM becomes a place reps report into rather than a place they work from. Activity logging drops, pipeline quality declines, and the system slowly stops reflecting reality.",
+          "The fix is to design reporting as a first-class part of the CRM, not as an afterthought bolted on with a BI tool. Native reports, views, and dashboards, configured for the actual workflows the team runs, keep the system in daily use and keep the data honest.",
+        ],
+      },
     ],
     takeaways: [
       "CRMs decay from bloated data models, outdated stages, and unmaintained automations.",
@@ -239,6 +263,14 @@ export const blogArticles: Record<string, BlogArticle> = {
         paragraphs: [
           "A good internal tool replaces one workflow and does it well. A bad one tries to replace five workflows and ends up covering none of them. When scoping, pick the single highest-pain spreadsheet, define the three things it has to do, and ignore the rest for version one. Ship that, use it for a month, and let the team's actual friction guide version two.",
           "This discipline is what keeps internal tool projects from turning into the same kind of sprawling mess the spreadsheet was in the first place.",
+        ],
+      },
+      {
+        heading: "Governance after the build",
+        paragraphs: [
+          "Building an internal tool is the easy part. Keeping it useful for years is harder. Internal tools decay the same way spreadsheets do. Fields stop being maintained, workflows drift from the real process, and new hires quietly stop using the tool because it no longer matches reality.",
+          "A few practices keep internal tools healthy. Name an owner on day one, not at handover. Schedule a quarterly review that explicitly prunes unused fields, buttons, and views. Document the tool in the same place the SOP for the process lives, so the two stay synchronized.",
+          "The teams that treat internal tools as products instead of projects end up with a small, stable set of systems that does real work. The teams that treat them as one-off builds end up with another graveyard alongside the spreadsheets they replaced.",
         ],
       },
     ],
@@ -288,6 +320,14 @@ export const blogArticles: Record<string, BlogArticle> = {
           "Done right, stack rationalization typically cuts ten to twenty percent of annual SaaS spend and materially simplifies the onboarding and offboarding experience. It is one of the cleanest operational wins a growth-stage team can produce in a quarter.",
         ],
       },
+      {
+        heading: "Setting up governance so it doesn't drift back",
+        paragraphs: [
+          "A one-time cleanup only lasts if there's a process in place to prevent the next wave of sprawl. The simplest guardrail is a central owner for SaaS procurement with visibility into renewals across the company. New tools go through a lightweight intake that checks for existing overlaps before adding another subscription.",
+          "The goal isn't to slow down teams that need new tools. It's to make sure every new tool replaces or augments something intentionally, instead of quietly stacking on top of the current pile. Most teams find that a quarterly renewal review and a shared procurement channel are enough to keep sprawl in check without adding noticeable friction.",
+          "Without this governance, the same cleanup will be needed in eighteen months. With it, the stack stabilizes and the finance team stops being surprised at renewal season.",
+        ],
+      },
     ],
     takeaways: [
       "SaaS sprawl is a natural side effect of growth; it shows up as cost, security risk, and cognitive load.",
@@ -333,6 +373,14 @@ export const blogArticles: Record<string, BlogArticle> = {
         paragraphs: [
           "Infrastructure that isn't operated decays in the same way a CRM does. Someone needs to own monitoring, alerting, cost review, and the quarterly cleanup. In early stages this is often a co-founder. At growth stage, it needs to be a dedicated function, whether internal or outsourced to a partner that treats the environment as its own.",
           "The companies that treat infrastructure as a one-time build inevitably end up in the same situation two years later. The ones that treat it as an ongoing operation stay ahead of their own scale.",
+        ],
+      },
+      {
+        heading: "Cost as a forcing function",
+        paragraphs: [
+          "Infrastructure decisions that age poorly often show up first on the bill. Cloud spend that grows faster than revenue, a tooling bill that nobody can fully explain, and a support contract that keeps escalating. These aren't pure cost problems. They're signals that the architecture is working against the business rather than with it.",
+          "Treating cost as a forcing function means budgeting for infrastructure work the same way the business budgets for product work, with explicit goals tied to the architecture review and ongoing operations. A well-operated environment typically sees cost per user decline over time, not grow.",
+          "The companies that benchmark and review this carefully catch architectural problems a full quarter or two earlier than the ones that don't. That head start is usually the difference between a managed transition and a crisis rebuild.",
         ],
       },
     ],
@@ -382,6 +430,14 @@ export const blogArticles: Record<string, BlogArticle> = {
           "There is a pragmatic question about whether to build integrations with iPaaS tools like Zapier or Make, use a customer data platform, or go direct via custom code. The right answer depends on volume, data sensitivity, and how complex the business logic is. Most growth-stage companies are well served by a mix: iPaaS for simple syncs, a CDP or warehouse for unified customer data, and custom integrations for the few high-stakes flows where reliability really matters.",
         ],
       },
+      {
+        heading: "Avoiding the integration graveyard",
+        paragraphs: [
+          "Connected doesn't mean 'has a lot of integrations.' Plenty of companies have dozens of integrations that don't actually deliver the value of a connected stack, because each one was built as a point solution without a shared model behind it. The symptom is obvious once you see it: every integration requires its own reconciliation logic and breaks independently.",
+          "The fix is to invest in a canonical data model before, or at least alongside, the integration work. Every integration then becomes a translation between the external tool and the canonical model, not a direct tool-to-tool mapping. The result is fewer integrations, simpler maintenance, and a stack where adding a new tool costs less each time.",
+          "This is where a warehouse or CDP earns its budget. It isn't the integration itself. It's the shared model that lets every integration stay simple.",
+        ],
+      },
     ],
     takeaways: [
       "Disconnected stacks cost time, decision quality, and customer experience.",
@@ -429,6 +485,14 @@ export const blogArticles: Record<string, BlogArticle> = {
           "Most growth-stage companies need a mix. An agency for campaigns, internal hires for core product, a partner for the infrastructure under it all.",
         ],
       },
+      {
+        heading: "How the models mix over time",
+        paragraphs: [
+          "In practice, most mature companies run all three simultaneously for different problems. An agency for cyclical brand and campaign work. Internal hires for core product and customer-facing teams. A systems partner for the infrastructure layer that ties the business together. The key is picking the right model for each specific function, rather than defaulting to one across the board.",
+          "The failure mode is asking one model to do the job of another. Hiring internally for infrastructure work the company isn't ready to own, or using an agency to build the operating system that really should be owned, reliably produces disappointment a year later.",
+          "A clear map of which model owns which capability, reviewed annually, prevents most of these mistakes. It also gives finance and recruiting a clearer picture of what the next twelve months should actually look like.",
+        ],
+      },
     ],
     takeaways: [
       "Agencies fit cyclical, deliverable-oriented work with defined scopes.",
@@ -474,6 +538,14 @@ export const blogArticles: Record<string, BlogArticle> = {
         paragraphs: [
           "Operational readiness isn't only about systems. It's also about the right people owning the right functions. A head of operations who treats the role as firefighting will never build readiness. A head of operations who treats it as systems design will. The distinction matters more than it looks.",
           "The teams that scale smoothly tend to have made this hire earlier than their peers, even when it felt premature at the time.",
+        ],
+      },
+      {
+        heading: "Running the readiness check",
+        paragraphs: [
+          "A practical readiness check takes less than a week. List the top ten processes the business depends on. For each, answer three questions: who owns it, where is it documented, and what would break if that person left tomorrow. The answers expose the fragile points far faster than a broader audit.",
+          "The gaps this surfaces are usually concentrated in a small number of spots. Two or three critical processes without a clear owner, a handful of workflows that only live in one person's head, a few reports that nobody can recreate. Fixing these, in order, delivers most of the readiness gains for a fraction of the work a full operational overhaul would require.",
+          "This is the kind of exercise that's most useful to run a quarter or two before the next growth phase, not during it. By the time the expansion is underway, there's no time to close the gaps without disruption.",
         ],
       },
     ],
