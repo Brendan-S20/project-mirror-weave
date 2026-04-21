@@ -1,6 +1,7 @@
 import {
   Globe, Layers, Settings2, Workflow, Database, Zap, Megaphone, Video, Sparkles,
   Server, Cpu, Wrench, TrendingUp, Users, BookMarked, FileText, Calendar, Newspaper, BarChart3,
+  Cloud, LifeBuoy, Rocket,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { services, pillars, type Service } from "./services";
@@ -40,9 +41,10 @@ const serviceIcons: Record<string, LucideIcon> = {
   "branding": Sparkles,
   "media-production": Video,
   "system-architecture": Cpu,
-  "infrastructure-planning": Server,
+  "infrastructure-cloud": Cloud,
+  "managed-it-services": LifeBuoy,
   "internal-tools": Wrench,
-  "scaling-operations": TrendingUp,
+  "scaling-operations": Rocket,
 };
 
 const pillarToServiceLinks = (pillarSlug: Service["pillar"]): NavLink[] =>
