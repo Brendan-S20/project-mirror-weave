@@ -1,5 +1,5 @@
 import { useState, FormEvent, useEffect } from "react";
-import { X, ArrowRight, ArrowLeft, Check, CalendarCheck, Mail } from "lucide-react";
+import { X, ArrowRight, ArrowLeft, Check, CalendarCheck, Mail, Clock } from "lucide-react";
 
 interface Props {
   open: boolean;
@@ -15,6 +15,13 @@ const FOCUS_TAGS = [
 ] as const;
 
 const TOTAL_STEPS = 3;
+const TIME_SLOTS = [
+  { day: "Tomorrow", time: "10:00 AM" },
+  { day: "Tomorrow", time: "2:00 PM" },
+  { day: "In 2 days", time: "11:00 AM" },
+  { day: "In 2 days", time: "3:30 PM" },
+  { day: "This week", time: "Flexible — email me times" },
+];
 
 export default function StrategyCallModal({ open, onClose }: Props) {
   const [step, setStep] = useState(1);
@@ -24,12 +31,14 @@ export default function StrategyCallModal({ open, onClose }: Props) {
   const [note, setNote] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [slot, setSlot] = useState<string>("");
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     if (!open) {
       const t = setTimeout(() => {
         setStep(1); setName(""); setEmail(""); setFocus([]); setNote("");
-        setErrors({}); setSubmitting(false);
+        setErrors({}); setSubmitting(false); setSlot(""); setSubmitted(false);
       }, 200);
       return () => clearTimeout(t);
     }
@@ -56,10 +65,11 @@ export default function StrategyCallModal({ open, onClose }: Props) {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (step !== TOTAL_STEPS) return;
     setSubmitting(true);
     setTimeout(() => {
       setSubmitting(false);
-      setStep(3);
+      setSubmitted(true);
     }, 600);
   };
 
@@ -82,17 +92,19 @@ export default function StrategyCallModal({ open, onClose }: Props) {
         </button>
 
         <div className="relative p-7 lg:p-9">
-          {step < 3 && (
+          {!submitted && (
             <div className="mb-6">
               <div className="flex items-center justify-between mb-2 text-xs">
-                <span className="font-semibold text-foreground/80">Step {step} of 2</span>
-                <span className="text-muted-foreground">{step === 1 ? "Contact info" : "Context"}</span>
+                <span className="font-semibold text-foreground/80">Step {step} of {TOTAL_STEPS}</span>
+                <span className="text-muted-foreground">
+                  {step === 1 ? "Contact info" : step === 2 ? "Context" : "Scheduling"}
+                </span>
               </div>
               <div className="h-1 w-full rounded-full bg-muted/40 overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-500"
                   style={{
-                    width: `${(step / 2) * 100}%`,
+                    width: `${(step / TOTAL_STEPS) * 100}%`,
                     background: "linear-gradient(90deg, hsl(var(--aurora-blue)), hsl(var(--aurora-teal)))",
                   }}
                 />
@@ -100,19 +112,21 @@ export default function StrategyCallModal({ open, onClose }: Props) {
             </div>
           )}
 
-          {step < 3 && (
+          {!submitted && (
             <div className="mb-6">
               <div className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-widest mb-3"
                 style={{ background: "hsl(var(--aurora-blue) / 0.12)", color: "hsl(var(--aurora-blue))" }}>
                 <CalendarCheck className="w-3 h-3" strokeWidth={2} /> Strategy Call
               </div>
               <h2 className="text-2xl lg:text-3xl font-bold text-foreground leading-tight">
-                {step === 1 ? "Book a strategy call" : "What should we focus on?"}
+                {step === 1 ? "Book a strategy call" : step === 2 ? "What should we focus on?" : "Pick a time that works"}
               </h2>
               <p className="text-sm text-muted-foreground mt-1.5">
                 {step === 1
                   ? "A 30-minute call to map your current bottlenecks and next moves. No pitch."
-                  : "Optional, but it helps us prep the right questions."}
+                  : step === 2
+                  ? "Optional, but it helps us prep the right questions."
+                  : "Choose a slot below — we'll confirm by email within one business day."}
               </p>
             </div>
           )}
@@ -171,7 +185,37 @@ export default function StrategyCallModal({ open, onClose }: Props) {
               </>
             )}
 
-            {step === 3 && (
+            {step === 3 && !submitted && (
+              <div>
+                <label className="block text-xs font-semibold text-foreground/80 mb-2 uppercase tracking-wide">Available windows</label>
+                <div className="space-y-2">
+                  {TIME_SLOTS.map((s) => {
+                    const id = `${s.day}-${s.time}`;
+                    const active = slot === id;
+                    return (
+                      <button
+                        key={id}
+                        type="button"
+                        onClick={() => setSlot(id)}
+                        className={`w-full flex items-center justify-between rounded-lg border px-4 py-3 text-sm font-medium transition-all ${
+                          active
+                            ? "border-accent/60 bg-accent/[0.1] text-foreground"
+                            : "border-border/60 text-foreground/80 hover:border-border hover:text-foreground"
+                        }`}
+                      >
+                        <span className="flex items-center gap-2">
+                          <Clock className="w-4 h-4" strokeWidth={1.75} />
+                          {s.day}
+                        </span>
+                        <span className="text-muted-foreground">{s.time}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {submitted && (
               <div className="text-center py-6 animate-fade-in">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-5"
                   style={{ background: "linear-gradient(135deg, hsl(var(--aurora-blue) / 0.15), hsl(var(--aurora-teal) / 0.15))" }}>
@@ -189,7 +233,7 @@ export default function StrategyCallModal({ open, onClose }: Props) {
               </div>
             )}
 
-            {step < 3 && (
+            {!submitted && (
               <div className="flex items-center justify-between pt-2 gap-3">
                 {step > 1 ? (
                   <button type="button" onClick={back} className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
@@ -197,13 +241,13 @@ export default function StrategyCallModal({ open, onClose }: Props) {
                   </button>
                 ) : <span />}
 
-                {step === 1 ? (
+                {step < TOTAL_STEPS ? (
                   <button type="button" onClick={next} className="btn-lime group ml-auto">
                     Continue <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={1.75} />
                   </button>
                 ) : (
                   <button type="submit" disabled={submitting} className="btn-lime group ml-auto disabled:opacity-60">
-                    {submitting ? "Booking..." : "Request times"}
+                    {submitting ? "Booking..." : "Request call"}
                     {!submitting && <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={1.75} />}
                   </button>
                 )}
