@@ -29,7 +29,6 @@ export default function Index() {
         description="The North combines creative, technology, and operational systems to help companies scale faster and operate smarter."
         ctaText="Start a Project"
         secondaryCtaText="Book a Strategy Call"
-        secondaryCtaHref="#strategy-call"
       >
         <div className="grid grid-cols-2 gap-3 stagger-children">
           {pillars.map((p) => (
