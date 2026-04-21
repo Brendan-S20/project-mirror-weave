@@ -65,10 +65,11 @@ export default function StrategyCallModal({ open, onClose }: Props) {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (step !== TOTAL_STEPS) return;
     setSubmitting(true);
     setTimeout(() => {
       setSubmitting(false);
-      setStep(3);
+      setSubmitted(true);
     }, 600);
   };
 
