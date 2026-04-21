@@ -1,5 +1,5 @@
 import { useState, FormEvent, useEffect } from "react";
-import { X, ArrowRight, ArrowLeft, Check, CalendarCheck, Mail } from "lucide-react";
+import { X, ArrowRight, ArrowLeft, Check, CalendarCheck, Mail, Clock } from "lucide-react";
 
 interface Props {
   open: boolean;
@@ -15,6 +15,13 @@ const FOCUS_TAGS = [
 ] as const;
 
 const TOTAL_STEPS = 3;
+const TIME_SLOTS = [
+  { day: "Tomorrow", time: "10:00 AM" },
+  { day: "Tomorrow", time: "2:00 PM" },
+  { day: "In 2 days", time: "11:00 AM" },
+  { day: "In 2 days", time: "3:30 PM" },
+  { day: "This week", time: "Flexible — email me times" },
+];
 
 export default function StrategyCallModal({ open, onClose }: Props) {
   const [step, setStep] = useState(1);
@@ -24,12 +31,14 @@ export default function StrategyCallModal({ open, onClose }: Props) {
   const [note, setNote] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [slot, setSlot] = useState<string>("");
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     if (!open) {
       const t = setTimeout(() => {
         setStep(1); setName(""); setEmail(""); setFocus([]); setNote("");
-        setErrors({}); setSubmitting(false);
+        setErrors({}); setSubmitting(false); setSlot(""); setSubmitted(false);
       }, 200);
       return () => clearTimeout(t);
     }
