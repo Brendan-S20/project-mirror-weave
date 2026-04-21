@@ -52,6 +52,13 @@ export const blogArticles: Record<string, BlogArticle> = {
           "Over twelve to eighteen months, this is what separates companies that hit a growth ceiling from companies that keep scaling. The first group burns cycles rebuilding the same scaffolding every quarter. The second group ships more, learns faster, and has a finance team that actually trusts the numbers.",
         ],
       },
+      {
+        heading: "Getting the first ninety days right",
+        paragraphs: [
+          "Moving from campaign thinking to infrastructure thinking doesn't require a big-bang project. The right first step is almost always an audit. Map what currently reuses between campaigns, what gets rebuilt every time, and where data breaks between tools. That map is the roadmap.",
+          "In the first ninety days, pick the two or three highest-leverage gaps and close them. For most teams, that means a landing page system, cleaner event tracking, and tighter integration between site and CRM. None of these are glamorous. All of them pay off on every campaign that follows.",
+        ],
+      },
     ],
     takeaways: [
       "Campaign-led growth caps out because nothing compounds between launches.",
@@ -106,6 +113,13 @@ export const blogArticles: Record<string, BlogArticle> = {
           "Automation programs get defended internally with stories, and killed externally with numbers. Every project should have a baseline measurement before the automation ships and a follow-up measurement thirty and ninety days after. The metrics that matter are cycle time, error rate, and hours reclaimed, not how many automations the team shipped.",
           "The teams that track this rigorously build credibility for the next project. The teams that don't watch each quarter's automation work get questioned as a cost center, no matter how much invisible friction it's removing.",
           "A good dashboard shows three things: how many automations are running, which ones are healthy, and what business metric each one is attached to. Without that third column, the program drifts into busy work.",
+        ],
+      },
+      {
+        heading: "Governance and handoffs",
+        paragraphs: [
+          "As the automation surface grows, governance becomes the difference between a program that scales and one that stalls. A simple model works: every automation has a named owner, lives in a documented catalog, and goes through a short review before launch. The review asks three questions: what breaks if this fails, who gets alerted, and who owns rollback.",
+          "This governance layer is usually the least exciting part of the program and the most important one. It's what lets automation grow past a dozen flows without becoming the unmaintainable tangle that most teams eventually regret.",
         ],
       },
     ],
@@ -163,6 +177,13 @@ export const blogArticles: Record<string, BlogArticle> = {
           "What makes this hard is that each individual project looks small. The case for any single automation or tool is rarely urgent. The case for the cumulative program is overwhelming, but only visible in retrospect.",
         ],
       },
+      {
+        heading: "When to stop and hire",
+        paragraphs: [
+          "There is a ceiling to how far automation can take a team, and it matters to recognize it before pushing past it. When the bottleneck becomes genuine judgement, nuanced customer work, or complex cross-functional coordination, more systems won't help. That's the signal to hire.",
+          "The companies that get this sequencing right end up with smaller, more senior teams doing higher-leverage work. The companies that either automate too little or hire too fast end up with the opposite shape: large teams absorbed by coordination overhead.",
+        ],
+      },
     ],
     takeaways: [
       "Headcount is the right answer for judgement work, not for systems work.",
@@ -216,6 +237,13 @@ export const blogArticles: Record<string, BlogArticle> = {
           "A CRM that drives revenue has a tight feedback loop between the work the team does and the reporting the team sees. Every rep can see their own pipeline health, their own activity cadence, and their own forecast in one view. Leaders can see the same data rolled up without asking for a custom report.",
           "When this loop is broken, the CRM becomes a place reps report into rather than a place they work from. Activity logging drops, pipeline quality declines, and the system slowly stops reflecting reality.",
           "The fix is to design reporting as a first-class part of the CRM, not as an afterthought bolted on with a BI tool. Native reports, views, and dashboards, configured for the actual workflows the team runs, keep the system in daily use and keep the data honest.",
+        ],
+      },
+      {
+        heading: "The quarterly review that keeps it alive",
+        paragraphs: [
+          "The single highest-leverage CRM practice is a quarterly review that explicitly kills things. Properties that aren't used, workflows that don't fire, pipelines that don't reflect reality, reports that nobody opens. Each review trims the system back to what actually earns its place.",
+          "Teams that run this review consistently end up with a CRM that feels lighter each quarter, not heavier. Teams that don't end up with the system everyone quietly mistrusts. The work isn't complicated. It just has to happen on a schedule.",
         ],
       },
     ],
@@ -273,6 +301,13 @@ export const blogArticles: Record<string, BlogArticle> = {
           "The teams that treat internal tools as products instead of projects end up with a small, stable set of systems that does real work. The teams that treat them as one-off builds end up with another graveyard alongside the spreadsheets they replaced.",
         ],
       },
+      {
+        heading: "Who should build internal tools",
+        paragraphs: [
+          "The decision about who builds an internal tool matters as much as the decision to build one. Engineering teams often default to full-stack builds on their own stack. That usually produces a tool that's too heavy for the business need and competes with the product backlog.",
+          "A better default for most internal tools is a no-code or low-code platform like Retool, owned by the operations team with engineering review. The tool ships faster, iterates faster, and doesn't consume product engineering capacity. For the small set of tools that genuinely need custom engineering, the investment is obvious by that point.",
+        ],
+      },
     ],
     takeaways: [
       "Spreadsheets are the right answer for early-stage, low-stakes, few-user workflows.",
@@ -326,6 +361,13 @@ export const blogArticles: Record<string, BlogArticle> = {
           "A one-time cleanup only lasts if there's a process in place to prevent the next wave of sprawl. The simplest guardrail is a central owner for SaaS procurement with visibility into renewals across the company. New tools go through a lightweight intake that checks for existing overlaps before adding another subscription.",
           "The goal isn't to slow down teams that need new tools. It's to make sure every new tool replaces or augments something intentionally, instead of quietly stacking on top of the current pile. Most teams find that a quarterly renewal review and a shared procurement channel are enough to keep sprawl in check without adding noticeable friction.",
           "Without this governance, the same cleanup will be needed in eighteen months. With it, the stack stabilizes and the finance team stops being surprised at renewal season.",
+        ],
+      },
+      {
+        heading: "Security and audit benefits",
+        paragraphs: [
+          "The business case for rationalization usually starts with cost, but the security upside is often larger. Fewer subscriptions means fewer access points, fewer data copies, and fewer audit questions. For companies heading into a SOC 2 or similar process, stack hygiene directly shortens the audit.",
+          "This is worth raising explicitly in the business case. A cost-only case sometimes stalls. A cost plus security plus audit case almost always gets approved, because it touches budgets on three different teams simultaneously.",
         ],
       },
     ],
@@ -383,6 +425,13 @@ export const blogArticles: Record<string, BlogArticle> = {
           "The companies that benchmark and review this carefully catch architectural problems a full quarter or two earlier than the ones that don't. That head start is usually the difference between a managed transition and a crisis rebuild.",
         ],
       },
+      {
+        heading: "Build vs buy at this stage",
+        paragraphs: [
+          "Growth-stage infrastructure decisions often come back to build vs buy. The right answer is usually buy for anything that isn't differentiating. A managed database, a managed CI system, a managed identity provider. Build is reserved for the specific things that are core to the product's competitive edge.",
+          "Teams that get this balance wrong either build too much and end up with a maintenance burden they can't afford, or buy too much and find themselves locked into tooling that doesn't fit their actual workflows. The honest answer is almost always narrower than the initial instinct on either side.",
+        ],
+      },
     ],
     takeaways: [
       "The early database, deploy pipeline, and identity model reliably become ceilings at Series B.",
@@ -436,6 +485,13 @@ export const blogArticles: Record<string, BlogArticle> = {
           "Connected doesn't mean 'has a lot of integrations.' Plenty of companies have dozens of integrations that don't actually deliver the value of a connected stack, because each one was built as a point solution without a shared model behind it. The symptom is obvious once you see it: every integration requires its own reconciliation logic and breaks independently.",
           "The fix is to invest in a canonical data model before, or at least alongside, the integration work. Every integration then becomes a translation between the external tool and the canonical model, not a direct tool-to-tool mapping. The result is fewer integrations, simpler maintenance, and a stack where adding a new tool costs less each time.",
           "This is where a warehouse or CDP earns its budget. It isn't the integration itself. It's the shared model that lets every integration stay simple.",
+        ],
+      },
+      {
+        heading: "Ownership across teams",
+        paragraphs: [
+          "A connected stack needs an explicit owner, usually in RevOps or a similar function. Without one, the stack reverts to disconnected the moment the original integrations start to drift. The owner isn't responsible for using the tools. They're responsible for the data model, the integration layer, and the ongoing hygiene.",
+          "This role is underinvested in almost everywhere. The companies that hire or assign this clearly are also the ones whose reporting holds up in a board meeting. The two are not a coincidence.",
         ],
       },
     ],
@@ -493,6 +549,13 @@ export const blogArticles: Record<string, BlogArticle> = {
           "A clear map of which model owns which capability, reviewed annually, prevents most of these mistakes. It also gives finance and recruiting a clearer picture of what the next twelve months should actually look like.",
         ],
       },
+      {
+        heading: "The signals you chose wrong",
+        paragraphs: [
+          "A year into the engagement, a few signals reliably indicate you chose the wrong model. For an agency: the work feels repetitive, the deliverables leave and you can't maintain them, cost keeps climbing. For an internal hire: the role is overwhelmed because there's no system underneath them. For a partner: the work feels like delivery with no knowledge transfer, and you couldn't operate the thing without them.",
+          "Noticing these signals early is the difference between adjusting the model and spending another year frustrated with the same structural mismatch.",
+        ],
+      },
     ],
     takeaways: [
       "Agencies fit cyclical, deliverable-oriented work with defined scopes.",
@@ -546,6 +609,13 @@ export const blogArticles: Record<string, BlogArticle> = {
           "A practical readiness check takes less than a week. List the top ten processes the business depends on. For each, answer three questions: who owns it, where is it documented, and what would break if that person left tomorrow. The answers expose the fragile points far faster than a broader audit.",
           "The gaps this surfaces are usually concentrated in a small number of spots. Two or three critical processes without a clear owner, a handful of workflows that only live in one person's head, a few reports that nobody can recreate. Fixing these, in order, delivers most of the readiness gains for a fraction of the work a full operational overhaul would require.",
           "This is the kind of exercise that's most useful to run a quarter or two before the next growth phase, not during it. By the time the expansion is underway, there's no time to close the gaps without disruption.",
+        ],
+      },
+      {
+        heading: "What changes after readiness",
+        paragraphs: [
+          "Once readiness is in place, the quality of the conversations inside the company shifts. Leadership spends less time reconciling numbers and more time deciding what to do with them. Teams stop waiting on each other for the same handoffs every week. New hires come up to speed in days instead of months.",
+          "This is the real dividend, and it is hard to appreciate until you experience it. The work to get there feels slow and unglamorous. The payoff, once it arrives, is the difference between a company that feels like it's constantly catching up and one that feels like it's genuinely ready for whatever comes next.",
         ],
       },
     ],
