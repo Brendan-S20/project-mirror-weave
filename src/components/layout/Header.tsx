@@ -45,7 +45,7 @@ const ServicesMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () => 
                       >
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
-                            {link.icon && <link.icon className={`w-4 h-4 shrink-0 transition-colors ${isActive ? "text-primary" : "text-muted-foreground/40 group-hover/item:text-primary/60"}`} />}
+                            {link.icon && <link.icon strokeWidth={1.75} className={`w-4 h-4 shrink-0 transition-colors ${isActive ? "text-primary" : "text-muted-foreground/40 group-hover/item:text-primary/60"}`} />}
                             <span className={`text-sm font-semibold transition-colors ${isActive ? "text-primary" : "text-foreground group-hover/item:text-primary"}`}>
                               {link.label}
                             </span>
@@ -155,7 +155,7 @@ const ResourcesMega = ({ groups, onClose }: { groups: NavGroup[]; onClose: () =>
                     <span className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">{link.label}</span>
                     {link.description && <span className="text-xs text-muted-foreground block mt-0.5">{link.description}</span>}
                   </div>
-                  {link.icon && <link.icon className="w-5 h-5 text-muted-foreground/30 group-hover/item:text-primary/60 transition-colors shrink-0" />}
+                  {link.icon && <link.icon strokeWidth={1.75} className="w-5 h-5 text-muted-foreground/30 group-hover/item:text-primary/60 transition-colors shrink-0" />}
                 </Link>
               ))}
             </div>
