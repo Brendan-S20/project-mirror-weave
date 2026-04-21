@@ -24,6 +24,7 @@ import ThankYouSmallBusiness from "./pages/ThankYouSmallBusiness";
 import ThankYouGrowingTeam from "./pages/ThankYouGrowingTeam";
 import ThankYouMidMarket from "./pages/ThankYouMidMarket";
 import ThankYouEnterprise from "./pages/ThankYouEnterprise";
+import Unsubscribe from "./pages/Unsubscribe";
 import { BlogIndex, BlogPostPage, AuthorPage, TagPage } from "./pages/BlogPages";
 import { CompareIndex, CompareVsAgency, CompareVsFreelancers, CompareVsInhouse, CompareVsDesignPickle, CompareVsDesignity } from "./pages/ComparePages";
 import { LearnIndex, GuidesIndex, GuidePage, PlaybooksIndex, PlaybookPage, KnowledgeIndex, KnowledgePage, ReportsIndex, ReportPage, EventsIndex, EventPage, FAQPage, PrivacyPage, TermsPage, TrustCenterPage, BugBountyPage } from "./pages/ResourcePages";
@@ -55,6 +56,7 @@ const App = () => (
               <Route path="/thank-you-growing-team" element={<ThankYouGrowingTeam />} />
               <Route path="/thank-you-mid-market" element={<ThankYouMidMarket />} />
               <Route path="/thank-you-enterprise" element={<ThankYouEnterprise />} />
+              <Route path="/unsubscribe" element={<Unsubscribe />} />
 
               {/* Services - new pillar + service + micro-service routes */}
               <Route path="/services" element={<ServicesIndex />} />

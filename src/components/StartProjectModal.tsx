@@ -1,6 +1,7 @@
 import { useState, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { X, ArrowRight, ArrowLeft, Check, Layers, Workflow, Megaphone, Server, Sparkles } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Props {
   open: boolean;
@@ -80,10 +81,46 @@ export default function StartProjectModal({ open, onClose }: Props) {
     e.preventDefault();
     if (!validateStep()) return;
     setSubmitting(true);
-    setTimeout(() => {
+    (async () => {
+      const submissionId = (crypto as any).randomUUID?.() ?? `${Date.now()}-${Math.random()}`;
+      const typeLabels = types
+        .map((v) => PROJECT_TYPES.find((p) => p.value === v)?.label)
+        .filter(Boolean)
+        .join(", ");
+      const timelineLabel = TIMELINES.find((t) => t.value === timeline)?.label ?? timeline;
+      const budgetLabel = BUDGETS.find((b) => b.value === budget)?.label ?? budget;
+      const data = {
+        name, email, company,
+        types: typeLabels,
+        description,
+        timeline: timelineLabel,
+        budget: budgetLabel,
+      };
+      try {
+        await Promise.all([
+          supabase.functions.invoke("send-transactional-email", {
+            body: {
+              templateName: "project-intake-confirmation",
+              recipientEmail: email,
+              idempotencyKey: `project-confirm-${submissionId}`,
+              templateData: { name },
+            },
+          }),
+          supabase.functions.invoke("send-transactional-email", {
+            body: {
+              templateName: "internal-project-notification",
+              recipientEmail: "SchmidtBrendan@outlook.com",
+              idempotencyKey: `project-internal-${submissionId}`,
+              templateData: data,
+            },
+          }),
+        ]);
+      } catch (err) {
+        console.error("Email send failed", err);
+      }
       setSubmitting(false);
       setStep(4);
-    }, 700);
+    })();
   };
 
   const finish = () => {

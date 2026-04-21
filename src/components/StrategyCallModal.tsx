@@ -1,5 +1,6 @@
 import { useState, FormEvent, useEffect } from "react";
 import { X, ArrowRight, ArrowLeft, Check, CalendarCheck, Mail, Clock } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Props {
   open: boolean;
@@ -70,10 +71,38 @@ export default function StrategyCallModal({ open, onClose }: Props) {
     e.preventDefault();
     if (step !== TOTAL_STEPS || !validate()) return;
     setSubmitting(true);
-    setTimeout(() => {
+    (async () => {
+      const submissionId = (crypto as any).randomUUID?.() ?? `${Date.now()}-${Math.random()}`;
+      const focusLabels = focus
+        .map((v) => FOCUS_TAGS.find((t) => t.value === v)?.label)
+        .filter(Boolean)
+        .join(", ");
+      const slotLabel = slot ? slot.replace(/-/g, " — ") : "";
+      try {
+        await Promise.all([
+          supabase.functions.invoke("send-transactional-email", {
+            body: {
+              templateName: "strategy-call-confirmation",
+              recipientEmail: email,
+              idempotencyKey: `strategy-confirm-${submissionId}`,
+              templateData: { name, slot: slotLabel },
+            },
+          }),
+          supabase.functions.invoke("send-transactional-email", {
+            body: {
+              templateName: "internal-strategy-notification",
+              recipientEmail: "SchmidtBrendan@outlook.com",
+              idempotencyKey: `strategy-internal-${submissionId}`,
+              templateData: { name, email, focus: focusLabels, note, slot: slotLabel },
+            },
+          }),
+        ]);
+      } catch (err) {
+        console.error("Email send failed", err);
+      }
       setSubmitting(false);
       setSubmitted(true);
-    }, 600);
+    })();
   };
 
   const inputCls = (field: string) =>
