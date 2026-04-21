@@ -185,7 +185,37 @@ export default function StrategyCallModal({ open, onClose }: Props) {
               </>
             )}
 
-            {step === 3 && (
+            {step === 3 && !submitted && (
+              <div>
+                <label className="block text-xs font-semibold text-foreground/80 mb-2 uppercase tracking-wide">Available windows</label>
+                <div className="space-y-2">
+                  {TIME_SLOTS.map((s) => {
+                    const id = `${s.day}-${s.time}`;
+                    const active = slot === id;
+                    return (
+                      <button
+                        key={id}
+                        type="button"
+                        onClick={() => setSlot(id)}
+                        className={`w-full flex items-center justify-between rounded-lg border px-4 py-3 text-sm font-medium transition-all ${
+                          active
+                            ? "border-accent/60 bg-accent/[0.1] text-foreground"
+                            : "border-border/60 text-foreground/80 hover:border-border hover:text-foreground"
+                        }`}
+                      >
+                        <span className="flex items-center gap-2">
+                          <Clock className="w-4 h-4" strokeWidth={1.75} />
+                          {s.day}
+                        </span>
+                        <span className="text-muted-foreground">{s.time}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {submitted && (
               <div className="text-center py-6 animate-fade-in">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-5"
                   style={{ background: "linear-gradient(135deg, hsl(var(--aurora-blue) / 0.15), hsl(var(--aurora-teal) / 0.15))" }}>
@@ -203,7 +233,7 @@ export default function StrategyCallModal({ open, onClose }: Props) {
               </div>
             )}
 
-            {step < 3 && (
+            {!submitted && (
               <div className="flex items-center justify-between pt-2 gap-3">
                 {step > 1 ? (
                   <button type="button" onClick={back} className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
@@ -211,13 +241,13 @@ export default function StrategyCallModal({ open, onClose }: Props) {
                   </button>
                 ) : <span />}
 
-                {step === 1 ? (
+                {step < TOTAL_STEPS ? (
                   <button type="button" onClick={next} className="btn-lime group ml-auto">
                     Continue <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={1.75} />
                   </button>
                 ) : (
                   <button type="submit" disabled={submitting} className="btn-lime group ml-auto disabled:opacity-60">
-                    {submitting ? "Booking..." : "Request times"}
+                    {submitting ? "Booking..." : "Request call"}
                     {!submitting && <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={1.75} />}
                   </button>
                 )}
